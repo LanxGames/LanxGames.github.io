@@ -116,7 +116,18 @@
             display: block;
             object-fit: cover;
         }
+/* ෆෝන් එකේදී බැනර් එක ලස්සනට පෙනෙන්න */
+@media (max-width: 600px) {
+    .hero-banner {
+        height: auto;        /* ස්වයංක්‍රීයව උස සකස් වෙන්න */
+        min-height: 150px;   /* ෆෝන් එකට ගැලපෙන අවම උස */
+    }
 
+    .hero-banner img {
+        object-fit: contain; /* මුළු ඉමේජ් එකම කැපෙන්නේ නැතිව පෙනෙන්න */
+        height: auto;
+    }
+}
         /* Content Section */
         .container {
             width: 95%;
@@ -317,6 +328,7 @@
 
 </body>
 </html>
+
 
 
 
