@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<index>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 🛒Black Store.lk</title>
+    <title>🛒 Black Store.lk</title>
     <style>
         /* CSS Design - Black & White Premium Theme */
         * {
@@ -18,15 +17,18 @@
             background-color: #000000;
             color: #ffffff;
             line-height: 1.6;
+            overflow-x: hidden; /* ෆෝන් එකේ පැත්තට යන එක වළක්වයි */
         }
 
         /* Header Section */
         header {
-            padding: 25px 5%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
+            flex-wrap: wrap; /* ෆෝන් එකේදී අවශ්‍ය නම් පේළි කැඩීමට */
+            gap: 10px;
         }
 
         .logo-section {
@@ -36,8 +38,8 @@
         }
 
         .logo-box {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border: 2px solid #fff;
             display: flex;
             justify-content: center;
@@ -51,15 +53,10 @@
         }
 
         .brand-name {
-            font-size: 30px;
+            font-size: 24px; /* ෆෝන් එකට ගැලපෙන ලෙස කුඩා කළා */
             font-weight: bold;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        .user-icon {
-            font-size: 20px;
-            cursor: pointer;
         }
 
         /* Navigation Bar */
@@ -67,44 +64,47 @@
             background: #0e0d0d;
             padding: 10px 5%;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* ෆෝන් එකේදී එක යට එක පෙනීමට */
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            gap: 10px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap; /* මෙනු එක ඉඩ මදි නම් පල්ලෙහාට ඒමට */
+            justify-content: center;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #3f3f3f;
+            padding: 5px 0;
         }
 
         .search-bar {
             background: transparent;
             border: 1px solid #444;
-            padding: 5px 10px;
+            padding: 8px 10px;
             color: white;
             border-radius: 4px;
+            width: 100%; /* ෆෝන් එකේදී සම්පූර්ණ පළල */
+            max-width: 300px;
         }
 
         /* Main Banner */
         .hero-banner {
-            width: 90%;
-            margin: 30px auto;
-            height: 400px;
+            width: 95%;
+            margin: 20px auto;
+            height: auto; /* රූපයේ ප්‍රමාණයට අනුව උස වෙනස් වේ */
+            min-height: 200px;
             border: 1.2px solid #afafaf;
             overflow: hidden;
             border-radius: 10px;
@@ -113,25 +113,17 @@
         .hero-banner img {
             width: 100%;
             height: 100%;
+            display: block;
             object-fit: cover;
         }
 
         /* Content Section */
         .container {
-            width: 90%;
-            margin: 40px auto;
+            width: 95%;
+            margin: 20px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-
-        .description-text {
-            grid-column: 1 / -1;
-            padding: 20px 0;
-            border-bottom: 1px solid #222;
-            text-align: center;
-            font-style: italic;
-            color: #888;
+            grid-template-columns: 1fr; /* මුලින්ම එක තීරුවක් (Mobile First) */
+            gap: 20px;
         }
 
         /* Game List Items */
@@ -139,21 +131,15 @@
             display: flex;
             gap: 20px;
             background: #0a0a0a;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             border: 1px solid #1a1a1a;
-            margin-bottom: 20px;
             transition: 0.3s;
         }
 
-        .game-card:hover {
-            border-color: #555;
-            background: #111;
-        }
-
         .game-img {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             border: 1px solid #333;
             flex-shrink: 0;
         }
@@ -167,93 +153,92 @@
         .game-details {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 5px;
         }
 
         .game-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #fff;
         }
 
-        .game-info {
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        .rating {
-            color: #d4d449; /* Gold color for stars */
-        }
-
         .download-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 8px 20px;
+            margin-top: 5px;
+            padding: 6px 15px;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
             text-align: center;
             width: fit-content;
-            transition: 0.3s;
+            font-size: 12px;
             font-weight: bold;
         }
 
-        .download-btn:hover {
-            background: #fff;
-            color: #000;
+        /* Desktop Layout (ලැප්ටොප් සඳහා) */
+        @media (min-width: 769px) {
+            .container {
+                grid-template-columns: 2.5fr 1fr;
+            }
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .game-img {
+                width: 150px;
+                height: 150px;
+            }
+            .brand-name {
+                font-size: 30px;
+            }
         }
 
-        /* Sidebar Placeholder */
-        .sidebar {
-            border-left: 1px solid #222;
-            padding-left: 20px;
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .game-card {
+                flex-direction: column; /* ඉතා කුඩා දුරකථන වලදී රූපය ඉහළින් පෙන්වීමට */
+                align-items: center;
+                text-align: center;
+            }
+            .game-img {
+                width: 100%;
+                height: 200px;
+            }
+            .download-btn {
+                margin: 10px auto;
+            }
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 20px;
             border-top: 1px solid #222;
-            margin-top: 50px;
-            letter-spacing: 2px;
+            margin-top: 30px;
             color: #555;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; }
-            .game-card { flex-direction: column; }
-            .game-img { width: 100%; height: 200px; }
-            .nav-links { display: none; }
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
 
-     <header>
+    <header>
         <div class="logo-section">
             <div class="logo-box">
                 <img src="images (1).png" alt="Logo">
             </div>
-            <div class="brand-name">BLACK STORE.LK
-
-</div>
+            <div class="brand-name">BLACK STORE.LK</div>
         </div>
-
         <div class="user-icon">🔗</div>
-        
     </header>
-
 
     <nav>
         <ul class="nav-links">
-            <li><a href="https://fitgirl-repacks.site/ "target="_blank">Games 🎮</a></li>
-            <li><a href="https://cinesubz.lk/ "target="_blank">Movies🎬</a></li>
-            <li><a href=" https://cinesubz.lk/tvshows/ "target="_blank">tv series 📺</a></li>
-            <li><a href="https://wa.me/94777042735"target="_blank">Contact📬</a></li>
-
+            <li><a href="https://fitgirl-repacks.site/" target="_blank">Games 🎮</a></li>
+            <li><a href="https://cinesubz.lk/" target="_blank">Movies🎬</a></li>
+            <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series 📺</a></li>
+            <li><a href="https://wa.me/94777042735" target="_blank">Contact📬</a></li>
         </ul>
-        <input type="text" class="search-bar" placeholder="Search...                       🔍 ">
+        <input type="text" class="search-bar" placeholder="Search... 🔍">
     </nav>
 
     <div class="hero-banner">
@@ -261,22 +246,19 @@
     </div>
 
     <div class="container">
-        <div class="description-text">
-            <p> <sub>  <CENTER>Premium quality digital store for all your needs</CENTER></sub> </p>
-        </div>
-
         <div class="main-content">
-            <P><center><h2><SUP> GAMES   </SUP></h2></center></P>
+            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px;">GAMES</h2>
 
             <div class="game-card">
                 <div class="game-img">
-                    <img src="download.png " alt="Game 1">
+                    <img src="download.png" alt="Game 1">
                 </div>
                 <div class="game-details">
-                    <div class="game-title">Grand Theft Auto (SanAndreas)<h6>For pc  [Paid]</h6></div>
+                    <div class="game-title">Grand Theft Auto (SanAndreas)</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Paid]</p>
                     <div class="game-info">Size: 3.6 GB</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://shrinkme.click/Auxf8"target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
@@ -285,55 +267,25 @@
                     <img src="downloadGRANNY.jpeg" alt="Game 2">
                 </div>
                 <div class="game-details">
-                    <div class="game-title">Granny 4 The Rebellion<h6>For pc [Free]</h6></div>
+                    <div class="game-title">Granny 4 The Rebellion</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 200 MB</div>
                     <div class="rating">★ ★ ★ ★ ★ 7.7</div>
-                    <a href="https://shrinkme.click/MXxJQ " target="_blank"class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
-            <div class="game-card">
-                <div class="game-img">
-                    <img src="5.jpeg" alt="Game 3">
-                </div>
-                <div class="game-details">
-                    <div class="game-title">Granny 5 Time To Wake Up<h6>For pc [Free]</h6></div>
-                    <div class="game-info">Size: 6.5 GB</div>
-                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
-                    <a href="https://shrinkme.click/TOukmeF "target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-<div class="game-card">
-                <div class="game-img">
-                    <img src="47c33cac4a9431bc157a395095653102.jpg" alt="Game 1">
-                </div>
-                <div class="game-details">
-                    <div class="game-title"> SatrRupture<h6>For pc [Free]</h6></div>
-                    <div class="game-info">Size: 27.6 GB</div>
-                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://shrinkme.click/hmibvUpV " target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-        </div>    
+            
+            </div>    
 
         <aside class="sidebar">
             <h3>Trending Now</h3>
-            <p style="color: #444; margin-top: 10px;">Sidebar content goes here...</p>
-            <script src="https://pl28478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058d51e2098fbc82944d61.js"></script>
+            <p style="color: #444; margin-top: 10px;">Trending games will appear here.</p>
         </aside>
     </div>
 
     <footer>
-         <SUP>
-             <MARQUEE>
-                       © [ BLACK STORE.LK ] CREYETD BY, PAMOD YOSHITHA ABERATHNA.
-             </MARQUEE>
-        </SUP>
+        <marquee>© [ BLACK STORE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
     </footer>
 
 </body>
-</index>
 </html>
-
-
-
-
