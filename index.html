@@ -219,7 +219,7 @@
         /* Desktop Layout (ලැප්ටොප් සඳහා) */
         @media (min-width: 769px) {
             .container {
-                grid-template-columns: 2.5fr 1fr;
+                grid-template-columns: 2.5fr 1.2fr; /* Sidebar එකට ඉඩ සකස් කළා */
             }
             nav {
                 flex-direction: row;
@@ -268,43 +268,33 @@
 @media screen and (min-width: 1024px) {
     .desktop-only-ads {
         display: block !important;
-        position: fixed;
-        right: 20px;
-        top: 150px;
-        width: 250px; /* දැන්වීමේ ප්‍රමාණය අනුව වෙනස් කරන්න */
-        background: #1a1a1a;
+        /* මෙතැන තිබූ position: fixed; ඉවත් කළා - එවිට එය හැමතැනම යන්නේ නැත */
+        width: 100%; 
+        background: #0a0a0a;
         padding: 15px;
         border-radius: 8px;
-        border: 1px solid #333;
-        z-index: 999;
+        border: 1px solid #1a1a1a;
     }
 }
 
-/* --- අලුතින් එක් කළ කොටස: PC එකේදී ඩවුන්ලෝඩ් බොත්තම හැංගීමට --- */
 .mobile-only-btn {
-    display: none; /* සාමාන්‍යයෙන් හංගන්න (PC) */
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
     .mobile-only-btn {
-        display: block; /* ෆෝන් එකේදී පමණක් පෙන්වන්න */
+        display: block;
         text-align: center;
         margin-top: 20px;
     }
 }
-/* ----------------------------------------------------------- */
 
     </style>
 </head>
 <body>
-<div class="desktop-only-ads">
-    <div class="ad-slot">
-        <p style="color:white; font-size:12px;">Advertisement</p> 
+<div class="desktop-only-ads" style="display:none;">
     </div>
-    
-    <div class="ad-slot" style="margin-top: 20px;">
-        </div>
-</div>
+
     <header>
         <div class="logo-section">
             <div class="logo-box">
@@ -388,14 +378,17 @@
                 </div>
             </div>
         </div>    
-          <aside class="sidebar desktop-only-ads">
-    <h3>Trending Now</h3>
-    <p style="color: #444; margin-top: 10px;">Advertisement</p>
-    
-    <script src="https://p128478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058..."></script>
-</aside>
-            </div>    
-<script src="https://pl28478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058d51e2098fbc82944d61.js"></script>
+        
+        <aside class="sidebar desktop-only-ads">
+            <h3>Trending Now</h3>
+            <p style="color: #444; margin-top: 10px;">Advertisement</p>
+            <div class="ad-slot" style="margin-top: 20px;">
+                <script src="https://p128478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058..."></script>
+            </div>
+        </aside>
+    </div>    
+
+    <script src="https://pl28478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058d51e2098fbc82944d61.js"></script>
        
 
     <footer>
@@ -420,4 +413,6 @@
 
 </body>
 </html>
+
+
 
