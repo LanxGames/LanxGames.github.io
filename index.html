@@ -148,6 +148,28 @@
     transition: 0.3s;
     margin-bottom: 20px; /* <--- මෙය අලුතින් ඇතුළත් කරන්න */
 
+  /* සියලුම කාඩ්පත් සඳහා පොදු වෙනස */
+.card {
+    width: 350px; /* Desktop එකේදී පවතින ප්‍රමාණය */
+    max-width: 90%; /* ෆෝන් එකේදී ස්ක්‍රීන් එකෙන් 90% කට වඩා විශාල නොවේ */
+    margin: 20px auto; /* කාඩ් එක මැදට ගැනීමට */
+    display: block;
+}
+
+/* ෆෝන් සඳහා විශේෂයෙන් (Responsive) */
+@media screen and (max-width: 480px) {
+    .card {
+        width: 95%; /* කුඩා ෆෝන් වලදී තවත් ටිකක් පළල වැඩි කරයි */
+        margin: 10px auto;
+    }
+    
+    .card img {
+        height: auto; /* පින්තූරය ඇද නොවී තිබීමට */
+    }
+}
+
+            
+
             display: flex;
             gap: 20px;
             background: #0a0a0a;
@@ -213,26 +235,7 @@
             }
         }
 
-        /* සියලුම කාඩ්පත් සඳහා පොදු වෙනස */
-.card {
-    width: 350px; /* Desktop එකේදී පවතින ප්‍රමාණය */
-    max-width: 90%; /* ෆෝන් එකේදී ස්ක්‍රීන් එකෙන් 90% කට වඩා විශාල නොවේ */
-    margin: 20px auto; /* කාඩ් එක මැදට ගැනීමට */
-    display: block;
-}
-
-/* ෆෝන් සඳහා විශේෂයෙන් (Responsive) */
-@media screen and (max-width: 480px) {
-    .card {
-        width: 95%; /* කුඩා ෆෝන් වලදී තවත් ටිකක් පළල වැඩි කරයි */
-        margin: 10px auto;
-    }
-    
-    .card img {
-        height: auto; /* පින්තූරය ඇද නොවී තිබීමට */
-    }
-}
-
+      
         /* Mobile specific adjustments */
         @media (max-width: 480px) {
             .game-card {
@@ -348,6 +351,7 @@
 
 </body>
 </html>
+
 
 
 
