@@ -219,7 +219,7 @@
         /* Desktop Layout (ලැප්ටොප් සඳහා) */
         @media (min-width: 769px) {
             .container {
-                grid-template-columns: 2.5fr 1.2fr; /* Sidebar එකට ඉඩ සකස් කළා */
+                grid-template-columns: 2.5fr 1.2fr;
             }
             nav {
                 flex-direction: row;
@@ -259,16 +259,14 @@
             color: #555;
             font-size: 12px;
         }
-/* ෆෝන් එකේදී සයිඩ්බාර් එක හංගන්න */
+
 .desktop-only-ads {
     display: none;
 }
 
-/* ලැප්ටොප්/PC එකේදී දකුණු පැත්තේ පෙන්වන්න */
 @media screen and (min-width: 1024px) {
     .desktop-only-ads {
         display: block !important;
-        /* මෙතැන තිබූ position: fixed; ඉවත් කළා - එවිට එය හැමතැනම යන්නේ නැත */
         width: 100%; 
         background: #0a0a0a;
         padding: 15px;
@@ -289,11 +287,45 @@
     }
 }
 
+/* --- අලුතින් එක් කළ Ad Styles --- */
+.ad-container {
+    background: #111;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.ad-box {
+    width: 100%;
+    height: 120px;
+    background: #000;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+.ad-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.place-ad-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+/* -------------------------------- */
+
     </style>
 </head>
 <body>
-<div class="desktop-only-ads" style="display:none;">
-    </div>
 
     <header>
         <div class="logo-section">
@@ -380,11 +412,27 @@
         </div>    
         
         <aside class="sidebar desktop-only-ads">
-            <h3>Trending Now</h3>
-            <p style="color: #444; margin-top: 10px;">Advertisement</p>
-            <div class="ad-slot" style="margin-top: 20px;">
-                <script src="https://p128478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058..."></script>
+            <h3 style="font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">PROMOTED</h3>
+            
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad1.jpg" alt="Ad Image 1"> </div>
+                <p style="font-size: 11px; color: #aaa;">Featured Product Name</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Visit Store ↗</a>
             </div>
+
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad2.jpg" alt="Ad Image 2"> </div>
+                <p style="font-size: 11px; color: #aaa;">Your Service Here</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Contact Now ↗</a>
+            </div>
+
+            <a href="https://wa.me/94777042735" target="_blank" class="place-ad-btn">
+                PLACE YOUR AD HERE (PAID)
+            </a>
+            
+            <p style="color: #444; margin-top: 15px; font-size: 10px;">Advertisement Space</p>
         </aside>
     </div>    
 
@@ -413,6 +461,8 @@
 
 </body>
 </html>
+
+
 
 
 
