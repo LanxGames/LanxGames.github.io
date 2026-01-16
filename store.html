@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Games - Black Store.lk</title>
+    <style>
+        /* CSS Design - Black & White Premium Theme (Matching index.html) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header (Same as index.html) */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #333;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Bar (Same as index.html) */
+        nav {
+            background: #0e0d0d;
+            padding: 10px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .search-bar {
+            background: transparent;
+            border: 1px solid #444;
+            padding: 8px 10px;
+            color: white;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* Game Grid Section (කොටු ක්‍රමය) */
+        .container {
+            width: 95%;
+            margin: 30px auto;
+        }
+
+        .grid-title {
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 20px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .game-grid {
+            display: grid;
+            /* හරහට කොටු 4 ක් පෙන්වීමට */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px;
+        }
+
+        .game-item {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-item:hover {
+            border-color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .game-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-item h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            height: 40px; /* පේළි දෙකක නම තිබුණත් එක සමානව තැබීමට */
+            overflow: hidden;
+        }
+
+        .mini-download-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .mini-download-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Responsive - ෆෝන් සහ ටැබ් සඳහා */
+        @media (max-width: 1024px) {
+            .game-grid { grid-template-columns: repeat(3, 1fr); } /* ටැබ් වලට කොටු 3 */
+        }
+
+        @media (max-width: 768px) {
+            .game-grid { grid-template-columns: repeat(2, 1fr); } /* ෆෝන් වලට කොටු 2 */
+            nav { flex-direction: column; }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name { font-size: 18px; }
+            .game-item img { height: 140px; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #222;
+            margin-top: 30px;
+            color: #555;
+            font-size: 12px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .back-btn:hover { color: #fff; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-box">
+                <img src="images (1).png" alt="Logo">
+            </div>
+            <div class="brand-name">BLACK STORE.LK</div>
+        </div>
+        <div class="user-icon">🔗</div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home 🏠</a></li>
+            <li><a href="https://wa.me/94777042735" target="_blank">Contact 📬</a></li>
+        </ul>
+        <input type="text" id="storeSearch" class="search-bar" placeholder="Search All Games...">
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        <h2 class="grid-title">All Games Collection</h2>
+
+        <div class="game-grid">
+            <div class="game-item">
+                <img src="download.png" alt="GTA">
+                <div class="game-info">
+                    <h3>GTA San Andreas</h3>
+                    <a href="https://shrinkme.click/Auxf8" class="mini-download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="game-item">
+                <img src="downloadGRANNY.jpeg" alt="Granny 4">
+                <div class="game-info">
+                    <h3>Granny 4 Rebellion</h3>
+                    <a href="https://shrinkme.click/MXxJQ" class="mini-download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="game-item">
+                <img src="5.jpeg" alt="Granny 5">
+                <div class="game-info">
+                    <h3>Granny 5 Wake Up</h3>
+                    <a href="https://shrinkme.click/TOukmeF" class="mini-download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="game-item">
+                <img src="47c33cac4a9431bc157a395095653102.jpg" alt="StarRupture">
+                <div class="game-info">
+                    <h3>StarRupture</h3>
+                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            </div>
+    </div>
+
+    <footer>
+        <marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee>
+    </footer>
+
+    <script>
+        // Search Function for Store Page
+        document.getElementById('storeSearch').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            let items = document.querySelectorAll('.game-item');
+
+            items.forEach(item => {
+                let title = item.querySelector('h3').innerText;
+                if (title.toUpperCase().indexOf(filter) > -1) {
+                    item.style.display = ""; 
+                } else {
+                    item.style.display = "none"; 
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
