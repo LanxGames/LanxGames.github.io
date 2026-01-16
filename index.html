@@ -308,7 +308,7 @@
             <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series 📺</a></li>
             <li><a href="https://wa.me/94777042735" target="_blank">Contact📬</a></li>
         </ul>
-        <input type="text" class="search-bar" placeholder="Search... ">
+        <input type="text" id="gameSearch" class="search-bar" placeholder="Search Games...">
     </nav>
 
     <div style="text-align: center; margin-top: 20px;">
@@ -388,21 +388,21 @@
         <marquee>© [ BLACK STORE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
     </footer>
 
+    <script>
+        document.getElementById('gameSearch').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            let gameCards = document.querySelectorAll('.game-card');
+
+            gameCards.forEach(card => {
+                let title = card.querySelector('.game-title').innerText;
+                if (title.toUpperCase().indexOf(filter) > -1) {
+                    card.style.display = ""; 
+                } else {
+                    card.style.display = "none"; 
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
