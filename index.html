@@ -169,9 +169,6 @@
         height: auto; /* පින්තූරය ඇද නොවී තිබීමට */
     }
 }
-
-            
-
             display: flex;
             gap: 20px;
             background: #0a0a0a;
@@ -262,7 +259,26 @@
             color: #555;
             font-size: 12px;
         }
+/* ෆෝන් එකේදී සයිඩ්බාර් එක හංගන්න */
+.desktop-only-ads {
+    display: none;
+}
 
+/* ලැප්ටොප්/PC එකේදී දකුණු පැත්තේ පෙන්වන්න */
+@media screen and (min-width: 1024px) {
+    .desktop-only-ads {
+        display: block !important;
+        position: fixed;
+        right: 20px;
+        top: 150px;
+        width: 250px; /* දැන්වීමේ ප්‍රමාණය අනුව වෙනස් කරන්න */
+        background: #1a1a1a;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        z-index: 999;
+    }
+}
 
     </style>
 </head>
@@ -366,6 +382,7 @@
 
 </body>
 </html>
+
 
 
 
