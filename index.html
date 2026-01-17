@@ -5,63 +5,333 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛒 Black Store.lk</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <meta name="description" content="Black Store.lk - Download the latest PC games, Movies and TV Series for free.">
+    <meta name="description" content="Black Store.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
+    <meta name="keywords" content="Black Store, Black Store.lk, Download Games Sri Lanka, PC Games Download, Free Movies, BlackStore">
     <meta name="author" content="Pamod Yoshitha Abeyrathna">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="I_WJEb_Iup7UacRZn8arH6MBIacvp-h1hq0tMP-ev6s" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/BLACK_STORE.LK/sitemap.xml" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         /* CSS Design - Black & White Premium Theme */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid #333; flex-wrap: wrap; gap: 10px; }
-        .logo-section { display: flex; align-items: center; gap: 15px; }
-        .logo-box { width: 60px; height: 60px; border: 2px solid #fff; display: flex; justify-content: center; align-items: center; }
-        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .brand-name { font-size: 24px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* --- New Profile Style --- */
-        .user-nav-area { display: flex; align-items: center; gap: 10px; cursor: pointer; background: #111; padding: 5px 12px; border-radius: 25px; border: 1px solid #333; transition: 0.3s; }
+        /* Header Section */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #333;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- අලුතින් එක්කළ Profile Style --- */
+        .user-nav-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            background: #111;
+            padding: 5px 12px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
         .user-nav-area:hover { border-color: #fff; }
         .user-nav-area img { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
         .user-nav-area span { font-size: 11px; font-weight: bold; letter-spacing: 1px; }
 
-        nav { background: #0e0d0d; padding: 10px 5%; display: flex; flex-direction: column; align-items: center; position: sticky; top: 0; z-index: 1000; gap: 10px; }
-        .nav-links { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .nav-links a { color: #ffffff; text-decoration: none; text-transform: uppercase; font-size: 13px; transition: 0.3s; padding: 5px 0; }
-        .search-bar { background: transparent; border: 1px solid #444; padding: 8px 10px; color: white; border-radius: 4px; width: 100%; max-width: 300px; }
+        /* Navigation Bar */
+        nav {
+            background: #0e0d0d;
+            padding: 10px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 10px;
+        }
 
-        .hero-banner { width: 95%; margin: 20px auto; border: 1.2px solid #afafaf; overflow: hidden; border-radius: 10px; }
-        .hero-banner img { width: 100%; display: block; object-fit: cover; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-        .container { width: 95%; margin: 20px auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .game-card { display: flex; gap: 20px; background: #0a0a0a; padding: 15px; border-radius: 8px; border: 1px solid #1a1a1a; transition: 0.3s; margin-bottom: 20px; }
-        .game-img { width: 100px; height: 100px; border: 1px solid #333; flex-shrink: 0; }
-        .game-img img { width: 100%; height: 100%; object-fit: cover; }
-        .game-title { font-size: 18px; font-weight: bold; color: #fff; }
-        .download-btn { display: inline-block; padding: 6px 15px; border: 1px solid #fff; color: #fff; text-decoration: none; text-align: center; font-size: 12px; font-weight: bold; }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: 0.3s;
+            padding: 5px 0;
+        }
+
+        .search-bar {
+            background: transparent;
+            border: 1px solid #444;
+            padding: 8px 10px;
+            color: white;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* Main Banner */
+        .hero-banner {
+            width: 95%;
+            margin: 20px auto;
+            height: auto;
+            min-height: 200px;
+            border: 1.2px solid #afafaf;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        @media (max-width: 600px) {
+            .hero-banner {
+                height: auto;
+                min-height: 140px;
+            }
+            .hero-banner img {
+                object-fit: contain;
+                height: auto;
+            }
+        }
+
+        /* Content Section */
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .game-card {
+            display: flex;
+            gap: 20px;
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .game-img {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #333;
+            flex-shrink: 0;
+        }
+
+        .game-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 6px 15px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 2.5fr 1fr;
+            }
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .game-img {
+                width: 150px;
+                height: 150px;
+            }
+            .brand-name {
+                font-size: 30px;
+            }
+        }
+
+        /* ෆෝන් එකට අදාළ වෙනස්කම් */
+        @media (max-width: 480px) {
+            .main-content {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: space-between;
+            }
+            .game-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 48%;
+                padding: 10px;
+                margin-bottom: 10px;
+                gap: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .game-img {
+                width: 100%;
+                height: 110px; 
+            }
+            .game-details {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .game-title {
+                font-size: 13px;
+                min-height: 35px;
+            }
+            .game-info, .rating {
+                font-size: 10px;
+            }
+            .download-btn {
+                margin: 5px auto 0 auto;
+                padding: 5px 10px;
+                font-size: 10px;
+                width: 100%;
+            }
+        }
 
         /* Login Modal Style */
-        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 3000; }
-        .login-box { background: #0a0a0a; padding: 30px; border: 1px solid #333; border-radius: 10px; width: 90%; max-width: 350px; text-align: center; }
-        .google-login-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px; background: #fff; color: #000; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 14px; }
-
-        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
-
-        @media (max-width: 480px) {
-            .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
-            .game-card { flex-direction: column; width: 48%; padding: 10px; text-align: center; }
-            .game-img { width: 100%; height: 110px; }
-            .game-title { font-size: 13px; min-height: 35px; }
+        .login-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); display: none; 
+            justify-content: center; align-items: center; z-index: 3000; 
         }
+        .login-box { 
+            background: #0a0a0a; padding: 30px; border: 1px solid #333; 
+            border-radius: 10px; width: 90%; max-width: 350px; text-align: center; 
+        }
+        .google-login-btn { 
+            display: flex; align-items: center; justify-content: center; 
+            gap: 10px; width: 100%; padding: 12px; background: #fff; 
+            color: #000; border: none; border-radius: 5px; font-weight: bold; 
+            cursor: pointer; margin-top: 20px; font-size: 14px; 
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #222;
+            margin-top: 30px;
+            color: #555;
+            font-size: 12px;
+        }
+
+        .desktop-only-ads { display: none; }
+        @media screen and (min-width: 1024px) {
+            .desktop-only-ads {
+                display: block !important;
+                width: 100%; background: #0a0a0a; padding: 15px;
+                border-radius: 8px; border: 1px solid #1a1a1a;
+            }
+        }
+
+        .mobile-only-btn { display: none; }
+        @media screen and (max-width: 768px) {
+            .mobile-only-btn { display: block; text-align: center; margin-top: 20px; }
+        }
+
+        .ad-container { background: #111; border: 1px solid #333; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+        .ad-box { width: 100%; height: 150px; background: #000; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px solid #222; }
+        .ad-box img { width: 100%; height: 100%; object-fit: cover; }
+        .place-ad-btn { display: block; width: 100%; padding: 10px; background: #fff; color: #000; text-align: center; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px; margin-top: 10px; }
+        .more-games-btn { display: block; width: 250px; margin: 30px auto; padding: 15px; text-align: center; background: transparent; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .more-games-btn:hover { background: #fff; color: #000; }
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-section">
-            <div class="logo-box"><img src="images (1).png" alt="Logo"></div>
+            <div class="logo-box">
+                <img src="images (1).png" alt="Black Store Logo">
+            </div>
             <div class="brand-name">BLACK STORE.LK</div>
         </div>
         <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
@@ -80,38 +350,107 @@
         <input type="text" id="gameSearch" class="search-bar" placeholder="Search Games...">
     </nav>
 
-    <div class="hero-banner"><img src="www.jpg"></div>
+    <div class="mobile-only-btn">
+        <a href="app-release.apk" download="BlackStore.apk" 
+           style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-family: sans-serif; display: inline-block; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(255,215,0,0.3);">
+           📥 DOWNLOAD OUR APP (APK)
+        </a>
+    </div>
+
+    <div class="hero-banner">
+        <img src="www.jpg" alt="Featured Content Banner">
+    </div>
 
     <div class="container">
         <div class="main-content">
             <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width: 100%;">GAMES</h2>
 
             <div class="game-card">
-                <div class="game-img"><img src="download.png"></div>
+                <div class="game-img">
+                    <img src="download.png" alt="GTA San Andreas">
+                </div>
                 <div class="game-details">
-                    <div class="game-title">GTA SanAndreas</div>
+                    <div class="game-title">Grand Theft Auto (SanAndreas)</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Paid]</p>
                     <div class="game-info">Size: 3.6 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
                     <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
             <div class="game-card">
-                <div class="game-img"><img src="downloadGRANNY.jpeg"></div>
+                <div class="game-img">
+                    <img src="downloadGRANNY.jpeg" alt="Granny 4">
+                </div>
                 <div class="game-details">
                     <div class="game-title">Granny 4 The Rebellion</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 200 MB</div>
+                    <div class="rating">★ ★ ★ ★ ★ 7.7</div>
                     <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
+
+            <div class="game-card">
+                <div class="game-img">
+                    <img src="5.jpeg" alt="Granny 5">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">Granny 5 Time To Wake Up</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 6.5 GB</div>
+                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
+                    <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-img">
+                    <img src="47c33cac4a9431bc157a395095653102.jpg" alt="StarRupture">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">StarRupture</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 27 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
+                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <a href="store.html" class="more-games-btn" style="width: 100%;">See More Games ➔</a>
+        </div>    
+        
+        <aside class="sidebar desktop-only-ads">
+            <h3 style="font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">PROMOTED</h3>
             
-            </div>    
-    </div>
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad1.jpg" alt="Ad 1">
+                </div>
+                <p style="font-size: 11px; color: #aaa;">Your Product Name</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Visit Store ↗</a>
+            </div>
+
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad2.jpg" alt="Ad 2">
+                </div>
+                <p style="font-size: 11px; color: #aaa;">Your Service Here</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Contact Now ↗</a>
+            </div>
+
+            <a href="https://wa.me/94777042735" target="_blank" class="place-ad-btn">
+                PLACE YOUR AD HERE (PAID)
+            </a>
+            
+            <p style="color: #444; margin-top: 15px; font-size: 10px;">Advertisement Space</p>
+        </aside>
+    </div>    
 
     <div class="login-overlay" id="loginModal">
         <div class="login-box">
             <span style="float:right; cursor:pointer;" onclick="closeModal()">✕</span>
-            <h3 style="letter-spacing: 2px;">USER LOGIN</h3>
-            <p style="font-size: 11px; color: #777; margin-top: 10px;">Sign in to Black Store for a better experience</p>
+            <h3 style="letter-spacing: 2px;">LOGIN</h3>
             <button class="google-login-btn" onclick="signInWithGoogle()">
                 <i class="fab fa-google"></i> Continue with Google
             </button>
@@ -126,7 +465,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // ඔයා එවපු Config එක මෙන්න
         const firebaseConfig = {
             apiKey: "AIzaSyC0ZqCnq28-bauG3YBb7WrVVNdQgYOGmqg",
             authDomain: "black-store-login.firebaseapp.com",
@@ -140,28 +478,20 @@
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // Login Logic
         window.signInWithGoogle = () => {
-            signInWithPopup(auth, provider)
-            .then(() => closeModal())
-            .catch(error => alert("Login Failed: " + error.message));
+            signInWithPopup(auth, provider).then(() => closeModal()).catch(err => alert(err.message));
         };
 
-        // Logout/Open Modal Logic
         window.toggleAuth = () => {
-            const user = auth.currentUser;
-            if (user) {
-                if (confirm("Hi " + user.displayName + ", Do you want to Logout?")) {
-                    signOut(auth);
-                }
+            if (auth.currentUser) {
+                if (confirm("Logout?")) signOut(auth);
             } else {
                 document.getElementById('loginModal').style.display = 'flex';
             }
         };
 
-        window.closeModal = () => { document.getElementById('loginModal').style.display = 'none'; };
+        window.closeModal = () => document.getElementById('loginModal').style.display = 'none';
 
-        // Real-time Auth Check (ලොග් වුණාම නම සහ පින්තූරය වෙනස් කරනවා)
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 document.getElementById('userName').innerText = user.displayName.split(' ')[0].toUpperCase();
@@ -174,7 +504,6 @@
     </script>
 
     <script>
-        // Search Function
         document.getElementById('gameSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
             let gameCards = document.querySelectorAll('.game-card');
