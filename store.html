@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Header (Same as index.html) */
+        /* Header */
         header {
             padding: 20px 5%;
             display: flex;
@@ -59,7 +59,7 @@
             text-transform: uppercase;
         }
 
-        /* Navigation Bar (Same as index.html) */
+        /* Navigation Bar */
         nav {
             background: #0e0d0d;
             padding: 10px 5%;
@@ -96,7 +96,7 @@
             max-width: 300px;
         }
 
-        /* Game Grid Section (කොටු ක්‍රමය) */
+        /* Game Grid Section */
         .container {
             width: 95%;
             margin: 30px auto;
@@ -137,7 +137,7 @@
 
         .game-item img {
             width: 100%;
-            height: 180px;
+            height: 220px;
             object-fit: cover;
             border-bottom: 1px solid #1a1a1a;
         }
@@ -176,12 +176,11 @@
 
         @media (max-width: 768px) {
             .game-grid { grid-template-columns: repeat(2, 1fr); }
-            nav { flex-direction: column; }
         }
 
         @media (max-width: 480px) {
             .brand-name { font-size: 18px; }
-            .game-item img { height: 140px; }
+            .game-item img { height: 180px; }
         }
 
         footer {
@@ -229,71 +228,8 @@
         <a href="index.html" class="back-btn">← Back to Home</a>
         <h2 class="grid-title">All Games Collection</h2>
 
-        <div class="game-grid">
-            <div class="game-item">
-                <img src="download.png" alt="GTA">
-                <div class="game-info">
-                    <h3>GTA San Andreas</h3>
-                    <a href="https://shrinkme.click/Auxf8" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="downloadGRANNY.jpeg" alt="Granny 4">
-                <div class="game-info">
-                    <h3>Granny 4 Rebellion</h3>
-                    <a href="https://shrinkme.click/MXxJQ" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="5.jpeg" alt="Granny 5">
-                <div class="game-info">
-                    <h3>Granny 5 Wake Up</h3>
-                    <a href="https://shrinkme.click/TOukmeF" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="47c33cac4a9431bc157a395095653102.jpg" alt="StarRupture">
-                <div class="game-info">
-                    <h3>StarRupture</h3>
-                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="https://www.facebook.com/photo.php?fbid=1390534559097750&id=100044236578991&set=a.283899869761230  " alt="New Game 1">
-                <div class="game-info">
-                    <h3> GTA vice city </h3>
-                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="LINK IMAGE" alt="New Game 2">
-                <div class="game-info">
-                    <h3>New Game 02</h3>
-                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="LINK IMAGE" alt="New Game 3">
-                <div class="game-info">
-                    <h3>New Game 03</h3>
-                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-item">
-                <img src="LINK IMAGE" alt="New Game 4">
-                <div class="game-info">
-                    <h3>New Game 04</h3>
-                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
+        <div class="game-grid" id="gameGrid">
+            <p style="text-align: center; grid-column: 1/-1;">Loading Games...</p>
         </div>
     </div>
 
@@ -301,22 +237,56 @@
         <marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee>
     </footer>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0ZqCnq28-bauG3YBb7WrVVNdQgYOGmqg",
+            authDomain: "black-store-login.firebaseapp.com",
+            databaseURL: "https://black-store-login-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "black-store-login",
+            storageBucket: "black-store-login.firebasestorage.app",
+            messagingSenderId: "980593701862",
+            appId: "1:980593701862:web:eabd842d94a728c2c9c27"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const gameGrid = document.getElementById('gameGrid');
+
+        // Database එකෙන් දත්ත ගෙන පෙන්වීම
+        onValue(ref(db, 'games'), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                gameGrid.innerHTML = ''; // Loading message එක අයින් කරන්න
+                Object.keys(data).reverse().forEach(key => {
+                    const game = data[key];
+                    const gameHTML = `
+                        <div class="game-item">
+                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=Image+Not+Found'">
+                            <div class="game-info">
+                                <h3>${game.title}</h3>
+                                <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                            </div>
+                        </div>`;
+                    gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+                });
+            } else {
+                gameGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No games added yet.</p>';
+            }
+        });
+
+        // Search Functionality
         document.getElementById('storeSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
             let items = document.querySelectorAll('.game-item');
-
             items.forEach(item => {
                 let title = item.querySelector('h3').innerText;
-                if (title.toUpperCase().indexOf(filter) > -1) {
-                    item.style.display = ""; 
-                } else {
-                    item.style.display = "none"; 
-                }
+                item.style.display = title.toUpperCase().includes(filter) ? "" : "none";
             });
         });
     </script>
 
 </body>
 </html>
-
