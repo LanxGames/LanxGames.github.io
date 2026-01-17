@@ -114,7 +114,6 @@
 
         .game-grid {
             display: grid;
-            /* හරහට කොටු 4 ක් පෙන්වීමට */
             grid-template-columns: repeat(4, 1fr); 
             gap: 20px;
         }
@@ -150,7 +149,7 @@
         .game-item h3 {
             font-size: 14px;
             margin-bottom: 10px;
-            height: 40px; /* පේළි දෙකක නම තිබුණත් එක සමානව තැබීමට */
+            height: 40px; 
             overflow: hidden;
         }
 
@@ -170,13 +169,13 @@
             color: #000;
         }
 
-        /* Responsive - ෆෝන් සහ ටැබ් සඳහා */
+        /* Responsive */
         @media (max-width: 1024px) {
-            .game-grid { grid-template-columns: repeat(3, 1fr); } /* ටැබ් වලට කොටු 3 */
+            .game-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .game-grid { grid-template-columns: repeat(2, 1fr); } /* ෆෝන් වලට කොටු 2 */
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
             nav { flex-direction: column; }
         }
 
@@ -261,38 +260,40 @@
                     <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
                 </div>
             </div>
- <div class="game-item">
-                <img src="add " alt="StarRupture">
+
+            <div class="game-item">
+                <img src="https://www.facebook.com/photo.php?fbid=1390534559097750&id=100044236578991&set=a.283899869761230  " alt="New Game 1">
                 <div class="game-info">
-                    <h3> add </h3>
-                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
+                    <h3> GTA vice city </h3>
+                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
- <div class="game-item">
-                <img src=" add" alt="StarRupture">
+            <div class="game-item">
+                <img src="LINK IMAGE" alt="New Game 2">
                 <div class="game-info">
-                    <h3>add </h3>
-                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
+                    <h3>New Game 02</h3>
+                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
- <div class="game-item">
-                <img src="add" alt="StarRupture">
+            <div class="game-item">
+                <img src="LINK IMAGE" alt="New Game 3">
                 <div class="game-info">
-                    <h3> add </h3>
-                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
+                    <h3>New Game 03</h3>
+                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
                 </div>
             </div>
- <div class="game-item">
-                <img src="add " alt="StarRupture">
+
+            <div class="game-item">
+                <img src="LINK IMAGE" alt="New Game 4">
                 <div class="game-info">
-                    <h3>add</h3>
-                    <a href="https://shrinkme.click/hmibvUpV" class="mini-download-btn">DOWNLOAD</a>
+                    <h3>New Game 04</h3>
+                    <a href="#" class="mini-download-btn">DOWNLOAD</a>
                 </div>
             </div>
-            
-            </div>
+
+        </div>
     </div>
 
     <footer>
@@ -300,7 +301,6 @@
     </footer>
 
     <script>
-        // Search Function for Store Page
         document.getElementById('storeSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
             let items = document.querySelectorAll('.game-item');
@@ -318,4 +318,3 @@
 
 </body>
 </html>
-
