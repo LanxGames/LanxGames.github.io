@@ -38,7 +38,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* මෙතන වෙනස් කළා ෆෝන් එකේ පල්ලෙහාට නොයන්න */
             gap: 10px;
         }
 
@@ -81,10 +81,23 @@
             border-radius: 25px;
             border: 1px solid #333;
             transition: 0.3s;
+            position: relative; 
+            flex-shrink: 0; /* බටන් එක හැකිලීම වැළැක්වීමට */
         }
         .user-nav-area:hover { border-color: #fff; }
         .user-nav-area img { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
         .user-nav-area span { font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+
+        .profile-card {
+            position: absolute; top: 50px; right: 0; width: 220px; background: #0a0a0a; 
+            border: 1px solid #333; border-radius: 10px; padding: 20px; display: none;
+            flex-direction: column; align-items: center; z-index: 5000; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .profile-card img { width: 60px; height: 60px; border-radius: 50%; border: 1px solid #fff; margin-bottom: 10px; }
+        .profile-card h4 { font-size: 14px; margin-bottom: 5px; color: #fff; }
+        .profile-card p { font-size: 10px; color: #777; margin-bottom: 15px; }
+        .logout-btn-card { background: #fff; color: #000; border: none; padding: 7px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 11px; }
 
         /* Navigation Bar */
         nav {
@@ -124,6 +137,14 @@
             border-radius: 4px;
             width: 100%;
             max-width: 300px;
+        }
+
+        /* Header එක ෆෝන් එකට ගැලපෙන විදිය */
+        @media (max-width: 480px) {
+            header { padding: 15px 3%; }
+            .brand-name { font-size: 16px; letter-spacing: 1px; }
+            .logo-box { width: 40px; height: 40px; }
+            .user-nav-area span { font-size: 9px; }
         }
 
         /* Main Banner */
@@ -231,7 +252,7 @@
             }
         }
 
-        /* ෆෝන් එකට අදාළ වෙනස්කම් */
+        /* ෆෝන් එකේ ගේම් කාඩ් */
         @media (max-width: 480px) {
             .main-content {
                 display: flex;
@@ -337,6 +358,13 @@
         <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
             <img id="userImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
             <span id="userName">LOGIN</span>
+            
+            <div class="profile-card" id="profileCard">
+                <img id="cardImg" src="">
+                <h4 id="cardName">User</h4>
+                <p id="cardEmail">email@example.com</p>
+                <button class="logout-btn-card" onclick="userLogout()">LOGOUT</button>
+            </div>
         </div>
     </header>
 
@@ -482,9 +510,14 @@
             signInWithPopup(auth, provider).then(() => closeModal()).catch(err => alert(err.message));
         };
 
+        window.userLogout = () => {
+            if (confirm("Logout?")) signOut(auth);
+        };
+
         window.toggleAuth = () => {
             if (auth.currentUser) {
-                if (confirm("Logout?")) signOut(auth);
+                const card = document.getElementById('profileCard');
+                card.style.display = (card.style.display === 'flex') ? 'none' : 'flex';
             } else {
                 document.getElementById('loginModal').style.display = 'flex';
             }
@@ -496,9 +529,13 @@
             if (user) {
                 document.getElementById('userName').innerText = user.displayName.split(' ')[0].toUpperCase();
                 document.getElementById('userImg').src = user.photoURL;
+                document.getElementById('cardImg').src = user.photoURL;
+                document.getElementById('cardName').innerText = user.displayName;
+                document.getElementById('cardEmail').innerText = user.email;
             } else {
                 document.getElementById('userName').innerText = "LOGIN";
                 document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                document.getElementById('profileCard').style.display = 'none';
             }
         });
     </script>
