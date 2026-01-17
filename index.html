@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛒 Black Store.lk</title>
+
+    <meta name="description" content="Black Store.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
+    <meta name="keywords" content="Black Store, Black Store.lk, Download Games Sri Lanka, PC Games Download, Free Movies, BlackStore">
+    <meta name="author" content="Pamod Yoshitha Abeyrathna">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="ENTER_YOUR_CODE_HERE" />
+
     <style>
         /* CSS Design - Black & White Premium Theme */
         * {
@@ -13,13 +21,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-
-        
         body {
             background-color: #000000;
             color: #ffffff;
             line-height: 1.6;
-            overflow-x: hidden; /* ෆෝන් එකේ පැත්තට යන එක වළක්වයි */
+            overflow-x: hidden;
         }
 
         /* Header Section */
@@ -29,7 +35,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
-            flex-wrap: wrap; /* ෆෝන් එකේදී අවශ්‍ය නම් පේළි කැඩීමට */
+            flex-wrap: wrap;
             gap: 10px;
         }
 
@@ -55,7 +61,7 @@
         }
 
         .brand-name {
-            font-size: 24px; /* ෆෝන් එකට ගැලපෙන ලෙස කුඩා කළා */
+            font-size: 24px;
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -66,7 +72,7 @@
             background: #0e0d0d;
             padding: 10px 5%;
             display: flex;
-            flex-direction: column; /* ෆෝන් එකේදී එක යට එක පෙනීමට */
+            flex-direction: column;
             align-items: center;
             position: sticky;
             top: 0;
@@ -78,7 +84,7 @@
             display: flex;
             list-style: none;
             gap: 15px;
-            flex-wrap: wrap; /* මෙනු එක ඉඩ මදි නම් පල්ලෙහාට ඒමට */
+            flex-wrap: wrap;
             justify-content: center;
         }
 
@@ -97,7 +103,7 @@
             padding: 8px 10px;
             color: white;
             border-radius: 4px;
-            width: 100%; /* ෆෝන් එකේදී සම්පූර්ණ පළල */
+            width: 100%;
             max-width: 300px;
         }
 
@@ -105,7 +111,7 @@
         .hero-banner {
             width: 95%;
             margin: 20px auto;
-            height: auto; /* රූපයේ ප්‍රමාණයට අනුව උස වෙනස් වේ */
+            height: auto;
             min-height: 200px;
             border: 1.2px solid #afafaf;
             overflow: hidden;
@@ -118,58 +124,29 @@
             display: block;
             object-fit: cover;
         }
-/* ෆෝන් එකේදී බැනර් එක ලස්සනට පෙනෙන්න */
-@media (max-width: 600px) {
-    .hero-banner {
-        height: auto;        /* ස්වයංක්‍රීයව උස සකස් වෙන්න */
-        min-height: 140px;   /* ෆෝන් එකට ගැලපෙන අවම උස */
-    }
 
-    .hero-banner img {
-        object-fit: contain; /* මුළු ඉමේජ් එකම කැපෙන්නේ නැතිව පෙනෙන්න */
-        height: auto;
-    }
-}
+        @media (max-width: 600px) {
+            .hero-banner {
+                height: auto;
+                min-height: 140px;
+            }
+            .hero-banner img {
+                object-fit: contain;
+                height: auto;
+            }
+        }
+
         /* Content Section */
         .container {
             width: 95%;
             margin: 20px auto;
             display: grid;
-            grid-template-columns: 1fr; /* මුලින්ම එක තීරුවක් (Mobile First) */
+            grid-template-columns: 1fr;
             gap: 20px;
-            align-items: start; /* Sidebar සහ Game cards එකම මට්ටමට තබයි */
+            align-items: start;
         }
 
-        /* Game List Items */
         .game-card {
-            display: flex;
-    gap: 20px;
-    background: #0a0a0a;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #1a1a1a;
-    transition: 0.3s;
-    margin-bottom: 20px; /* <--- මෙය අලුතින් ඇතුළත් කරන්න */
-
-  /* සියලුම කාඩ්පත් සඳහා පොදු වෙනස */
-.card {
-    width: 350px; /* Desktop එකේදී පවතින ප්‍රමාණය */
-    max-width: 90%; /* ෆෝන් එකේදී ස්ක්‍රීන් එකෙන් 90% කට වඩා විශාල නොවේ */
-    margin: 20px auto; /* කාඩ් එක මැදට ගැනීමට */
-    display: block;
-}
-
-/* ෆෝන් සඳහා විශේෂයෙන් (Responsive) */
-@media screen and (max-width: 480px) {
-    .card {
-        width: 95%; /* කුඩා ෆෝන් වලදී තවත් ටිකක් පළල වැඩි කරයි */
-        margin: 10px auto;
-    }
-    
-    .card img {
-        height: auto; /* පින්තූරය ඇද නොවී තිබීමට */
-    }
-}
             display: flex;
             gap: 20px;
             background: #0a0a0a;
@@ -177,6 +154,7 @@
             border-radius: 8px;
             border: 1px solid #1a1a1a;
             transition: 0.3s;
+            margin-bottom: 20px;
         }
 
         .game-img {
@@ -217,10 +195,9 @@
             font-weight: bold;
         }
 
-        /* Desktop Layout (ලැප්ටොප් සඳහා) */
         @media (min-width: 1024px) {
             .container {
-                grid-template-columns: 2.5fr 1fr; /* දෙපස සමබර කළා */
+                grid-template-columns: 2.5fr 1fr;
             }
             nav {
                 flex-direction: row;
@@ -235,11 +212,9 @@
             }
         }
 
-      
-        /* Mobile specific adjustments */
         @media (max-width: 480px) {
             .game-card {
-                flex-direction: column; /* ඉතා කුඩා දුරකථන වලදී රූපය ඉහළින් පෙන්වීමට */
+                flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
@@ -261,89 +236,83 @@
             font-size: 12px;
         }
 
-.desktop-only-ads {
-    display: none;
-}
+        .desktop-only-ads {
+            display: none;
+        }
 
-@media screen and (min-width: 1024px) {
-    .desktop-only-ads {
-        display: block !important;
-        width: 100%; 
-        background: #0a0a0a;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #1a1a1a;
-    }
-}
+        @media screen and (min-width: 1024px) {
+            .desktop-only-ads {
+                display: block !important;
+                width: 100%; 
+                background: #0a0a0a;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #1a1a1a;
+            }
+        }
 
-.mobile-only-btn {
-    display: none;
-}
+        .mobile-only-btn {
+            display: none;
+        }
 
-@media screen and (max-width: 768px) {
-    .mobile-only-btn {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-    }
-}
+        @media screen and (max-width: 768px) {
+            .mobile-only-btn {
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
 
-/* --- අලුතින් එක් කළ Ad Styles --- */
-.ad-container {
-    background: #111;
-    border: 1px solid #333;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-.ad-box {
-    width: 100%;
-    height: 150px; /* උස මදක් වැඩි කළා */
-    background: #000;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border: 1px solid #222;
-}
-.ad-box img { width: 100%; height: 100%; object-fit: cover; }
+        .ad-container {
+            background: #111;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .ad-box {
+            width: 100%;
+            height: 150px;
+            background: #000;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+        .ad-box img { width: 100%; height: 100%; object-fit: cover; }
 
-.place-ad-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 4px;
-    margin-top: 10px;
-}
+        .place-ad-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
 
-/* More Games Button Style */
-.more-games-btn {
-    display: block;
-    width: 250px;
-    margin: 30px auto;
-    padding: 15px;
-    text-align: center;
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-.more-games-btn:hover {
-    background: #fff;
-    color: #000;
-}
-/* -------------------------------- */
+        .more-games-btn {
+            display: block;
+            width: 250px;
+            margin: 30px auto;
+            padding: 15px;
+            text-align: center;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .more-games-btn:hover { background: #fff; color: #000; }
 
     </style>
 </head>
@@ -352,7 +321,7 @@
     <header>
         <div class="logo-section">
             <div class="logo-box">
-                <img src="images (1).png" alt="Logo">
+                <img src="images (1).png" alt="Black Store Logo">
             </div>
             <div class="brand-name">BLACK STORE.LK</div>
         </div>
@@ -377,7 +346,7 @@
     </div>
 
     <div class="hero-banner">
-        <img src="www.jpg" alt="Featured Content">
+        <img src="www.jpg" alt="Featured Content Banner">
     </div>
 
     <div class="container">
@@ -386,7 +355,7 @@
 
             <div class="game-card">
                 <div class="game-img">
-                    <img src="download.png" alt="Game 1">
+                    <img src="download.png" alt="GTA San Andreas">
                 </div>
                 <div class="game-details">
                     <div class="game-title">Grand Theft Auto (SanAndreas)</div>
@@ -399,7 +368,7 @@
 
             <div class="game-card">
                 <div class="game-img">
-                    <img src="downloadGRANNY.jpeg" alt="Game 2">
+                    <img src="downloadGRANNY.jpeg" alt="Granny 4">
                 </div>
                 <div class="game-details">
                     <div class="game-title">Granny 4 The Rebellion</div>
@@ -409,26 +378,30 @@
                     <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
-             <div class="game-card">
-                <div class="game-img">
-                    <img src="5.jpeg" alt="Game 3">
-                </div>
-                <div class="game-details">
-                    <div class="game-title">Granny 5 Time To Wake Up<h6>For pc [Free]</h6></div>
-                    <div class="game-info">Size: 6.5 GB</div>
-                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
-                    <a href="https://shrinkme.click/TOukmeF "target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
+
             <div class="game-card">
                 <div class="game-img">
-                    <img src="47c33cac4a9431bc157a395095653102.jpg" alt="Game 1">
+                    <img src="5.jpeg" alt="Granny 5">
                 </div>
                 <div class="game-details">
-                    <div class="game-title"> SatrRupture<h6>For pc [Free]</h6></div>
+                    <div class="game-title">Granny 5 Time To Wake Up</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 6.5 GB</div>
+                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
+                    <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-img">
+                    <img src="47c33cac4a9431bc157a395095653102.jpg" alt="StarRupture">
+                </div>
+                <div class="game-details">
+                    <div class="game-title">StarRupture</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 27 GB</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://shrinkme.click/hmibvUpV " target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
@@ -440,14 +413,16 @@
             
             <div class="ad-container">
                 <div class="ad-box">
-                    <img src="ad1.jpg" alt="Ad Image 1"> </div>
-                <p style="font-size: 11px; color: #aaa;">Featured Product Name</p>
+                    <img src="ad1.jpg" alt="Ad 1">
+                </div>
+                <p style="font-size: 11px; color: #aaa;">Your Product Name</p>
                 <a href="#" style="color: #fff; font-size: 10px;">Visit Store ↗</a>
             </div>
 
             <div class="ad-container">
                 <div class="ad-box">
-                    <img src="ad2.jpg" alt="Ad Image 2"> </div>
+                    <img src="ad2.jpg" alt="Ad 2">
+                </div>
                 <p style="font-size: 11px; color: #aaa;">Your Service Here</p>
                 <a href="#" style="color: #fff; font-size: 10px;">Contact Now ↗</a>
             </div>
@@ -459,9 +434,6 @@
             <p style="color: #444; margin-top: 15px; font-size: 10px;">Advertisement Space</p>
         </aside>
     </div>    
-
-    <script src="https://pl28478999.effectivegatecpm.com/fa/4e/4d/fa4e4d645c058d51e2098fbc82944d61.js"></script>
-       
 
     <footer>
         <marquee>© [ BLACK STORE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
@@ -485,9 +457,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
