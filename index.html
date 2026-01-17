@@ -224,24 +224,35 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                width: 48%; /* එක පේළියකට දෙකක් පෙන්වයි */
+                width: 48%;
                 padding: 10px;
                 margin-bottom: 10px;
                 gap: 10px;
+                /* මෙන්න අලුතින් එක්කළ පේළි 2 */
+                display: flex;
+                justify-content: space-between;
             }
             .game-img {
                 width: 100%;
-                height: 120px; /* පින්තූරය කුඩා විය යුතුය */
+                height: 110px; 
+            }
+            .game-details {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
             }
             .game-title {
-                font-size: 14px; /* අකුරු ප්‍රමාණය ගැලපීම */
+                font-size: 13px;
+                min-height: 35px; /* titles එකම පේළියට තබා ගැනීමට */
             }
             .game-info, .rating {
                 font-size: 10px;
             }
             .download-btn {
-                margin: 5px auto;
-                padding: 4px 10px;
+                margin: 5px auto 0 auto;
+                padding: 5px 10px;
                 font-size: 10px;
                 width: 100%;
             }
@@ -425,7 +436,7 @@
                 </div>
             </div>
 
-            <a href="store.html" class="more-games-btn" style="width: 100%;">See More Games </a>
+            <a href="store.html" class="more-games-btn" style="width: 100%;">See More Games ➔</a>
         </div>    
         
         <aside class="sidebar desktop-only-ads">
