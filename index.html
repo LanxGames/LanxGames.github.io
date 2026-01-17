@@ -297,22 +297,53 @@
             }
         }
 
-        /* Login Modal Style */
+        /* --- Updated Premium Login Modal Style --- */
         .login-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); display: none; 
             justify-content: center; align-items: center; z-index: 3000; 
         }
         .login-box { 
-            background: #0a0a0a; padding: 30px; border: 1px solid #333; 
-            border-radius: 10px; width: 90%; max-width: 350px; text-align: center; 
+            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
+            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
+            box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
-        .google-login-btn { 
-            display: flex; align-items: center; justify-content: center; 
-            gap: 10px; width: 100%; padding: 12px; background: #fff; 
-            color: #000; border: none; border-radius: 5px; font-weight: bold; 
-            cursor: pointer; margin-top: 20px; font-size: 14px; 
+        .login-box h3 { letter-spacing: 5px; margin-bottom: 25px; font-size: 22px; }
+        
+        .login-input-field {
+            width: 100%; padding: 14px; margin-bottom: 15px; 
+            background: #111; border: 1px solid #333; color: white;
+            border-radius: 10px; outline: none; font-size: 14px;
+            transition: 0.3s;
         }
+        .login-input-field:focus { border-color: #fff; }
+
+        .submit-login-btn {
+            width: 100%; padding: 14px; background: #fff; color: #000;
+            border: none; border-radius: 10px; font-weight: bold;
+            cursor: pointer; font-size: 15px; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s; margin-top: 10px;
+        }
+        .submit-login-btn:hover { background: #ddd; transform: translateY(-2px); }
+
+        .social-login-title {
+            display: flex; align-items: center; margin: 25px 0; color: #444; font-size: 12px;
+        }
+        .social-login-title::before, .social-login-title::after {
+            content: ""; flex: 1; height: 1px; background: #222; margin: 0 10px;
+        }
+
+        .social-btns-row {
+            display: flex; justify-content: center; gap: 20px;
+        }
+        .round-social-btn {
+            width: 55px; height: 55px; border-radius: 50%; background: #fff;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border: none; transition: 0.3s; font-size: 24px;
+        }
+        .round-social-btn.google-clr { color: #db4437; }
+        .round-social-btn.fb-clr { color: #1877f2; }
+        .round-social-btn:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
 
         footer {
             text-align: center;
@@ -478,10 +509,24 @@
     <div class="login-overlay" id="loginModal">
         <div class="login-box">
             <span style="float:right; cursor:pointer;" onclick="closeModal()">✕</span>
-            <h3 style="letter-spacing: 2px;">LOGIN</h3>
-            <button class="google-login-btn" onclick="signInWithGoogle()">
-                <i class="fab fa-google"></i> Continue with Google
-            </button>
+            <h3>LOGIN</h3>
+            
+            <input type="email" class="login-input-field" placeholder="Email Address">
+            <input type="password" class="login-input-field" placeholder="Password">
+            <button class="submit-login-btn">Log In</button>
+
+            <div class="social-login-title">OR CONNECT WITH</div>
+
+            <div class="social-btns-row">
+                <button class="round-social-btn google-clr" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="round-social-btn fb-clr">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+            </div>
+
+            <p style="font-size: 11px; color: #555; margin-top: 20px;">Don't have an account? <span style="color:#fff; cursor:pointer;">Register Now</span></p>
         </div>
     </div>
 
