@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Header & Nav (ඔයාගේ මුල් කෝඩ් එකේ තිබුණු විදිහටමයි) */
+        /* Header & Nav */
         header {
             padding: 20px 5%;
             display: flex;
@@ -65,13 +65,13 @@
         .container { width: 95%; margin: 30px auto; }
         .grid-title { text-align: center; margin-bottom: 30px; letter-spacing: 5px; text-transform: uppercase; font-size: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
+        /* --- මම වෙනස් කළ කොටස (Grid & Flex Layout) --- */
         .game-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); 
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* Game Item Card - Screenshot එකේ විදිහටම සකස් කළා */
         .game-item {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
@@ -79,6 +79,10 @@
             overflow: hidden;
             transition: 0.3s;
             text-align: center;
+            /* හැම බොක්ස් එකක්ම එකම උසට ගැනීමට Flex පාවිච්චි කරනවා */
+            display: flex;
+            flex-direction: column;
+            width: calc(25% - 15px); /* පේළියට 4 බැගින් */
         }
 
         .game-item:hover { border-color: #fff; transform: translateY(-5px); }
@@ -95,6 +99,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            flex-grow: 1; /* ඉඩ ප්‍රමාණය සමානව බෙදා ගැනීමට */
         }
 
         .game-item h3 {
@@ -102,9 +107,9 @@
             font-weight: bold;
             text-transform: capitalize;
             color: #fff;
+            min-height: 40px; /* නම දිග වුණත් කොට වුණත් එකම මට්ටමක තැබීමට */
         }
 
-        /* Meta Information (Size, Device, Rating) */
         .meta-text {
             font-size: 12px;
             color: #888;
@@ -117,12 +122,13 @@
             gap: 5px;
             color: #fff;
             font-size: 12px;
+            margin-top: auto; /* රේටින්ග් එක පල්ලෙහාට තල්ලු කරයි */
         }
 
-        .stars-gold { color: #fff; font-size: 14px; } /* Screenshot එකේ හැටියට තරු සුදු පාටයි */
+        .stars-gold { color: #fff; font-size: 14px; }
 
         .mini-download-btn {
-            margin-top: 10px;
+            margin-top: 10px; /* බටන් එක හැමවිටම පතුලේ රඳවයි */
             display: block;
             padding: 10px;
             border: 1px solid #fff;
@@ -133,13 +139,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        /* --- වෙනස් කළ කොටස අවසන් --- */
 
         .mini-download-btn:hover { background: #fff; color: #000; }
 
         /* Responsive */
-        @media (max-width: 1024px) { .game-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 768px) { .game-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .game-item img { height: 180px; } }
+        @media (max-width: 1024px) { .game-item { width: calc(33.33% - 14px); } }
+        @media (max-width: 768px) { .game-item { width: calc(50% - 10px); } }
+        @media (max-width: 480px) { 
+            .game-item { width: 100%; } 
+            .game-item img { height: 180px; }
+        }
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
@@ -168,7 +178,7 @@
         <a href="index.html" class="back-btn">← Back to Home</a>
         <h2 class="grid-title">All Games Collection</h2>
         <div class="game-grid" id="gameGrid">
-            <p style="text-align: center; grid-column: 1/-1;">Loading Games...</p>
+            <p style="text-align: center; width: 100%;">Loading Games...</p>
         </div>
     </div>
 
@@ -199,7 +209,6 @@
                 Object.keys(data).reverse().forEach(key => {
                     const game = data[key];
                     
-                    // තරු පෙන්වීම (Admin එකේ දෙන Star Rating එක අනුව)
                     let stars = '';
                     let activeStars = game.starRating || 5;
                     for(let i=0; i<5; i++) {
@@ -223,7 +232,7 @@
                     gameGrid.insertAdjacentHTML('beforeend', gameHTML);
                 });
             } else {
-                gameGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No games found.</p>';
+                gameGrid.innerHTML = '<p style="width: 100%; text-align: center;">No games found.</p>';
             }
         });
 
