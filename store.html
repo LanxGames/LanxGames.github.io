@@ -148,9 +148,30 @@
 
         .game-item h3 {
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             height: 40px; 
             overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        /* Category & Rating Styles - මම අලුතින් එක් කළේ මේ ටික විතරයි */
+        .game-meta {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .rating-stars {
+            color: #ffc107;
+            font-size: 12px;
+        }
+        .device-tag {
+            background: #222;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 0.5px solid #444;
         }
 
         .mini-download-btn {
@@ -255,18 +276,32 @@
         const db = getDatabase(app);
         const gameGrid = document.getElementById('gameGrid');
 
-        // Database එකෙන් දත්ත ගෙන පෙන්වීම
         onValue(ref(db, 'games'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                gameGrid.innerHTML = ''; // Loading message එක අයින් කරන්න
+                gameGrid.innerHTML = '';
                 Object.keys(data).reverse().forEach(key => {
                     const game = data[key];
+                    
+                    // Rating එක තරු බවට පත් කිරීම
+                    let stars = '';
+                    let ratingCount = game.rating || 5;
+                    for(let i=0; i<5; i++) {
+                        stars += i < ratingCount ? '★' : '☆';
+                    }
+
+                    // Category එක (PC/Mobile)
+                    let category = game.category || 'PC';
+
                     const gameHTML = `
                         <div class="game-item">
                             <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=Image+Not+Found'">
                             <div class="game-info">
                                 <h3>${game.title}</h3>
+                                <div class="game-meta">
+                                    <span class="device-tag">${category}</span>
+                                    <span class="rating-stars">${stars}</span>
+                                </div>
                                 <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
                             </div>
                         </div>`;
