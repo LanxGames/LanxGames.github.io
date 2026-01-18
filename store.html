@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Games - Black Store.lk</title>
     <style>
-        /* CSS Design - Black & White Premium Theme (Matching index.html) */
+        /* CSS Design - Black & White Premium Theme */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Header & Nav (ඔයාගේ මුල් කෝඩ් එකේ තිබුණු විදිහටමයි) */
         header {
             padding: 20px 5%;
             display: flex;
@@ -31,35 +31,11 @@
             gap: 10px;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-box { width: 60px; height: 60px; border: 2px solid #fff; display: flex; justify-content: center; align-items: center; }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-name { font-size: 24px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
-        .logo-box {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .brand-name {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Navigation Bar */
         nav {
             background: #0e0d0d;
             padding: 10px 5%;
@@ -72,19 +48,8 @@
             gap: 10px;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
+        .nav-links { display: flex; list-style: none; gap: 15px; }
+        .nav-links a { color: #ffffff; text-decoration: none; text-transform: uppercase; font-size: 13px; }
 
         .search-bar {
             background: transparent;
@@ -97,20 +62,8 @@
         }
 
         /* Game Grid Section */
-        .container {
-            width: 95%;
-            margin: 30px auto;
-        }
-
-        .grid-title {
-            text-align: center;
-            margin-bottom: 30px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 20px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
+        .container { width: 95%; margin: 30px auto; }
+        .grid-title { text-align: center; margin-bottom: 30px; letter-spacing: 5px; text-transform: uppercase; font-size: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
         .game-grid {
             display: grid;
@@ -118,119 +71,85 @@
             gap: 20px;
         }
 
+        /* Game Item Card - Screenshot එකේ විදිහටම සකස් කළා */
         .game-item {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
-            border-radius: 8px;
+            border-radius: 4px;
             overflow: hidden;
             transition: 0.3s;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .game-item:hover {
-            border-color: #fff;
-            transform: translateY(-5px);
-        }
+        .game-item:hover { border-color: #fff; transform: translateY(-5px); }
 
         .game-item img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            border-bottom: 1px solid #1a1a1a;
+            display: block;
         }
 
         .game-info {
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .game-item h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-            height: 40px; 
-            overflow: hidden;
-            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: #fff;
         }
 
-        /* Category & Rating Styles - මම අලුතින් එක් කළේ මේ ටික විතරයි */
-        .game-meta {
-            font-size: 11px;
+        /* Meta Information (Size, Device, Rating) */
+        .meta-text {
+            font-size: 12px;
             color: #888;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
         }
-        .rating-stars {
-            color: #ffc107;
+
+        .rating-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #fff;
             font-size: 12px;
         }
-        .device-tag {
-            background: #222;
-            padding: 2px 6px;
-            border-radius: 3px;
-            border: 0.5px solid #444;
-        }
+
+        .stars-gold { color: #fff; font-size: 14px; } /* Screenshot එකේ හැටියට තරු සුදු පාටයි */
 
         .mini-download-btn {
-            display: inline-block;
-            padding: 8px 15px;
+            margin-top: 10px;
+            display: block;
+            padding: 10px;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .mini-download-btn:hover {
-            background: #fff;
-            color: #000;
-        }
+        .mini-download-btn:hover { background: #fff; color: #000; }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .game-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        @media (max-width: 1024px) { .game-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .game-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .game-item img { height: 180px; } }
 
-        @media (max-width: 768px) {
-            .game-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 480px) {
-            .brand-name { font-size: 18px; }
-            .game-item img { height: 180px; }
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #222;
-            margin-top: 30px;
-            color: #555;
-            font-size: 12px;
-        }
-
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #888;
-            text-decoration: none;
-            font-size: 13px;
-        }
-        .back-btn:hover { color: #fff; }
-
+        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-section">
-            <div class="logo-box">
-                <img src="images (1).png" alt="Logo">
-            </div>
+            <div class="logo-box"><img src="images (1).png" alt="Logo"></div>
             <div class="brand-name">BLACK STORE.LK</div>
         </div>
         <div class="user-icon">🔗</div>
@@ -248,15 +167,12 @@
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Home</a>
         <h2 class="grid-title">All Games Collection</h2>
-
         <div class="game-grid" id="gameGrid">
             <p style="text-align: center; grid-column: 1/-1;">Loading Games...</p>
         </div>
     </div>
 
-    <footer>
-        <marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee>
-    </footer>
+    <footer><marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee></footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -283,24 +199,23 @@
                 Object.keys(data).reverse().forEach(key => {
                     const game = data[key];
                     
-                    // Rating එක තරු බවට පත් කිරීම
+                    // තරු පෙන්වීම (Admin එකේ දෙන Star Rating එක අනුව)
                     let stars = '';
-                    let ratingCount = game.rating || 5;
+                    let activeStars = game.starRating || 5;
                     for(let i=0; i<5; i++) {
-                        stars += i < ratingCount ? '★' : '☆';
+                        stars += i < activeStars ? '★' : '☆';
                     }
-
-                    // Category එක (PC/Mobile)
-                    let category = game.category || 'PC';
 
                     const gameHTML = `
                         <div class="game-item">
-                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=Image+Not+Found'">
+                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
                             <div class="game-info">
                                 <h3>${game.title}</h3>
-                                <div class="game-meta">
-                                    <span class="device-tag">${category}</span>
-                                    <span class="rating-stars">${stars}</span>
+                                <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
+                                <div class="meta-text">Size: ${game.size || 'N/A'}</div>
+                                <div class="rating-box">
+                                    <span class="stars-gold">${stars}</span>
+                                    <span>${game.ratingNum || '5.0'}</span>
                                 </div>
                                 <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
                             </div>
@@ -308,20 +223,17 @@
                     gameGrid.insertAdjacentHTML('beforeend', gameHTML);
                 });
             } else {
-                gameGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No games added yet.</p>';
+                gameGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No games found.</p>';
             }
         });
 
-        // Search Functionality
         document.getElementById('storeSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
-            let items = document.querySelectorAll('.game-item');
-            items.forEach(item => {
+            document.querySelectorAll('.game-item').forEach(item => {
                 let title = item.querySelector('h3').innerText;
                 item.style.display = title.toUpperCase().includes(filter) ? "" : "none";
             });
         });
     </script>
-
 </body>
 </html>
