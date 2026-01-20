@@ -65,11 +65,10 @@
         .container { width: 95%; margin: 30px auto; }
         .grid-title { text-align: center; margin-bottom: 30px; letter-spacing: 5px; text-transform: uppercase; font-size: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
-        /* --- Grid Layout එක මෙතනින් වෙනස් කළා --- */
         .game-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px; /* කාඩ් අතර පරතරය */
+            gap: 15px;
             justify-content: center;
         }
 
@@ -82,16 +81,16 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            /* ලැප් එකේදී පේළියකට 4 ක් (Desktop) */
             width: calc(25% - 12px); 
         }
 
         .game-item:hover { border-color: #fff; transform: translateY(-5px); }
 
+        /* පින්තූරය ලස්සනට කොටුවට හැදෙන පියවර **Brother** */
         .game-item img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: 220px; /* උස නියතව තැබුවා */
+            object-fit: cover; /* පින්තූරය තැලෙන්නේ නැතුව කොටුව පිරෙන්න හැදුවා */
             display: block;
         }
 
@@ -105,6 +104,161 @@
 
         .game-item h3 {
             font-size: 14px;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: #fff;
+            min-height: 38px;
+            /* නම දිග වුණොත් කැපෙන්නේ නැතුව පේන්න */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .meta-text {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .rating-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #fff;
+            font-size: 11px;
+            margin-top: auto;
+        }
+
+        .stars-gold { color: #fff; font-size: 12px; }
+
+        .mini-download-btn {
+            margin-top: 10px;
+            display: block;
+            padding: 8px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mini-download-btn:hover { background: #fff; color: #000; }
+
+        /* Responsive Settings */
+        @media (max-width: 1024px) { 
+            .game-item { width: calc(33.33% - 10px); } 
+        }
+
+        @media (max-width: 768px) { 
+            .game-item { width: calc(50% - 10px); } 
+            .game-item img { height: 180px; } /* ෆෝන් එකට ගැලපෙන පින්තූර උස */
+        }
+
+        @media (max-width: 480px) { 
+            .game-item { width: calc(50% - 8px); }
+            .game-item h3 { font-size: 12px; }
+            .mini-download-btn { font-size: 9px; }
+        }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-box"><img src="images (1).png" alt="Logo"></div>
+            <div class="brand-name">BLACK STORE.LK</div>
+        </div>
+        <div class="user-icon">🔗</div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home 🏠</a></li>
+            <li><a href="https://cinesubz.lk/" target="_blank">Movies🎬</a></li>
+            <li><a href="https://wa.me/94777042735" target="_blank">Contact 📬</a></li>
+        </ul>
+        <input type="text" id="storeSearch" class="search-bar" placeholder="Search All Games...">
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        <h2 class="grid-title">All Games Collection</h2>
+        <div class="game-grid" id="gameGrid">
+            <p style="text-align: center; width: 100%;">Loading Games...</p>
+        </div>
+    </div>
+
+    <footer><marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee></footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0ZqCnq28-bauG3YBb7WrVVNdQgYOGmqg",
+            authDomain: "black-store-login.firebaseapp.com",
+            databaseURL: "https://black-store-login-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "black-store-login",
+            storageBucket: "black-store-login.firebasestorage.app",
+            messagingSenderId: "980593701862",
+            appId: "1:980593701862:web:eabd842d94a728c2c9c27"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const gameGrid = document.getElementById('gameGrid');
+
+        onValue(ref(db, 'games'), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                gameGrid.innerHTML = '';
+                Object.keys(data).reverse().forEach(key => {
+                    const game = data[key];
+                    
+                    let stars = '';
+                    let activeStars = game.starRating || 5;
+                    for(let i=0; i<5; i++) {
+                        stars += i < activeStars ? '★' : '☆';
+                    }
+
+                    const gameHTML = `
+                        <div class="game-item">
+                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+                            <div class="game-info">
+                                <h3>${game.title}</h3>
+                                <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
+                                <div class="meta-text">Size: ${game.size || 'N/A'}</div>
+                                <div class="rating-box">
+                                    <span class="stars-gold">${stars}</span>
+                                    <span>${game.ratingNum || '5.0'}</span>
+                                </div>
+                                <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                            </div>
+                        </div>`;
+                    gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+                });
+            } else {
+                gameGrid.innerHTML = '<p style="width: 100%; text-align: center;">No games found.</p>';
+            }
+        });
+
+        document.getElementById('storeSearch').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            document.querySelectorAll('.game-item').forEach(item => {
+                let title = item.querySelector('h3').innerText;
+                item.style.display = title.toUpperCase().includes(filter) ? "" : "none";
+            });
+        });
+    </script>
+</body>
+</html>
+
             font-weight: bold;
             text-transform: capitalize;
             color: #fff;
@@ -258,3 +412,4 @@
     </script>
 </body>
 </html>
+
