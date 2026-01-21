@@ -84,7 +84,6 @@
 
         .game-item:hover { border-color: #fff; transform: translateY(-5px); }
 
-        /* පින්තූරය ලස්සනට සකස් කිරීම */
         .game-item img {
             width: 100%;
             height: 220px;
@@ -144,6 +143,35 @@
 
         .mini-download-btn:hover { background: #fff; color: #000; }
 
+        /* Pagination Styling - Your Theme Style */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .page-btn {
+            background: #0a0a0a;
+            color: white;
+            border: 1px solid #333;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .page-btn.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .page-btn:hover:not(.active) {
+            border-color: #fff;
+        }
+
         @media (max-width: 1024px) { .game-item { width: calc(33.33% - 10px); } }
 
         @media (max-width: 768px) { 
@@ -186,6 +214,8 @@
         <div class="game-grid" id="gameGrid">
             <p style="text-align: center; width: 100%;">Loading Games...</p>
         </div>
+        
+        <div id="pagination" class="pagination-container"></div>
     </div>
 
     <footer><marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee></footer>
@@ -207,43 +237,114 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const gameGrid = document.getElementById('gameGrid');
+        const paginationContainer = document.getElementById('pagination');
+
+        let allGamesData = [];
+        const itemsPerPage = 20;
+        let currentPage = 1;
 
         onValue(ref(db, 'games'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
+                // Convert object to array and reverse to show newest first
+                allGamesData = Object.keys(data).reverse().map(key => data[key]);
+                renderPage(1);
+            }
+        });
+
+        function renderPage(page) {
+            currentPage = page;
+            gameGrid.innerHTML = '';
+            
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = allGamesData.slice(start, end);
+
+            paginatedItems.forEach(game => {
+                let stars = '';
+                let activeStars = game.starRating || 5;
+                for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
+
+                const gameHTML = `
+                    <div class="game-item">
+                        <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+                        <div class="game-info">
+                            <h3>${game.title}</h3>
+                            <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
+                            <div class="meta-text">Size: ${game.size || 'N/A'}</div>
+                            <div class="rating-box">
+                                <span class="stars-gold">${stars}</span>
+                                <span>${game.ratingNum || '5.0'}</span>
+                            </div>
+                            <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                        </div>
+                    </div>`;
+                gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+            });
+
+            renderPagination();
+            window.scrollTo(0, 0);
+        }
+
+        function renderPagination() {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(allGamesData.length / itemsPerPage);
+
+            if (pageCount <= 1) return;
+
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.addEventListener('click', () => renderPage(i));
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        document.getElementById('storeSearch').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            const filteredGames = allGamesData.filter(game => 
+                game.title.toUpperCase().includes(filter)
+            );
+            
+            // If searching, show all matching results or you can paginate them too
+            if(filter === "") {
+                renderPage(1);
+            } else {
                 gameGrid.innerHTML = '';
-                Object.keys(data).reverse().forEach(key => {
-                    const game = data[key];
+                paginationContainer.innerHTML = '';
+                filteredGames.forEach(game => {
+                    // (Same HTML generation logic as above for filtered results)
                     let stars = '';
                     let activeStars = game.starRating || 5;
                     for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
-
-                    const gameHTML = `
-                        <div class="game-item">
-                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
-                            <div class="game-info">
-                                <h3>${game.title}</h3>
-                                <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
-                                <div class="meta-text">Size: ${game.size || 'N/A'}</div>
-                                <div class="rating-box">
-                                    <span class="stars-gold">${stars}</span>
-                                    <span>${game.ratingNum || '5.0'}</span>
-                                </div>
-                                <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
-                            </div>
-                        </div>`;
-                    gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+                    const gameHTML = `<div class="game-item">...</div>`; // simplified for brevity here
+                    // In the real code, I'll use a function to avoid repetition
+                    displaySingleGame(game);
                 });
             }
         });
 
-        document.getElementById('storeSearch').addEventListener('keyup', function() {
-            let filter = this.value.toUpperCase();
-            document.querySelectorAll('.game-item').forEach(item => {
-                let title = item.querySelector('h3').innerText;
-                item.style.display = title.toUpperCase().includes(filter) ? "" : "none";
-            });
-        });
+        function displaySingleGame(game) {
+            let stars = '';
+            let activeStars = game.starRating || 5;
+            for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
+            const gameHTML = `
+                <div class="game-item">
+                    <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+                    <div class="game-info">
+                        <h3>${game.title}</h3>
+                        <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
+                        <div class="meta-text">Size: ${game.size || 'N/A'}</div>
+                        <div class="rating-box">
+                            <span class="stars-gold">${stars}</span>
+                            <span>${game.ratingNum || '5.0'}</span>
+                        </div>
+                        <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                    </div>
+                </div>`;
+            gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+        }
     </script>
 </body>
 </html>
