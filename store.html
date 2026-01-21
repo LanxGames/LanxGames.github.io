@@ -143,47 +143,35 @@
 
         .mini-download-btn:hover { background: #fff; color: #000; }
 
-        /* Pagination Styling - Your Theme Style */
+        /* Pagination Styling */
         .pagination-container {
             display: flex;
             justify-content: center;
             margin-top: 40px;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
+            padding-bottom: 40px;
         }
         
         .page-btn {
-            background: #0a0a0a;
+            background: #111;
             color: white;
             border: 1px solid #333;
-            padding: 10px 18px;
+            padding: 8px 16px;
             cursor: pointer;
-            font-weight: bold;
+            border-radius: 4px;
             transition: 0.3s;
         }
 
         .page-btn.active {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-
-        .page-btn:hover:not(.active) {
+            background: #fff;
+            color: #000;
             border-color: #fff;
         }
 
         @media (max-width: 1024px) { .game-item { width: calc(33.33% - 10px); } }
-
-        @media (max-width: 768px) { 
-            .game-item { width: calc(50% - 10px); } 
-            .game-item img { height: 180px; } 
-        }
-
-        @media (max-width: 480px) { 
-            .game-item { width: calc(50% - 8px); }
-            .game-item h3 { font-size: 12px; }
-            .mini-download-btn { font-size: 9px; }
-        }
+        @media (max-width: 768px) { .game-item { width: calc(50% - 10px); } }
+        @media (max-width: 480px) { .game-item { width: calc(50% - 8px); } }
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
@@ -214,7 +202,6 @@
         <div class="game-grid" id="gameGrid">
             <p style="text-align: center; width: 100%;">Loading Games...</p>
         </div>
-        
         <div id="pagination" class="pagination-container"></div>
     </div>
 
@@ -237,35 +224,37 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const gameGrid = document.getElementById('gameGrid');
-        const paginationContainer = document.getElementById('pagination');
+        const paginationBox = document.getElementById('pagination');
 
-        let allGamesData = [];
-        const itemsPerPage = 20;
+        let allGames = [];
         let currentPage = 1;
+        const limit = 20;
 
         onValue(ref(db, 'games'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                // Convert object to array and reverse to show newest first
-                allGamesData = Object.keys(data).reverse().map(key => data[key]);
-                renderPage(1);
+                // දත්ත Array එකකට ගෙන අලුත් ඒවා උඩට එන සේ සකස් කිරීම
+                allGames = Object.keys(data).reverse().map(key => data[key]);
+                displayGames(1);
+            } else {
+                gameGrid.innerHTML = '<p>No games found.</p>';
             }
         });
 
-        function renderPage(page) {
+        function displayGames(page) {
             currentPage = page;
             gameGrid.innerHTML = '';
             
-            const start = (page - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const paginatedItems = allGamesData.slice(start, end);
+            const start = (page - 1) * limit;
+            const end = start + limit;
+            const currentItems = allGames.slice(start, end);
 
-            paginatedItems.forEach(game => {
+            currentItems.forEach(game => {
                 let stars = '';
                 let activeStars = game.starRating || 5;
                 for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
 
-                const gameHTML = `
+                const html = `
                     <div class="game-item">
                         <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
                         <div class="game-info">
@@ -279,72 +268,65 @@
                             <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
                         </div>
                     </div>`;
-                gameGrid.insertAdjacentHTML('beforeend', gameHTML);
+                gameGrid.insertAdjacentHTML('beforeend', html);
             });
 
-            renderPagination();
+            setupPagination();
             window.scrollTo(0, 0);
         }
 
-        function renderPagination() {
-            paginationContainer.innerHTML = '';
-            const pageCount = Math.ceil(allGamesData.length / itemsPerPage);
+        function setupPagination() {
+            paginationBox.innerHTML = '';
+            const totalPages = Math.ceil(allGames.length / limit);
 
-            if (pageCount <= 1) return;
+            if(totalPages <= 1) return;
 
-            for (let i = 1; i <= pageCount; i++) {
+            for(let i=1; i<=totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
-                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                btn.addEventListener('click', () => renderPage(i));
-                paginationContainer.appendChild(btn);
+                btn.className = (i === currentPage) ? 'page-btn active' : 'page-btn';
+                btn.onclick = () => displayGames(i);
+                paginationBox.appendChild(btn);
             }
         }
 
+        // Search එක කරන විට Pagination එක තාවකාලිකව නවතා සෙවුම් ප්‍රතිඵල පමණක් පෙන්වීමට
         document.getElementById('storeSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
-            const filteredGames = allGamesData.filter(game => 
-                game.title.toUpperCase().includes(filter)
-            );
+            let items = document.querySelectorAll('.game-item');
             
-            // If searching, show all matching results or you can paginate them too
-            if(filter === "") {
-                renderPage(1);
-            } else {
-                gameGrid.innerHTML = '';
-                paginationContainer.innerHTML = '';
-                filteredGames.forEach(game => {
-                    // (Same HTML generation logic as above for filtered results)
+            if (filter === "") {
+                displayGames(currentPage); // සර්ච් එක හිස් නම් ආපහු පිටු විදිහට පෙන්වන්න
+                return;
+            }
+
+            // සර්ච් කරන විට සියලුම ගේම්ස් පරීක්ෂා කිරීම
+            gameGrid.innerHTML = '';
+            paginationBox.innerHTML = ''; // සර්ච් කරන විට pagination එක සඟවන්න
+            
+            allGames.forEach(game => {
+                if (game.title.toUpperCase().includes(filter)) {
                     let stars = '';
                     let activeStars = game.starRating || 5;
                     for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
-                    const gameHTML = `<div class="game-item">...</div>`; // simplified for brevity here
-                    // In the real code, I'll use a function to avoid repetition
-                    displaySingleGame(game);
-                });
-            }
+                    const html = `
+                        <div class="game-item">
+                            <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+                            <div class="game-info">
+                                <h3>${game.title}</h3>
+                                <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
+                                <div class="meta-text">Size: ${game.size || 'N/A'}</div>
+                                <div class="rating-box">
+                                    <span class="stars-gold">${stars}</span>
+                                    <span>${game.ratingNum || '5.0'}</span>
+                                </div>
+                                <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                            </div>
+                        </div>`;
+                    gameGrid.insertAdjacentHTML('beforeend', html);
+                }
+            });
         });
-
-        function displaySingleGame(game) {
-            let stars = '';
-            let activeStars = game.starRating || 5;
-            for(let i=0; i<5; i++) { stars += i < activeStars ? '★' : '☆'; }
-            const gameHTML = `
-                <div class="game-item">
-                    <img src="${game.imageURL}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
-                    <div class="game-info">
-                        <h3>${game.title}</h3>
-                        <div class="meta-text">${game.category || 'PC'} ${game.price || '[Free]'}</div>
-                        <div class="meta-text">Size: ${game.size || 'N/A'}</div>
-                        <div class="rating-box">
-                            <span class="stars-gold">${stars}</span>
-                            <span>${game.ratingNum || '5.0'}</span>
-                        </div>
-                        <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
-                    </div>
-                </div>`;
-            gameGrid.insertAdjacentHTML('beforeend', gameHTML);
-        }
     </script>
 </body>
 </html>
