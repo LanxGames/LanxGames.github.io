@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛒 Black Store.lk</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
-
     <meta name="description" content="Black Store.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
     <meta name="keywords" content="Black Store, Black Store.lk, Download Games Sri Lanka, PC Games Download, Free Movies, BlackStore">
     <meta name="author" content="Pamod Yoshitha Abeyrathna">
@@ -40,7 +38,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
-            flex-wrap: nowrap; 
+            flex-wrap: nowrap; /* මෙතන වෙනස් කළා ෆෝන් එකේ පල්ලෙහාට නොයන්න */
             gap: 10px;
         }
 
@@ -57,7 +55,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
         .logo-box img {
@@ -73,6 +70,7 @@
             text-transform: uppercase;
         }
 
+        /* --- අලුතින් එක්කළ Profile Style --- */
         .user-nav-area {
             display: flex;
             align-items: center;
@@ -84,7 +82,7 @@
             border: 1px solid #333;
             transition: 0.3s;
             position: relative; 
-            flex-shrink: 0; 
+            flex-shrink: 0; /* බටන් එක හැකිලීම වැළැක්වීමට */
         }
         .user-nav-area:hover { border-color: #fff; }
         .user-nav-area img { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
@@ -101,6 +99,7 @@
         .profile-card p { font-size: 10px; color: #777; margin-bottom: 15px; }
         .logout-btn-card { background: #fff; color: #000; border: none; padding: 7px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 11px; }
 
+        /* Navigation Bar */
         nav {
             background: #0e0d0d;
             padding: 10px 5%;
@@ -111,7 +110,6 @@
             top: 0;
             z-index: 1000;
             gap: 10px;
-            border-bottom: 1px solid #222;
         }
 
         .nav-links {
@@ -128,198 +126,255 @@
             text-transform: uppercase;
             font-size: 13px;
             transition: 0.3s;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 5px 0;
         }
-        .nav-links a:hover { background: #fff; color: #000; }
 
         .search-bar {
-            background: #111;
+            background: transparent;
             border: 1px solid #444;
-            padding: 8px 15px;
+            padding: 8px 10px;
             color: white;
-            border-radius: 20px;
+            border-radius: 4px;
             width: 100%;
             max-width: 300px;
-            transition: 0.3s;
         }
-        .search-bar:focus { border-color: #fff; outline: none; width: 320px; }
 
-        /* Premium Game Card Section - නවීකරණය කරන ලද කොටස */
+        /* Header එක ෆෝන් එකට ගැලපෙන විදිය */
+        @media (max-width: 480px) {
+            header { padding: 15px 3%; }
+            .brand-name { font-size: 16px; letter-spacing: 1px; }
+            .logo-box { width: 40px; height: 40px; }
+            .user-nav-area span { font-size: 9px; }
+        }
+
+        /* Main Banner */
+        .hero-banner {
+            width: 95%;
+            margin: 20px auto;
+            height: auto;
+            min-height: 200px;
+            border: 1.2px solid #afafaf;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        @media (max-width: 600px) {
+            .hero-banner {
+                height: auto;
+                min-height: 140px;
+            }
+            .hero-banner img {
+                object-fit: contain;
+                height: auto;
+            }
+        }
+
+        /* Content Section */
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
         .game-card {
             display: flex;
             gap: 20px;
-            background: linear-gradient(145deg, #0f0f0f, #050505);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #222;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+            transition: 0.3s;
+            margin-bottom: 20px;
         }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            border-color: #555;
-            box-shadow: 0 15px 30px rgba(255,255,255,0.05);
-        }
-
-        .game-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
-        }
-        .game-card:hover::before { left: 100%; }
 
         .game-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 10px;
-            overflow: hidden;
+            width: 100px;
+            height: 100px;
             border: 1px solid #333;
             flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .game-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
         }
-        .game-card:hover .game-img img { transform: scale(1.1); }
 
         .game-details {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            justify-content: center;
+            gap: 5px;
         }
 
         .game-title {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 18px;
+            font-weight: bold;
             color: #fff;
-            letter-spacing: 0.5px;
         }
-
-        .game-info, .rating {
-            font-size: 13px;
-            color: #bbb;
-        }
-
-        .rating { color: #ffcc00; }
 
         .download-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 8px 25px;
-            background: #fff;
-            color: #000;
+            margin-top: 5px;
+            padding: 6px 15px;
+            border: 1px solid #fff;
+            color: #fff;
             text-decoration: none;
             text-align: center;
             width: fit-content;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            border-radius: 5px;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        .download-btn:hover {
-            background: #000;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255,255,255,0.4);
-            transform: scale(1.05);
         }
 
-        /* Responsive Mobile Styling */
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 2.5fr 1fr;
+            }
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .game-img {
+                width: 150px;
+                height: 150px;
+            }
+            .brand-name {
+                font-size: 30px;
+            }
+        }
+
+        /* ෆෝන් එකේ ගේම් කාඩ් */
         @media (max-width: 480px) {
             .main-content {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 15px;
+                gap: 10px;
                 justify-content: space-between;
             }
             .game-card {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                width: 47%;
-                padding: 12px;
-                margin-bottom: 0;
-                gap: 12px;
-                border-radius: 12px;
+                width: 48%;
+                padding: 10px;
+                margin-bottom: 10px;
+                gap: 10px;
+                display: flex;
+                justify-content: space-between;
             }
             .game-img {
                 width: 100%;
-                height: 120px; 
+                height: 110px; 
+            }
+            .game-details {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
             }
             .game-title {
-                font-size: 14px;
-                min-height: 40px;
-                line-height: 1.2;
+                font-size: 13px;
+                min-height: 35px;
+            }
+            .game-info, .rating {
+                font-size: 10px;
             }
             .download-btn {
+                margin: 5px auto 0 auto;
+                padding: 5px 10px;
+                font-size: 10px;
                 width: 100%;
-                font-size: 11px;
-                padding: 8px 5px;
             }
         }
 
-        /* Footer & Others */
-        .hero-banner {
-            width: 95%;
-            margin: 20px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #333;
+        /* --- Updated Premium Login Modal Style --- */
+        .login-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); display: none; 
+            justify-content: center; align-items: center; z-index: 3000; 
         }
-        .hero-banner img { width: 100%; display: block; }
+        .login-box { 
+            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
+            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
+            box-shadow: 0 0 30px rgba(255,255,255,0.05);
+        }
+        .login-box h3 { letter-spacing: 5px; margin-bottom: 25px; font-size: 22px; }
+        
+        .login-input-field {
+            width: 100%; padding: 14px; margin-bottom: 15px; 
+            background: #111; border: 1px solid #333; color: white;
+            border-radius: 10px; outline: none; font-size: 14px;
+            transition: 0.3s;
+        }
+        .login-input-field:focus { border-color: #fff; }
 
-        .container {
-            width: 95%;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+        .submit-login-btn {
+            width: 100%; padding: 14px; background: #fff; color: #000;
+            border: none; border-radius: 10px; font-weight: bold;
+            cursor: pointer; font-size: 15px; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s; margin-top: 10px;
+        }
+        .submit-login-btn:hover { background: #ddd; transform: translateY(-2px); }
+
+        .social-login-title {
+            display: flex; align-items: center; margin: 25px 0; color: #444; font-size: 12px;
+        }
+        .social-login-title::before, .social-login-title::after {
+            content: ""; flex: 1; height: 1px; background: #222; margin: 0 10px;
         }
 
-        @media (min-width: 1024px) {
-            .container { grid-template-columns: 2.8fr 1fr; }
+        .social-btns-row {
+            display: flex; justify-content: center; gap: 20px;
         }
+        .round-social-btn {
+            width: 55px; height: 55px; border-radius: 50%; background: #fff;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border: none; transition: 0.3s; font-size: 24px;
+        }
+        .round-social-btn.google-clr { color: #db4437; }
+        .round-social-btn.fb-clr { color: #1877f2; }
+        .round-social-btn:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
 
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             border-top: 1px solid #222;
-            margin-top: 40px;
-            background: #050505;
+            margin-top: 30px;
+            color: #555;
+            font-size: 12px;
         }
-        footer marquee { color: #777; font-size: 12px; font-weight: bold; letter-spacing: 2px; }
 
-        /* Login Modal Styles */
-        .login-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); display: none; 
-            justify-content: center; align-items: center; z-index: 3000; 
-            backdrop-filter: blur(10px);
+        .desktop-only-ads { display: none; }
+        @media screen and (min-width: 1024px) {
+            .desktop-only-ads {
+                display: block !important;
+                width: 100%; background: #0a0a0a; padding: 15px;
+                border-radius: 8px; border: 1px solid #1a1a1a;
+            }
         }
-        .login-box { 
-            background: #0a0a0a; padding: 40px; border: 1px solid #333; 
-            border-radius: 20px; width: 90%; max-width: 400px; text-align: center; 
-        }
-        .submit-login-btn { width: 100%; padding: 14px; background: #fff; color: #000; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; border: none; }
-        .submit-login-btn:hover { background: #ccc; }
-        .round-social-btn { width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; margin: 0 10px; font-size: 20px; transition: 0.3s; }
-        .round-social-btn:hover { transform: scale(1.1); }
 
-        .more-games-btn { display: block; padding: 18px; text-align: center; background: #fff; color: #000; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; border-radius: 10px; margin-top: 20px; }
-        .more-games-btn:hover { background: #000; color: #fff; border: 1px solid #fff; }
+        .mobile-only-btn { display: none; }
+        @media screen and (max-width: 768px) {
+            .mobile-only-btn { display: block; text-align: center; margin-top: 20px; }
+        }
+
+        .ad-container { background: #111; border: 1px solid #333; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+        .ad-box { width: 100%; height: 150px; background: #000; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px solid #222; }
+        .ad-box img { width: 100%; height: 100%; object-fit: cover; }
+        .place-ad-btn { display: block; width: 100%; padding: 10px; background: #fff; color: #000; text-align: center; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px; margin-top: 10px; }
+        .more-games-btn { display: block; width: 250px; margin: 30px auto; padding: 15px; text-align: center; background: transparent; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .more-games-btn:hover { background: #fff; color: #000; }
+
     </style>
 </head>
 <body>
@@ -354,13 +409,20 @@
         <input type="text" id="gameSearch" class="search-bar" placeholder="Search Games...">
     </nav>
 
+    <div class="mobile-only-btn">
+        <a href="app-release.apk" download="BlackStore.apk" 
+           style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-family: sans-serif; display: inline-block; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(255,215,0,0.3);">
+           📥 DOWNLOAD OUR APP (APK)
+        </a>
+    </div>
+
     <div class="hero-banner">
         <img src="www.jpg" alt="Featured Content Banner">
     </div>
 
     <div class="container">
         <div class="main-content">
-            <h2 style="text-align: center; margin-bottom: 25px; letter-spacing: 8px; width: 100%; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px;">GAMES</h2>
+            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width: 100%;">GAMES</h2>
 
             <div class="game-card">
                 <div class="game-img">
@@ -419,14 +481,28 @@
         
         <aside class="sidebar desktop-only-ads">
             <h3 style="font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">PROMOTED</h3>
-            <div class="ad-container" style="background: #111; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-                <div class="ad-box" style="height: 180px; background: #000; border: 1px solid #222; margin-bottom: 10px;">
-                    <img src="ad1.jpg" alt="Ad 1" style="width: 100%; height: 100%; object-fit: cover;">
+            
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad1.jpg" alt="Ad 1">
                 </div>
-                <p style="font-size: 12px;">Your Product Name</p>
-                <a href="#" style="color: #fff; text-decoration: underline; font-size: 11px;">Visit Store ↗</a>
+                <p style="font-size: 11px; color: #aaa;">Your Product Name</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Visit Store ↗</a>
             </div>
-            <a href="https://wa.me/94777042735" target="_blank" class="download-btn" style="width: 100%; padding: 15px;">PLACE YOUR AD HERE</a>
+
+            <div class="ad-container">
+                <div class="ad-box">
+                    <img src="ad2.jpg" alt="Ad 2">
+                </div>
+                <p style="font-size: 11px; color: #aaa;">Your Service Here</p>
+                <a href="#" style="color: #fff; font-size: 10px;">Contact Now ↗</a>
+            </div>
+
+            <a href="https://wa.me/94777042735" target="_blank" class="place-ad-btn">
+                PLACE YOUR AD HERE (PAID)
+            </a>
+            
+            <p style="color: #444; margin-top: 15px; font-size: 10px;">Advertisement Space</p>
         </aside>
     </div>    
 
@@ -434,12 +510,23 @@
         <div class="login-box">
             <span style="float:right; cursor:pointer;" onclick="closeModal()">✕</span>
             <h3>LOGIN</h3>
-            <input type="email" class="search-bar" placeholder="Email Address" style="max-width: 100%; margin: 20px 0 10px 0; padding: 15px;">
-            <input type="password" class="search-bar" placeholder="Password" style="max-width: 100%; margin-bottom: 20px; padding: 15px;">
+            
+            <input type="email" class="login-input-field" placeholder="Email Address">
+            <input type="password" class="login-input-field" placeholder="Password">
             <button class="submit-login-btn">Log In</button>
-            <div style="margin: 20px 0; color: #444;">OR CONNECT WITH</div>
-            <button class="round-social-btn" style="background: #fff; color: #db4437;" onclick="signInWithGoogle()"><i class="fab fa-google"></i></button>
-            <button class="round-social-btn" style="background: #fff; color: #1877f2;"><i class="fab fa-facebook-f"></i></button>
+
+            <div class="social-login-title">OR CONNECT WITH</div>
+
+            <div class="social-btns-row">
+                <button class="round-social-btn google-clr" onclick="signInWithGoogle()">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="round-social-btn fb-clr">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+            </div>
+
+            <p style="font-size: 11px; color: #555; margin-top: 20px;">Don't have an account? <span style="color:#fff; cursor:pointer;">Register Now</span></p>
         </div>
     </div>
 
