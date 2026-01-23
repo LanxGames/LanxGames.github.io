@@ -175,6 +175,26 @@
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
+        /* Light Mode Style for Store Page */
+body.light-mode-on { 
+    background-color: #ffffff !important; 
+    color: #000000 !important; 
+}
+body.light-mode-on header, body.light-mode-on nav { 
+    background-color: #f1f1f1 !important; 
+    border-color: #ccc !important; 
+}
+body.light-mode-on .brand-name, body.light-mode-on .nav-links a, body.light-mode-on .game-title { 
+    color: #000000 !important; 
+}
+body.light-mode-on .game-card { 
+    background-color: #f9f9f9 !important; 
+    border-color: #ddd !important; 
+}
+body.light-mode-on .download-btn { 
+    border-color: #000 !important; 
+    color: #000 !important; 
+}
     </style>
 </head>
 <body>
@@ -327,6 +347,16 @@
                 }
             });
         });
+        // පේජ් එක ලෝඩ් වෙද්දී Home Page එකේදී තෝරපු තීම් එක තියෙනවද බලන්න
+window.addEventListener('load', () => {
+    if (localStorage.getItem('website-theme') === 'light') {
+        document.body.classList.add('light-mode-on');
+    } else {
+        document.body.classList.remove('light-mode-on');
+    }
+});
+
     </script>
 </body>
 </html>
+
