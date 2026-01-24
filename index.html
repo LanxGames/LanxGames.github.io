@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🛒 Black Store.lk</title>
+    <title>🛒 Game Kade.lk</title>
 
-    <meta name="description" content="Black Store.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
-    <meta name="keywords" content="Black Store, Black Store.lk, Download Games Sri Lanka, PC Games Download, Free Movies, BlackStore">
+    <meta name="description" content="Game Kade.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
+    <meta name="keywords" content="Game Kade, Game Kade.lk, Download Games Sri Lanka, PC Games Download, Free Movies, GameKade">
     <meta name="author" content="Pamod Yoshitha Abeyrathna">
     <meta name="robots" content="index, follow">
 
@@ -49,6 +49,7 @@
             gap: 15px;
         }
 
+        /* --- PREMIUN ANIMATED CODE LOGO (NO IMAGE) --- */
         .logo-box {
             width: 60px;
             height: 60px;
@@ -56,12 +57,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
         }
 
-        .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .logo-box::after {
+            content: 'GK';
+            color: #fff;
+            font-weight: 900;
+            font-size: 22px;
+            animation: logoPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { text-shadow: 0 0 2px #fff; opacity: 1; }
+            50% { text-shadow: 0 0 15px #fff, 0 0 30px #fff; opacity: 0.8; }
         }
 
         .brand-name {
@@ -142,6 +154,7 @@
             header { padding: 15px 3%; }
             .brand-name { font-size: 16px; letter-spacing: 1px; }
             .logo-box { width: 40px; height: 40px; }
+            .logo-box::after { font-size: 14px; }
             .user-nav-area span { font-size: 9px; }
         }
 
@@ -331,6 +344,8 @@
         body.light-mode-on { background-color: #ffffff !important; color: #000000 !important; }
         body.light-mode-on .hero-banner { background: #f1f1f1 !important; border-color: #000 !important; }
         body.light-mode-on .hero-banner h1, body.light-mode-on #typed-text { color: #000 !important; border-color: #000 !important; }
+        body.light-mode-on .logo-box { border-color: #000 !important; }
+        body.light-mode-on .logo-box::after { color: #000 !important; text-shadow: none !important; }
 
         .theme-float-btn {
             position: fixed; bottom: 20px; right: 20px; z-index: 9999;
@@ -344,10 +359,8 @@
 
     <header>
         <div class="logo-section">
-            <div class="logo-box">
-                <img src="images (1).png" alt="Black Store Logo">
-            </div>
-            <div class="brand-name">BLACK STORE.LK</div>
+            <div class="logo-box"></div>
+            <div class="brand-name">GAME KADE.LK</div>
         </div>
         <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
             <img id="userImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
@@ -370,14 +383,14 @@
     </nav>
 
     <div class="mobile-only-btn">
-        <a href="app-release.apk" download="BlackStore.apk" 
+        <a href="app-release.apk" download="GameKade.apk" 
            style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; border: 2px solid #fff;">
            📥 DOWNLOAD OUR APP (APK)
         </a>
     </div>
 
     <div class="hero-banner">
-        <h1>Welcome to Black Store.LK</h1>
+        <h1>Welcome to Game Kade.LK</h1>
         <div class="type-wrap">We Provide <span id="typed-text"></span></div>
     </div>
 
@@ -452,7 +465,7 @@
     <div class="theme-float-btn" onclick="toggleMainTheme()">🌓</div>
 
     <footer>
-        <marquee>© [ BLACK STORE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
+        <marquee>© [ GAME KADE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
     </footer>
 
     <script type="module">
