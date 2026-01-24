@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🛒 Game Kade.lk</title>
+    <title>🛒 Lanx Games.lk</title>
 
-    <meta name="description" content="Game Kade.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
-    <meta name="keywords" content="Game Kade, Game Kade.lk, Download Games Sri Lanka, PC Games Download, Free Movies, GameKade">
+    <meta name="description" content="Lanx Games.lk - Download the latest PC games, Movies and TV Series for free. The best digital store in Sri Lanka.">
+    <meta name="keywords" content="Lanx Games, Lanx Games.lk, Download Games Sri Lanka, PC Games Download, Free Movies, LanxGames">
     <meta name="author" content="Pamod Yoshitha Abeyrathna">
     <meta name="robots" content="index, follow">
 
@@ -49,32 +49,31 @@
             gap: 15px;
         }
 
-        /* --- PREMIUN ANIMATED CODE LOGO (FULL NAME) --- */
+        /* --- PREMIUN ANIMATED CODE LOGO (NO IMAGE) --- */
         .logo-box {
-            min-width: 120px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border: 2px solid #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             background: #000;
             position: relative;
-            padding: 0 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
         }
 
         .logo-box::after {
-            content: 'GAME KADE';
+            content: 'LANX';
             color: #fff;
             font-weight: 900;
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 16px;
             animation: logoPulse 2s infinite ease-in-out;
-            text-align: center;
         }
 
         @keyframes logoPulse {
             0%, 100% { text-shadow: 0 0 2px #fff; opacity: 1; }
-            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff; opacity: 0.7; }
+            50% { text-shadow: 0 0 15px #fff, 0 0 30px #fff; opacity: 0.8; }
         }
 
         .brand-name {
@@ -153,8 +152,8 @@
 
         @media (max-width: 480px) {
             header { padding: 15px 3%; }
-            .brand-name { display: none; } /* On mobile we only show the box logo for space */
-            .logo-box { min-width: 100px; height: 40px; }
+            .brand-name { font-size: 16px; letter-spacing: 1px; }
+            .logo-box { width: 45px; height: 45px; }
             .logo-box::after { font-size: 12px; }
             .user-nav-area span { font-size: 9px; }
         }
@@ -177,6 +176,7 @@
             box-shadow: 0 0 40px rgba(255,255,255,0.03) inset;
         }
 
+        /* Animated Glowing Background Logic */
         .hero-banner::before {
             content: '';
             position: absolute;
@@ -224,6 +224,7 @@
             .type-wrap { font-size: 14px; }
         }
 
+        /* Content Section */
         .container {
             width: 95%;
             margin: 20px auto;
@@ -233,6 +234,7 @@
             align-items: start;
         }
 
+        /* --- GAME CARD PREMIUM UPGRADE (NO LAYOUT CHANGE) --- */
         .game-card {
             display: flex;
             gap: 20px;
@@ -292,9 +294,10 @@
             .container { grid-template-columns: 2.5fr 1fr; }
             nav { flex-direction: row; justify-content: space-between; }
             .game-img { width: 150px; height: 150px; }
-            .brand-name { display: block; font-size: 30px; }
+            .brand-name { font-size: 30px; }
         }
 
+        /* ෆෝන් එකේ ගේම් කාඩ් (KEEPING YOUR EXACT LAYOUT) */
         @media (max-width: 480px) {
             .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
             .game-card {
@@ -319,6 +322,12 @@
             border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
         }
         
+        .login-input-field {
+            width: 100%; padding: 14px; margin-bottom: 15px; 
+            background: #111; border: 1px solid #333; color: white;
+            border-radius: 10px; outline: none; font-size: 14px;
+        }
+
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
 
         .desktop-only-ads { display: none; }
@@ -351,7 +360,7 @@
     <header>
         <div class="logo-section">
             <div class="logo-box"></div>
-            <div class="brand-name">GAME KADE.LK</div>
+            <div class="brand-name">LANX GAMES.LK</div>
         </div>
         <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
             <img id="userImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
@@ -374,14 +383,14 @@
     </nav>
 
     <div class="mobile-only-btn">
-        <a href="app-release.apk" download="GameKade.apk" 
+        <a href="app-release.apk" download="LanxGames.apk" 
            style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; border: 2px solid #fff;">
            📥 DOWNLOAD OUR APP (APK)
         </a>
     </div>
 
     <div class="hero-banner">
-        <h1>Welcome to Game Kade.LK</h1>
+        <h1>Welcome to Lanx Games.LK</h1>
         <div class="type-wrap">We Provide <span id="typed-text"></span></div>
     </div>
 
@@ -456,7 +465,7 @@
     <div class="theme-float-btn" onclick="toggleMainTheme()">🌓</div>
 
     <footer>
-        <marquee>© [ GAME KADE.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
+        <marquee>© [ LANX GAMES.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
     </footer>
 
     <script type="module">
