@@ -49,31 +49,32 @@
             gap: 15px;
         }
 
-        /* --- PREMIUN ANIMATED CODE LOGO (NO IMAGE) --- */
+        /* --- PREMIUN ANIMATED CODE LOGO (FULL NAME) --- */
         .logo-box {
-            width: 60px;
-            height: 60px;
+            min-width: 120px;
+            height: 50px;
             border: 2px solid #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             background: #000;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+            padding: 0 10px;
         }
 
         .logo-box::after {
-            content: 'GK';
+            content: 'GAME KADE';
             color: #fff;
             font-weight: 900;
-            font-size: 22px;
+            font-size: 14px;
+            letter-spacing: 1px;
             animation: logoPulse 2s infinite ease-in-out;
+            text-align: center;
         }
 
         @keyframes logoPulse {
             0%, 100% { text-shadow: 0 0 2px #fff; opacity: 1; }
-            50% { text-shadow: 0 0 15px #fff, 0 0 30px #fff; opacity: 0.8; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff; opacity: 0.7; }
         }
 
         .brand-name {
@@ -152,9 +153,9 @@
 
         @media (max-width: 480px) {
             header { padding: 15px 3%; }
-            .brand-name { font-size: 16px; letter-spacing: 1px; }
-            .logo-box { width: 40px; height: 40px; }
-            .logo-box::after { font-size: 14px; }
+            .brand-name { display: none; } /* On mobile we only show the box logo for space */
+            .logo-box { min-width: 100px; height: 40px; }
+            .logo-box::after { font-size: 12px; }
             .user-nav-area span { font-size: 9px; }
         }
 
@@ -176,7 +177,6 @@
             box-shadow: 0 0 40px rgba(255,255,255,0.03) inset;
         }
 
-        /* Animated Glowing Background Logic */
         .hero-banner::before {
             content: '';
             position: absolute;
@@ -224,7 +224,6 @@
             .type-wrap { font-size: 14px; }
         }
 
-        /* Content Section */
         .container {
             width: 95%;
             margin: 20px auto;
@@ -234,7 +233,6 @@
             align-items: start;
         }
 
-        /* --- GAME CARD PREMIUM UPGRADE (NO LAYOUT CHANGE) --- */
         .game-card {
             display: flex;
             gap: 20px;
@@ -294,10 +292,9 @@
             .container { grid-template-columns: 2.5fr 1fr; }
             nav { flex-direction: row; justify-content: space-between; }
             .game-img { width: 150px; height: 150px; }
-            .brand-name { font-size: 30px; }
+            .brand-name { display: block; font-size: 30px; }
         }
 
-        /* ෆෝන් එකේ ගේම් කාඩ් (KEEPING YOUR EXACT LAYOUT) */
         @media (max-width: 480px) {
             .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
             .game-card {
@@ -322,12 +319,6 @@
             border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
         }
         
-        .login-input-field {
-            width: 100%; padding: 14px; margin-bottom: 15px; 
-            background: #111; border: 1px solid #333; color: white;
-            border-radius: 10px; outline: none; font-size: 14px;
-        }
-
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
 
         .desktop-only-ads { display: none; }
