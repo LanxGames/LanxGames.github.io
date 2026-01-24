@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Games - Black Store.lk</title>
+    <title>All Games - LANX GAMES.LK</title>
     <style>
         /* CSS Design - Black & White Premium Theme */
         * {
@@ -26,13 +26,40 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 10px;
         }
 
         .logo-section { display: flex; align-items: center; gap: 15px; }
-        .logo-box { width: 60px; height: 60px; border: 2px solid #fff; display: flex; justify-content: center; align-items: center; }
-        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- SUPREME GAMING TECH LOGO (NO IMAGE) --- */
+        .logo-box {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            /* Cyberpunk / Tech Shape */
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+
+        .logo-box::after {
+            content: 'LANX';
+            color: #fff;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 2px;
+            animation: techBlink 3s infinite ease-in-out;
+        }
+
+        @keyframes techBlink {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #fff); }
+            50% { opacity: 0.6; filter: drop-shadow(0 0 10px #fff); }
+        }
+
         .brand-name { font-size: 24px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
         nav {
@@ -175,34 +202,21 @@
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
-        /* Light Mode Style for Store Page */
-body.light-mode-on { 
-    background-color: #ffffff !important; 
-    color: #000000 !important; 
-}
-body.light-mode-on header, body.light-mode-on nav { 
-    background-color: #f1f1f1 !important; 
-    border-color: #ccc !important; 
-}
-body.light-mode-on .brand-name, body.light-mode-on .nav-links a, body.light-mode-on .game-title { 
-    color: #000000 !important; 
-}
-body.light-mode-on .game-card { 
-    background-color: #f9f9f9 !important; 
-    border-color: #ddd !important; 
-}
-body.light-mode-on .download-btn { 
-    border-color: #000 !important; 
-    color: #000 !important; 
-}
+
+        /* Light Mode Style */
+        body.light-mode-on { background-color: #ffffff !important; color: #000000 !important; }
+        body.light-mode-on header, body.light-mode-on nav { background-color: #f1f1f1 !important; border-color: #ccc !important; }
+        body.light-mode-on .brand-name, body.light-mode-on .nav-links a { color: #000000 !important; }
+        body.light-mode-on .logo-box { border-color: #000 !important; }
+        body.light-mode-on .logo-box::after { color: #000 !important; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-section">
-            <div class="logo-box"><img src="images (1).png" alt="Logo"></div>
-            <div class="brand-name">BLACK STORE.LK</div>
+            <div class="logo-box"></div>
+            <div class="brand-name">LANX GAMES.LK</div>
         </div>
         <div class="user-icon">🔗</div>
     </header>
@@ -225,7 +239,7 @@ body.light-mode-on .download-btn {
         <div id="pagination" class="pagination-container"></div>
     </div>
 
-    <footer><marquee>© [ BLACK STORE.LK ] ALL GAMES EXPLORER.</marquee></footer>
+    <footer><marquee>© [ LANX GAMES.LK ] ALL GAMES EXPLORER.</marquee></footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -253,7 +267,6 @@ body.light-mode-on .download-btn {
         onValue(ref(db, 'games'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                // දත්ත Array එකකට ගෙන අලුත් ඒවා උඩට එන සේ සකස් කිරීම
                 allGames = Object.keys(data).reverse().map(key => data[key]);
                 displayGames(1);
             } else {
@@ -298,9 +311,7 @@ body.light-mode-on .download-btn {
         function setupPagination() {
             paginationBox.innerHTML = '';
             const totalPages = Math.ceil(allGames.length / limit);
-
             if(totalPages <= 1) return;
-
             for(let i=1; i<=totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
@@ -310,20 +321,14 @@ body.light-mode-on .download-btn {
             }
         }
 
-        // Search එක කරන විට Pagination එක තාවකාලිකව නවතා සෙවුම් ප්‍රතිඵල පමණක් පෙන්වීමට
         document.getElementById('storeSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
-            let items = document.querySelectorAll('.game-item');
-            
             if (filter === "") {
-                displayGames(currentPage); // සර්ච් එක හිස් නම් ආපහු පිටු විදිහට පෙන්වන්න
+                displayGames(currentPage);
                 return;
             }
-
-            // සර්ච් කරන විට සියලුම ගේම්ස් පරීක්ෂා කිරීම
             gameGrid.innerHTML = '';
-            paginationBox.innerHTML = ''; // සර්ච් කරන විට pagination එක සඟවන්න
-            
+            paginationBox.innerHTML = ''; 
             allGames.forEach(game => {
                 if (game.title.toUpperCase().includes(filter)) {
                     let stars = '';
@@ -347,16 +352,14 @@ body.light-mode-on .download-btn {
                 }
             });
         });
-        // පේජ් එක ලෝඩ් වෙද්දී Home Page එකේදී තෝරපු තීම් එක තියෙනවද බලන්න
-window.addEventListener('load', () => {
-    if (localStorage.getItem('website-theme') === 'light') {
-        document.body.classList.add('light-mode-on');
-    } else {
-        document.body.classList.remove('light-mode-on');
-    }
-});
 
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('website-theme') === 'light') {
+                document.body.classList.add('light-mode-on');
+            } else {
+                document.body.classList.remove('light-mode-on');
+            }
+        });
     </script>
 </body>
 </html>
-
