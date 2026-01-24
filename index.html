@@ -32,12 +32,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* --- Premium Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; border: 2px solid #000; }
-        ::-webkit-scrollbar-thumb:hover { background: #fff; }
-
         /* Header Section */
         header {
             padding: 20px 5%;
@@ -45,7 +39,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1.5px solid #333;
-            flex-wrap: nowrap;
+            flex-wrap: nowrap; 
             gap: 10px;
         }
 
@@ -105,7 +99,6 @@
         .profile-card p { font-size: 10px; color: #777; margin-bottom: 15px; }
         .logout-btn-card { background: #fff; color: #000; border: none; padding: 7px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 11px; }
 
-        /* Navigation Bar */
         nav {
             background: #0e0d0d;
             padding: 10px 5%;
@@ -145,70 +138,111 @@
             max-width: 300px;
         }
 
-        /* --- Hero Banner Updated --- */
+        @media (max-width: 480px) {
+            header { padding: 15px 3%; }
+            .brand-name { font-size: 16px; letter-spacing: 1px; }
+            .logo-box { width: 40px; height: 40px; }
+            .user-nav-area span { font-size: 9px; }
+        }
+
+        /* --- UNIQUE PROFESSIONAL HERO BANNER --- */
         .hero-banner {
             width: 95%;
             margin: 20px auto;
-            min-height: 220px;
-            border: 1.5px solid #333;
+            min-height: 200px;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            padding: 20px;
-            transition: 0.3s;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255,255,255,0.03) inset;
+        }
+
+        /* Animated Glowing Background Logic */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: rotateBG 15s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateBG {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-banner h1 {
-            font-size: 32px;
+            font-size: 28px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            z-index: 2;
             font-weight: 800;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
-        .type-container {
+        .type-wrap {
+            z-index: 2;
             font-size: 18px;
+            margin-top: 10px;
             color: #888;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 300;
         }
 
         #typed-text {
             color: #fff;
             font-weight: bold;
-            border-right: 2px solid #fff;
+            border-right: 3px solid #fff;
             padding-right: 5px;
             animation: blink 0.7s infinite;
         }
 
         @keyframes blink { 50% { border-color: transparent; } }
 
-        /* --- Game Card Premium Upgrade --- */
+        @media (max-width: 600px) {
+            .hero-banner { min-height: 160px; }
+            .hero-banner h1 { font-size: 18px; letter-spacing: 2px; }
+            .type-wrap { font-size: 14px; }
+        }
+
+        /* Content Section */
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* --- GAME CARD PREMIUM UPGRADE (NO LAYOUT CHANGE) --- */
         .game-card {
             display: flex;
             gap: 20px;
             background: #0a0a0a;
-            padding: 18px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #1a1a1a;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             margin-bottom: 20px;
             position: relative;
         }
 
         .game-card:hover {
-            transform: translateY(-8px);
             border-color: #fff;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.05);
         }
 
         .game-img {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border: 1px solid #333;
             flex-shrink: 0;
             border-radius: 8px;
@@ -221,22 +255,21 @@
         }
 
         .game-img img { width: 100%; height: 100%; object-fit: cover; }
-
         .game-details { display: flex; flex-direction: column; gap: 5px; }
-
-        .game-title { font-size: 19px; font-weight: bold; color: #fff; transition: 0.3s; }
+        .game-title { font-size: 18px; font-weight: bold; color: #fff; }
 
         .download-btn {
             display: inline-block;
-            margin-top: 8px;
-            padding: 8px 20px;
+            margin-top: 5px;
+            padding: 6px 18px;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
+            text-align: center;
+            width: fit-content;
             font-size: 12px;
             font-weight: bold;
             transition: 0.3s;
-            text-transform: uppercase;
         }
 
         .download-btn:hover {
@@ -244,46 +277,76 @@
             color: #000;
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            .brand-name { font-size: 16px; }
-            .hero-banner h1 { font-size: 20px; }
-            .type-container { font-size: 14px; }
-            .game-card { flex-direction: column; align-items: center; text-align: center; width: 48%; }
-            .game-img { width: 100%; height: 110px; }
-            .game-title { font-size: 14px; }
-            .download-btn { width: 100%; }
+        @media (min-width: 1024px) {
+            .container { grid-template-columns: 2.5fr 1fr; }
+            nav { flex-direction: row; justify-content: space-between; }
+            .game-img { width: 150px; height: 150px; }
+            .brand-name { font-size: 30px; }
         }
 
-        .container { width: 95%; margin: 20px auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 1024px) { .container { grid-template-columns: 2.5fr 1fr; } }
+        /* ෆෝන් එකේ ගේම් කාඩ් (KEEPING YOUR EXACT LAYOUT) */
+        @media (max-width: 480px) {
+            .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+            .game-card {
+                flex-direction: column; align-items: center; text-align: center;
+                width: 48%; padding: 10px; margin-bottom: 10px; gap: 10px;
+                display: flex; justify-content: space-between;
+            }
+            .game-img { width: 100%; height: 110px; }
+            .game-details { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; width: 100%; }
+            .game-title { font-size: 13px; min-height: 35px; }
+            .game-info, .rating { font-size: 10px; }
+            .download-btn { margin: 5px auto 0 auto; padding: 5px 10px; font-size: 10px; width: 100%; }
+        }
 
-        /* Theme Light Mode */
-        body.light-mode-on { background-color: #ffffff !important; color: #000 !important; }
-        body.light-mode-on .hero-banner { background: #f9f9f9 !important; border-color: #000 !important; }
+        .login-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); display: none; 
+            justify-content: center; align-items: center; z-index: 3000; 
+        }
+        .login-box { 
+            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
+            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
+        }
+        
+        .login-input-field {
+            width: 100%; padding: 14px; margin-bottom: 15px; 
+            background: #111; border: 1px solid #333; color: white;
+            border-radius: 10px; outline: none; font-size: 14px;
+        }
+
+        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
+
+        .desktop-only-ads { display: none; }
+        @media screen and (min-width: 1024px) {
+            .desktop-only-ads {
+                display: block !important;
+                width: 100%; background: #0a0a0a; padding: 15px;
+                border-radius: 8px; border: 1px solid #1a1a1a;
+            }
+        }
+
+        .mobile-only-btn { display: block; text-align: center; margin-top: 20px; }
+
+        body.light-mode-on { background-color: #ffffff !important; color: #000000 !important; }
+        body.light-mode-on .hero-banner { background: #f1f1f1 !important; border-color: #000 !important; }
         body.light-mode-on .hero-banner h1, body.light-mode-on #typed-text { color: #000 !important; border-color: #000 !important; }
-        body.light-mode-on .game-card { background: #eee !important; border-color: #ccc !important; }
-        body.light-mode-on .game-title, body.light-mode-on .download-btn { color: #000 !important; border-color: #000 !important; }
 
         .theme-float-btn {
             position: fixed; bottom: 20px; right: 20px; z-index: 9999;
             width: 50px; height: 50px; border-radius: 50%; background: #fff; color: #000;
             display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2); border: 2px solid #000;
+            border: 2px solid #000; font-size: 20px;
         }
-
-        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 3000; }
-        .login-box { background: #0a0a0a; padding: 30px; border: 1px solid #333; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; }
-        
-        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
-        .more-games-btn { display: block; width: 100%; padding: 15px; text-align: center; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-section">
-            <div class="logo-box"><img src="images (1).png" alt="Logo"></div>
+            <div class="logo-box">
+                <img src="images (1).png" alt="Black Store Logo">
+            </div>
             <div class="brand-name">BLACK STORE.LK</div>
         </div>
         <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
@@ -306,20 +369,29 @@
         <input type="text" id="gameSearch" class="search-bar" placeholder="Search Games...">
     </nav>
 
+    <div class="mobile-only-btn">
+        <a href="app-release.apk" download="BlackStore.apk" 
+           style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; border: 2px solid #fff;">
+           📥 DOWNLOAD OUR APP (APK)
+        </a>
+    </div>
+
     <div class="hero-banner">
-        <h1>BLACK STORE.LK</h1>
-        <div class="type-container">We Provide <span id="typed-text"></span></div>
+        <h1>Welcome to Black Store.LK</h1>
+        <div class="type-wrap">We Provide <span id="typed-text"></span></div>
     </div>
 
     <div class="container">
         <div class="main-content">
-            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px;">GAMES</h2>
+            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width: 100%;">GAMES</h2>
 
             <div class="game-card">
                 <div class="game-img"><img src="download.png"></div>
                 <div class="game-details">
                     <div class="game-title">Grand Theft Auto (SanAndreas)</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Paid] | Size: 3.6 GB</p>
+                    <p style="font-size: 12px; color: #888;">For PC [Paid]</p>
+                    <div class="game-info">Size: 3.6 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
                     <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
@@ -328,7 +400,9 @@
                 <div class="game-img"><img src="downloadGRANNY.jpeg"></div>
                 <div class="game-details">
                     <div class="game-title">Granny 4 The Rebellion</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Free] | Size: 200 MB</p>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 200 MB</div>
+                    <div class="rating">★ ★ ★ ★ ★ 7.7</div>
                     <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
@@ -337,20 +411,41 @@
                 <div class="game-img"><img src="5.jpeg"></div>
                 <div class="game-details">
                     <div class="game-title">Granny 5 Time To Wake Up</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Free] | Size: 6.5 GB</p>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 6.5 GB</div>
+                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
                     <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
-            <a href="store.html" class="more-games-btn">See More Games ➔</a>
+            <div class="game-card">
+                <div class="game-img"><img src="47c33cac4a9431bc157a395095653102.jpg"></div>
+                <div class="game-details">
+                    <div class="game-title">StarRupture</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 27 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
+                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
+            </div>
+
+            <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold;">See More Games ➔</a>
         </div>    
-    </div>
+        
+        <aside class="sidebar desktop-only-ads">
+            <h3 style="font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">PROMOTED</h3>
+            <div class="ad-container" style="background: #111; padding: 10px; border-radius: 5px;">
+                <p style="font-size: 11px; color: #aaa;">Your Product Name</p>
+                <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 12px; font-weight: bold; text-decoration: none;">PLACE YOUR AD HERE ↗</a>
+            </div>
+        </aside>
+    </div>    
 
     <div class="login-overlay" id="loginModal">
         <div class="login-box">
             <span style="float:right; cursor:pointer;" onclick="closeModal()">✕</span>
             <h3>LOGIN</h3>
-            <button onclick="signInWithGoogle()" style="margin-top:20px; padding:10px; width:100%; cursor:pointer;">Google Login</button>
+            <button class="submit-login-btn" onclick="signInWithGoogle()" style="margin-top:20px; background: #fff; color: #000; width: 100%; padding: 12px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer;">Sign in with Google</button>
         </div>
     </div>
 
@@ -398,13 +493,13 @@
                 document.getElementById('cardEmail').innerText = user.email;
             } else {
                 document.getElementById('userName').innerText = "LOGIN";
+                document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 document.getElementById('profileCard').style.display = 'none';
             }
         });
     </script>
 
     <script>
-        // Typing Animation
         const typedSpan = document.getElementById("typed-text");
         const toType = ["The Best PC Games", "Latest Movies", "TV Series", "For Free!"];
         let wordIdx = 0, charIdx = 0, isDeleting = false;
