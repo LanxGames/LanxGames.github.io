@@ -49,41 +49,41 @@
             gap: 15px;
         }
 
-        /* --- UNIQUE SUPREME SMOOTH LOGO (NO IMAGE) --- */
+        /* --- SUPREME GAMING TECH LOGO (NO IMAGE) --- */
         .logo-box {
             width: 60px;
             height: 60px;
-            border: 1px solid rgba(255,255,255,0.8);
+            background: transparent;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000;
-            position: relative;
-            border-radius: 4px 15px 4px 15px; /* Unique Symmetric Shape */
-            transition: 0.5s;
+            border: 2px solid #fff;
+            /* Cyberpunk / Tech Shape using Clip-path */
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
 
         .logo-box::before {
             content: '';
             position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 0.5px solid rgba(255,255,255,0.2);
-            border-radius: inherit;
+            width: 85%;
+            height: 85%;
+            border: 1px solid rgba(255,255,255,0.2);
+            clip-path: inherit;
         }
 
         .logo-box::after {
             content: 'LANX';
             color: #fff;
-            font-weight: 200; /* Ultra Thin Posh Look */
-            font-size: 11px;
-            letter-spacing: 4px;
-            animation: supremeGlow 4s infinite ease-in-out;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 2px;
+            animation: techBlink 3s infinite ease-in-out;
         }
 
-        @keyframes supremeGlow {
-            0%, 100% { opacity: 0.4; letter-spacing: 4px; }
-            50% { opacity: 1; letter-spacing: 6px; text-shadow: 0 0 10px #fff; }
+        @keyframes techBlink {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 2px #fff); }
+            50% { opacity: 0.6; transform: scale(0.95); filter: drop-shadow(0 0 10px #fff); }
         }
 
         .brand-name {
@@ -164,7 +164,7 @@
             header { padding: 15px 3%; }
             .brand-name { font-size: 16px; letter-spacing: 1px; }
             .logo-box { width: 45px; height: 45px; }
-            .logo-box::after { font-size: 8px; letter-spacing: 2px; }
+            .logo-box::after { font-size: 9px; letter-spacing: 1px; }
             .user-nav-area span { font-size: 9px; }
         }
 
