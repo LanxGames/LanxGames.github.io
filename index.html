@@ -212,8 +212,8 @@
             .user-nav-area img { width: 22px; height: 22px; }
             
             nav { padding: 10px 3%; gap: 15px; }
-            .nav-links { gap: 12px; } /* ලින්ක්ස් අතර පරතරය අඩු කළා */
-            .nav-links a { font-size: 9px; letter-spacing: 0.5px; } /* අකුරු පොඩි කළා */
+            .nav-links { gap: 12px; } 
+            .nav-links a { font-size: 11px; letter-spacing: 0.5px; } /* 9px idan 11px dakwa wedi kala */
             
             .search-bar { padding: 10px 15px; font-size: 12px; border-radius: 8px; }
             .search-bar:focus { max-width: 98%; }
@@ -221,7 +221,7 @@
 
         .hero-banner {
             width: 95%;
-            margin: 20px auto;
+            margin: 5px auto 20px auto; /* Search bar ekata lan kala */
             min-height: 200px;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
@@ -292,78 +292,91 @@
             align-items: start;
         }
 
+        /* --- GAME CARDS PROFESSIONAL REDESIGN --- */
         .game-card {
             display: flex;
             gap: 20px;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #1a1a1a;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            margin-bottom: 20px;
+            background: linear-gradient(145deg, #0a0a0a, #050505);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
             position: relative;
+            overflow: hidden;
         }
 
         .game-card:hover {
             border-color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.02);
         }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            transition: 0.5s;
+        }
+
+        .game-card:hover::before { left: 100%; }
 
         .game-img {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #333;
+            width: 120px;
+            height: 120px;
+            border: 1px solid #222;
             flex-shrink: 0;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
-        .game-card:hover .game-img {
-            border-color: #fff;
-        }
-
+        .game-card:hover .game-img { border-color: #fff; transform: rotate(-2deg); }
         .game-img img { width: 100%; height: 100%; object-fit: cover; }
-        .game-details { display: flex; flex-direction: column; gap: 5px; }
-        .game-title { font-size: 18px; font-weight: bold; color: #fff; }
+        
+        .game-details { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+        .game-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+        .game-info { font-size: 13px; color: #aaa; font-weight: 500; }
+        .rating { font-size: 12px; color: #fff; background: rgba(255,255,255,0.05); width: fit-content; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
 
         .download-btn {
             display: inline-block;
-            margin-top: 5px;
-            padding: 6px 18px;
+            margin-top: 10px;
+            padding: 8px 25px;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
             text-align: center;
             width: fit-content;
             font-size: 12px;
-            font-weight: bold;
+            font-weight: 900;
+            letter-spacing: 1px;
             transition: 0.3s;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
 
-        .download-btn:hover {
-            background: #fff;
-            color: #000;
-        }
+        .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px rgba(255,255,255,0.3); }
 
         @media (min-width: 1024px) {
             .container { grid-template-columns: 2.5fr 1fr; }
-            .game-img { width: 150px; height: 150px; }
+            .game-img { width: 160px; height: 160px; }
         }
 
         @media (max-width: 480px) {
-            .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+            .main-content { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
             .game-card {
-                flex-direction: column; align-items: center; text-align: center;
-                width: 48%; padding: 10px; margin-bottom: 10px; gap: 10px;
-                display: flex; justify-content: space-between;
+                flex-direction: column; align-items: flex-start; text-align: left;
+                width: 48%; padding: 12px; margin-bottom: 5px; gap: 8px;
+                border-radius: 12px;
             }
-            .game-img { width: 100%; height: 110px; }
-            .game-details { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; width: 100%; }
-            .game-title { font-size: 13px; min-height: 35px; }
+            .game-img { width: 100%; height: 130px; border-radius: 8px; }
+            .game-title { font-size: 14px; min-height: 40px; line-height: 1.2; }
             .game-info, .rating { font-size: 10px; }
-            .download-btn { margin: 5px auto 0 auto; padding: 5px 10px; font-size: 10px; width: 100%; }
+            .download-btn { margin-top: 5px; padding: 7px; font-size: 10px; width: 100%; }
         }
 
         .login-overlay { 
@@ -387,7 +400,7 @@
             }
         }
 
-        .mobile-only-btn { display: block; text-align: center; margin-top: 20px; }
+        .mobile-only-btn { display: none; } /* Download App Button Ayyin kala */
 
         /* --- FIXED WHITE PREMIUM DONATE BUTTON --- */
         .premium-donate-btn {
