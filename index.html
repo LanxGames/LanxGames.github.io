@@ -32,15 +32,20 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Header Section */
+        /* Header Section - PREMIUM UPDATED */
         header {
-            padding: 20px 5%;
+            padding: 25px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid #333;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             flex-wrap: nowrap; 
             gap: 10px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
         }
 
         .logo-section {
@@ -86,77 +91,114 @@
         }
 
         .brand-name {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            background: linear-gradient(to right, #fff 20%, #444 50%, #fff 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
         }
 
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- LOGIN BAR PREMIUM UPDATED --- */
         .user-nav-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
-            background: #111;
-            padding: 5px 12px;
-            border-radius: 25px;
-            border: 1px solid #333;
-            transition: 0.3s;
+            background: transparent;
+            padding: 8px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative; 
             flex-shrink: 0;
         }
-        .user-nav-area:hover { border-color: #fff; }
-        .user-nav-area img { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
-        .user-nav-area span { font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+        .user-nav-area:hover { border-color: #fff; background: #fff; }
+        .user-nav-area:hover span { color: #000; }
+        .user-nav-area img { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
+        .user-nav-area span { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; transition: 0.3s; }
 
         .profile-card {
-            position: absolute; top: 50px; right: 0; width: 220px; background: #0a0a0a; 
-            border: 1px solid #333; border-radius: 10px; padding: 20px; display: none;
+            position: absolute; top: 60px; right: 0; width: 250px; background: #000; 
+            border: 1px solid #333; border-radius: 15px; padding: 25px; display: none;
             flex-direction: column; align-items: center; z-index: 5000; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
         }
-        .profile-card img { width: 60px; height: 60px; border-radius: 50%; border: 1px solid #fff; margin-bottom: 10px; }
-        .profile-card h4 { font-size: 14px; margin-bottom: 5px; color: #fff; }
-        .profile-card p { font-size: 10px; color: #777; margin-bottom: 15px; }
-        .logout-btn-card { background: #fff; color: #000; border: none; padding: 7px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 11px; }
+        .profile-card img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #fff; margin-bottom: 15px; }
+        .profile-card h4 { font-size: 16px; margin-bottom: 5px; color: #fff; }
+        .profile-card p { font-size: 11px; color: #777; margin-bottom: 20px; }
+        .logout-btn-card { background: #fff; color: #000; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 8px; font-size: 12px; transition: 0.3s; }
+        .logout-btn-card:hover { transform: scale(0.95); opacity: 0.9; }
 
+        /* --- NAVIGATION BAR PREMIUM UPDATED --- */
         nav {
-            background: #0e0d0d;
-            padding: 10px 5%;
+            background: #000;
+            padding: 20px 5%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: sticky;
-            top: 0;
             z-index: 1000;
-            gap: 10px;
+            gap: 25px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 35px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: #888;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
-            transition: 0.3s;
-            padding: 5px 0;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1.5px;
+            background: #fff;
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- SEARCH BAR PREMIUM UPDATED --- */
         .search-bar {
-            background: transparent;
-            border: 1px solid #444;
-            padding: 8px 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #222;
+            padding: 15px 25px;
             color: white;
-            border-radius: 4px;
+            border-radius: 12px;
             width: 100%;
-            max-width: 300px;
+            max-width: 600px;
+            font-size: 15px;
+            text-align: center;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .search-bar:focus {
+            background: #000;
+            border-color: #fff;
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
 
         @media (max-width: 480px) {
@@ -164,7 +206,9 @@
             .brand-name { font-size: 16px; letter-spacing: 1px; }
             .logo-box { width: 45px; height: 45px; }
             .logo-box::after { font-size: 9px; letter-spacing: 1px; }
+            .user-nav-area { padding: 5px 12px; }
             .user-nav-area span { font-size: 9px; }
+            .search-bar:focus { max-width: 95%; }
         }
 
         .hero-banner {
@@ -297,9 +341,7 @@
 
         @media (min-width: 1024px) {
             .container { grid-template-columns: 2.5fr 1fr; }
-            nav { flex-direction: row; justify-content: space-between; }
             .game-img { width: 150px; height: 150px; }
-            .brand-name { font-size: 30px; }
         }
 
         @media (max-width: 480px) {
@@ -341,11 +383,11 @@
 
         /* --- FIXED WHITE PREMIUM DONATE BUTTON --- */
         .premium-donate-btn {
-            position:fixed !important; /* පිටුව සමඟ සෙලවෙන්නේ නැතිව එකම තැන තැබීමට */
-            bottom: 25px; /* පහළ සිට ඉඩ */
-            right: 25px; /* දකුණු පස සිට ඉඩ */
-            background-color: #ffffff !important; /* සම්පූර්ණ සුදු පාට */
-            color: #000000 !important; /* කළු පාට අකුරු */
+            position:fixed !important; 
+            bottom: 25px; 
+            right: 25px; 
+            background-color: #ffffff !important; 
+            color: #000000 !important; 
             padding: 12px 20px;
             border-radius: 12px;
             display: flex;
@@ -355,7 +397,7 @@
             font-size: 15px;
             font-weight: bold;
             box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-            z-index: 99999; /* වෙනත් දේවල් වලට උඩින් පෙන්වීමට */
+            z-index: 99999; 
             border: 2px solid #000;
             transition: 0.3s;
         }
@@ -368,10 +410,9 @@
         .premium-donate-btn img {
             height: 22px;
             margin-right: 10px;
-            filter: brightness(0); /* ලෝගෝ එක කළු පාට කිරීමට */
+            filter: brightness(0); 
         }
 
-        /* ෆෝන් එකේදීත් වචනය පෙන්වීමට */
         @media (max-width: 600px) {
             .premium-donate-btn {
                 padding: 10px 15px;
@@ -409,7 +450,7 @@
             <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series 📺</a></li>
             <li><a href="https://wa.me/94777042735" target="_blank">Contact📬</a></li>
         </ul>
-        <input type="text" id="gameSearch" class="search-bar" placeholder="Search Games...">
+        <input type="text" id="gameSearch" class="search-bar" placeholder="🔍 Search Games & Movies...">
     </nav>
 
     <div class="mobile-only-btn">
@@ -564,5 +605,3 @@
 
 </body>
 </html>
-
-
