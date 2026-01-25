@@ -10,7 +10,7 @@
     <meta name="author" content="Pamod Yoshitha Abeyrathna">
     <meta name="robots" content="index, follow">
 
-    <meta name="google-site-verification" content="I_WJEb_Iup7UacRZn8arH6MBIacvp-h1hq0tMP-ev6s" />
+    <meta name="google-site-verification" content="I_WJE_Iup7UacRZn8arH6MBIacvp-h1hq0tMP-ev6s" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/BLACK_STORE.LK/sitemap.xml" />
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -351,18 +351,39 @@
 
         .mobile-only-btn { display: block; text-align: center; margin-top: 20px; }
 
-        body.light-mode-on { background-color: #ffffff !important; color: #000000 !important; }
-        body.light-mode-on .hero-banner { background: #f1f1f1 !important; border-color: #000 !important; }
-        body.light-mode-on .hero-banner h1, body.light-mode-on #typed-text { color: #000 !important; border-color: #000 !important; }
-        body.light-mode-on .logo-box { border-color: #000 !important; }
-        body.light-mode-on .logo-box::after { color: #000 !important; text-shadow: none !important; }
-
-        .theme-float-btn {
-            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
-            width: 50px; height: 50px; border-radius: 50%; background: #fff; color: #000;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            border: 2px solid #000; font-size: 20px;
+        /* Premium Floating Donate Button Styling */
+        .premium-donate-btn {
+            position: fixed !important;
+            bottom: 25px;
+            right: 25px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 12px 22px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 99999;
+            transition: all 0.3s ease;
         }
+
+        .premium-donate-btn:hover {
+            transform: translateY(-5px);
+            background-color: #000;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .premium-donate-btn img {
+            height: 20px;
+            margin-right: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -472,8 +493,6 @@
         </div>
     </div>
 
-    <div class="theme-float-btn" onclick="toggleMainTheme()">🌓</div>
-
     <footer>
         <marquee>© [ LANX GAMES.LK ] CREATED BY, PAMOD YOSHITHA ABEYRATHNA.</marquee>
     </footer>
@@ -537,10 +556,6 @@
         }
         document.addEventListener("DOMContentLoaded", type);
 
-        function toggleMainTheme() {
-            document.body.classList.toggle('light-mode-on');
-        }
-
         document.getElementById('gameSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
             let gameCards = document.querySelectorAll('.game-card');
@@ -551,76 +566,10 @@
         });
     </script>
 
-<a href="https://buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
-    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
-    <span class="donate-text">Donate Now</span>
-</a>
+    <a href="https://www.buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
+        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
+        <span class="donate-text">Donate Now</span>
+    </a>
 
-<a href="https://www.buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
-    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
-    <span class="donate-text">Donate Now</span>
-</a>
-
-<style>
-    /* බටන් එක එකම තැන ස්ථාවරව තබා ගැනීම */
-    .premium-donate-btn {
-        position: fixed !important; /* එකම තැන රැඳී සිටීමට */
-        bottom: 25px;
-        right: 25px;
-        background-color: #000000;
-        color: #ffffff;
-        padding: 12px 20px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        font-family: sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        border: 1px solid #333333;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        z-index: 99999; /* වෙනත් දේවල් වලට යට නොවීමට */
-        transition: all 0.3s ease;
-    }
-
-    /* Hover effect */
-    .premium-donate-btn:hover {
-        background-color: #ffffff;
-        color: #000000;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-
-    .premium-donate-btn img {
-        height: 22px;
-        margin-right: 10px;
-        filter: brightness(0) invert(1);
-    }
-
-    .premium-donate-btn:hover img {
-        filter: brightness(0);
-    }
-
-    /* ෆෝන් එකට ගැලපෙන විදිහ */
-    @media (max-width: 600px) {
-        .donate-text {
-            display: none;
-        }
-        .premium-donate-btn {
-            padding: 15px;
-            bottom: 20px;
-            right: 20px;
-            border-radius: 50%;
-        }
-        .premium-donate-btn img {
-            margin-right: 0;
-        }
-    }
-</style>
-
-  
-  
 </body>
 </html>
-
-
