@@ -201,14 +201,22 @@
             box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
 
+        /* --- MOBILE OPTIMIZATION UPDATED --- */
         @media (max-width: 480px) {
-            header { padding: 15px 3%; }
-            .brand-name { font-size: 16px; letter-spacing: 1px; }
-            .logo-box { width: 45px; height: 45px; }
-            .logo-box::after { font-size: 9px; letter-spacing: 1px; }
-            .user-nav-area { padding: 5px 12px; }
-            .user-nav-area span { font-size: 9px; }
-            .search-bar:focus { max-width: 95%; }
+            header { padding: 12px 3%; }
+            .brand-name { font-size: 15px; letter-spacing: 1.5px; }
+            .logo-box { width: 40px; height: 40px; }
+            .logo-box::after { font-size: 8px; letter-spacing: 1px; }
+            .user-nav-area { padding: 4px 10px; gap: 6px; }
+            .user-nav-area span { font-size: 8px; letter-spacing: 0.5px; }
+            .user-nav-area img { width: 22px; height: 22px; }
+            
+            nav { padding: 10px 3%; gap: 15px; }
+            .nav-links { gap: 12px; } /* ලින්ක්ස් අතර පරතරය අඩු කළා */
+            .nav-links a { font-size: 9px; letter-spacing: 0.5px; } /* අකුරු පොඩි කළා */
+            
+            .search-bar { padding: 10px 15px; font-size: 12px; border-radius: 8px; }
+            .search-bar:focus { max-width: 98%; }
         }
 
         .hero-banner {
