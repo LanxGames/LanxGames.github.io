@@ -299,7 +299,20 @@ u<!DOCTYPE html>
         </ul>
         <input type="text" id="storeSearch" class="search-bar" placeholder="🔍 Search All Games...">
     </nav>
-
+        <header>
+    <div class="logo-section">
+            <div class="logo-box"></div>
+            <div class="brand-name">LANX GAMES.LK</div>
+        </div>
+        <div class="user-nav-area" id="authBtn" onclick="toggleAuth()">
+            <img id="userImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+            <span id="userName">LOGIN</span>
+            <div class="profile-card" id="profileCard">
+                <img id="cardImg" src=""><h4 id="cardName">User</h4><p id="cardEmail"></p>
+                <button class="logout-btn-card" onclick="userLogout()">LOGOUT</button>
+            </div>
+        </div>
+    </header>
     <div class="container">
         <a href="index.html" class="back-btn"> Back to Home</a>
         <h2 class="grid-title"> All GAMES </h2>
@@ -468,5 +481,6 @@ u<!DOCTYPE html>
     </script>
 </body>
 </html>
+
 
 
