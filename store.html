@@ -88,7 +88,7 @@
         }
 
         .container { width: 95%; margin: 30px auto; }
-        .grid-title { text-align: center; margin-bottom: 30px; letter-spacing: 5px; text-transform: uppercase; font-size: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .grid-title { text-align: center; margin-bottom: 30px; letter-spacing: 5px; text-transform: uppercase; font-size: 18px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; }
 
         .game-grid {
             display: flex;
@@ -124,6 +124,7 @@
             flex-direction: column;
             gap: 5px;
             flex-grow: 1;
+            align-items: center;
         }
 
         .game-item h3 {
@@ -166,6 +167,8 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
+            width: 130px;
+            border-radius: 8px;
         }
 
         .mini-download-btn:hover { background: #fff; color: #000; }
@@ -186,8 +189,9 @@
             border: 1px solid #333;
             padding: 8px 16px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 12px;
             transition: 0.3s;
+            font-weight: bold;
         }
 
         .page-btn.active {
@@ -232,7 +236,7 @@
 
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Home</a>
-        <h2 class="grid-title">All Games Collection</h2>
+        <h2 class="grid-title">GAMES</h2>
         <div class="game-grid" id="gameGrid">
             <p style="text-align: center; width: 100%;">Loading Games...</p>
         </div>
@@ -312,12 +316,27 @@
             paginationBox.innerHTML = '';
             const totalPages = Math.ceil(allGames.length / limit);
             if(totalPages <= 1) return;
-            for(let i=1; i<=totalPages; i++) {
+
+            // Logic to show 1-4, then 5-8, then 9-12 etc.
+            const groupSize = 4;
+            const currentGroup = Math.ceil(currentPage / groupSize);
+            const startPage = (currentGroup - 1) * groupSize + 1;
+            const endPage = Math.min(startPage + groupSize - 1, totalPages);
+
+            for(let i = startPage; i <= endPage; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
                 btn.className = (i === currentPage) ? 'page-btn active' : 'page-btn';
                 btn.onclick = () => displayGames(i);
                 paginationBox.appendChild(btn);
+            }
+
+            if (endPage < totalPages) {
+                const nextBtn = document.createElement('button');
+                nextBtn.innerText = 'Next ➔';
+                nextBtn.className = 'page-btn';
+                nextBtn.onclick = () => displayGames(endPage + 1);
+                paginationBox.appendChild(nextBtn);
             }
         }
 
