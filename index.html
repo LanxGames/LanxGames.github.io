@@ -294,114 +294,128 @@
 
         /* --- GAME CARDS PREMIUM REDESIGN --- */
         .main-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Laptop eke default 2 items */
+            display: flex;
+            flex-direction: column; /* Desktop default: Top to Bottom Rows */
             gap: 20px;
-        }
-
-        @media (min-width: 1024px) {
-            .main-content { grid-template-columns: repeat(2, 1fr); }
         }
 
         .game-card {
             display: flex;
-            flex-direction: column;
+            flex-direction: row; /* Desktop default: Side by side img and text */
             background: #0a0a0a;
-            border-radius: 12px;
-            border: 1px solid #1a1a1a;
+            border-radius: 20px; /* ලොකු රවුම් වෙච්චි කොටුව */
+            border: 1px solid #222;
             overflow: hidden;
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            align-items: center;
+            padding: 15px;
         }
 
         .game-card:hover {
             border-color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+            background: #111;
+            transform: scale(1.01);
         }
 
         .game-img {
-            width: 100%;
-            height: 180px;
-            background: #111;
+            width: 150px; /* Fixed size photo box */
+            height: 150px;
+            background: #000;
+            border-radius: 15px;
             overflow: hidden;
-            border-bottom: 1px solid #1a1a1a;
+            flex-shrink: 0;
         }
 
         .game-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .game-card:hover .game-img img {
-            transform: scale(1.1);
         }
 
         .game-details {
-            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            justify-content: center;
+            align-items: center; /* විස්තර සෙන්ටර් කළා */
+            text-align: center;
             flex-grow: 1;
+            padding: 0 20px;
+            gap: 10px;
         }
 
         .game-title {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 800;
             color: #fff;
-            line-height: 1.3;
-            min-height: 42px;
-        }
-
-        .game-info {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
+        .game-info {
+            font-size: 13px;
+            color: #888;
+        }
+
         .rating {
-            font-size: 11px;
+            font-size: 12px;
             color: #fff;
-            font-weight: bold;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #333;
         }
 
         .download-btn {
-            display: block;
-            margin-top: auto;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid #fff;
-            color: #fff;
+            padding: 12px 30px;
+            background: #fff;
+            color: #000;
             text-decoration: none;
-            text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 900;
             letter-spacing: 2px;
+            border-radius: 8px;
             transition: 0.3s;
-            border-radius: 4px;
+            text-transform: uppercase;
+            width: 200px; /* Fixed width for uniformity */
         }
 
         .download-btn:hover {
-            background: #fff;
-            color: #000;
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
+            transform: translateY(-2px);
         }
 
-        /* --- MOBILE OPTIMIZATION: 2 CARDS PER ROW --- */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 600px) {
             .main-content {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr); /* 2 Cards per row on Mobile */
+                grid-template-columns: repeat(2, 1fr); /* Phone එකේදී දෙක දෙක */
                 gap: 10px;
             }
-            .game-card { border-radius: 8px; }
-            .game-img { height: 110px; }
-            .game-details { padding: 10px; gap: 5px; }
-            .game-title { font-size: 11px; min-height: 30px; }
-            .game-info, .rating { font-size: 9px; }
-            .download-btn { padding: 6px; font-size: 9px; letter-spacing: 1px; }
+            .game-card {
+                flex-direction: column; /* Phone එකේදී උඩ සිට පල්ලෙහාට */
+                padding: 10px;
+                border-radius: 15px;
+            }
+            .game-img {
+                width: 100%;
+                height: 120px;
+                margin-bottom: 10px;
+            }
+            .game-details {
+                padding: 0;
+                width: 100%;
+            }
+            .game-title {
+                font-size: 12px;
+                min-height: 35px;
+            }
+            .game-info, .rating {
+                font-size: 9px;
+            }
+            .download-btn {
+                width: 100%;
+                padding: 8px;
+                font-size: 10px;
+            }
         }
 
         .login-overlay { 
@@ -512,13 +526,13 @@
 
     <div class="container">
         <div class="main-content">
-            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; grid-column: 1 / -1;">GAMES</h2>
+            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width:100%;">GAMES</h2>
 
             <div class="game-card">
                 <div class="game-img"><img src="download.png"></div>
                 <div class="game-details">
                     <div class="game-title">Grand Theft Auto (SanAndreas)</div>
-                    <div class="game-info">Size: 3.6 GB | PC [Paid]</div>
+                    <div class="game-info">Size: 3.6 GB | For PC [Paid]</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
                     <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
@@ -528,7 +542,7 @@
                 <div class="game-img"><img src="downloadGRANNY.jpeg"></div>
                 <div class="game-details">
                     <div class="game-title">Granny 4 The Rebellion</div>
-                    <div class="game-info">Size: 200 MB | PC [Free]</div>
+                    <div class="game-info">Size: 200 MB | For PC [Free]</div>
                     <div class="rating">★ ★ ★ ★ ★ 7.7</div>
                     <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
@@ -538,7 +552,7 @@
                 <div class="game-img"><img src="5.jpeg"></div>
                 <div class="game-details">
                     <div class="game-title">Granny 5 Time To Wake Up</div>
-                    <div class="game-info">Size: 6.5 GB | PC [Free]</div>
+                    <div class="game-info">Size: 6.5 GB | For PC [Free]</div>
                     <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
                     <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
@@ -548,13 +562,13 @@
                 <div class="game-img"><img src="47c33cac4a9431bc157a395095653102.jpg"></div>
                 <div class="game-details">
                     <div class="game-title">StarRupture</div>
-                    <div class="game-info">Size: 27 GB | PC [Free]</div>
+                    <div class="game-info">Size: 27 GB | For PC [Free]</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
                     <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
-            <a href="store.html" class="more-games-btn" style="grid-column: 1 / -1; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 8px;">See More Games ➔</a>
+            <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px;">See More Games ➔</a>
         </div>    
         
         <aside class="sidebar desktop-only-ads">
