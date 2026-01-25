@@ -550,5 +550,74 @@
             });
         });
     </script>
+
+<a href="https://buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
+    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
+    <span class="donate-text">Donate Now</span>
+</a>
+
+<style>
+    .premium-donate-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #000000; /* තද කළු පැහැය */
+        color: #ffffff; /* සුදු පැහැති අකුරු */
+        padding: 12px 22px;
+        border-radius: 12px; /* Premium පෙනුමට තරමක් කොටු හැඩය */
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border: 1px solid #333333; /* සියුම් Border එකක් */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Premium Shadow */
+        z-index: 9999;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* මවුස් එක උඩට ගිය විට (Hover) */
+    .premium-donate-btn:hover {
+        transform: translateY(-5px); /* මදක් උඩට එසවීම */
+        background-color: #ffffff;
+        color: #000000;
+        border-color: #000000;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    /* ලෝගෝ එක කළු/සුදු තීම් එකට අනුව වෙනස් වීම */
+    .premium-donate-btn img {
+        height: 22px;
+        margin-right: 12px;
+        filter: brightness(0) invert(1); /* සුදු පැහැයට හැරවීම */
+        transition: all 0.4s ease;
+    }
+
+    .premium-donate-btn:hover img {
+        filter: brightness(0); /* Hover කළ විට කළු පැහැයට හැරවීම */
+    }
+
+    /* Responsive: ෆෝන් එකට ගැලපෙන විදිහට */
+    @media (max-width: 600px) {
+        .donate-text {
+            display: none; /* අකුරු ඉවත් වේ */
+        }
+        .premium-donate-btn {
+            padding: 15px;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50%; /* ෆෝන් එකේදී රවුම් වේ */
+        }
+        .premium-donate-btn img {
+            margin-right: 0;
+            height: 25px;
+        }
+    }
+</style>
+
+    
 </body>
 </html>
+
