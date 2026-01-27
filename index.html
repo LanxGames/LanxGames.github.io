@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E5ZGPZREXB"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5ZGPZREXB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -143,6 +142,17 @@
         .profile-card p { font-size: 11px; color: #777; margin-bottom: 20px; }
         .logout-btn-card { background: #fff; color: #000; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 8px; font-size: 12px; transition: 0.3s; }
         .logout-btn-card:hover { transform: scale(0.95); opacity: 0.9; }
+
+        /* Login Modal Styles */
+        .login-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); display: none; 
+            justify-content: center; align-items: center; z-index: 9999; 
+        }
+        .login-box-modal { 
+            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
+            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
+        }
 
         /* --- NAVIGATION BAR PREMIUM UPDATED --- */
         nav {
@@ -396,16 +406,6 @@
             .download-btn { margin-top: 5px; padding: 7px; font-size: 9px; width: 100%; border-radius: 8px; }
         }
 
-        .login-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); display: none; 
-            justify-content: center; align-items: center; z-index: 3000; 
-        }
-        .login-box { 
-            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
-            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
-        }
-
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
 
         .desktop-only-ads { display: none; }
@@ -480,6 +480,17 @@
             </div>
         </div>
     </header>
+
+    <div class="login-overlay" id="loginModal">
+        <div class="login-box-modal">
+            <h2 style="margin-bottom: 20px; letter-spacing: 2px;">WELCOME</h2>
+            <p style="color: #777; margin-bottom: 30px; font-size: 14px;">Sign in to access more features.</p>
+            <button onclick="signInWithGoogle()" style="background: #fff; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <i class="fab fa-google"></i> SIGN IN WITH GOOGLE
+            </button>
+            <p onclick="closeModal()" style="margin-top: 20px; color: #444; cursor: pointer; font-size: 12px;">CLOSE</p>
+        </div>
+    </div>
 
     <nav>
         <ul class="nav-links">
@@ -591,6 +602,8 @@
 
         window.signInWithGoogle = () => signInWithPopup(auth, provider).then(() => closeModal());
         window.userLogout = () => signOut(auth);
+        window.closeModal = () => document.getElementById('loginModal').style.display = 'none';
+        
         window.toggleAuth = () => {
             if (auth.currentUser) {
                 const card = document.getElementById('profileCard');
@@ -599,18 +612,24 @@
                 document.getElementById('loginModal').style.display = 'flex';
             }
         };
-        window.closeModal = () => document.getElementById('loginModal').style.display = 'none';
 
         onAuthStateChanged(auth, (user) => {
+            const userName = document.getElementById('userName');
             if (user) {
-                document.getElementById('userName').innerText = user.displayName.split(' ')[0].toUpperCase();
+                userName.style.display = 'none'; // LOGIN text eka hide karanawa
                 document.getElementById('userImg').src = user.photoURL;
+                document.getElementById('userImg').style.width = '35px'; // Photo eka tikak loku kala
+                document.getElementById('userImg').style.height = '35px';
+                
                 document.getElementById('cardImg').src = user.photoURL;
                 document.getElementById('cardName').innerText = user.displayName;
                 document.getElementById('cardEmail').innerText = user.email;
             } else {
-                document.getElementById('userName').innerText = "LOGIN";
+                userName.style.display = 'inline'; // ආයෙ LOGIN text එක පෙන්වනවා
+                userName.innerText = "LOGIN";
                 document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                document.getElementById('userImg').style.width = '28px';
+                document.getElementById('userImg').style.height = '28px';
                 document.getElementById('profileCard').style.display = 'none';
             }
         });
@@ -643,4 +662,3 @@
 
 </body>
 </html>
-
