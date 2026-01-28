@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5ZGPZREXB"></script>
@@ -232,7 +232,7 @@
             
             nav { padding: 10px 3%; gap: 15px; }
             .nav-links { gap: 12px; } 
-            .nav-links a { font-size: 11px; letter-spacing: 0.5px; } /* 9px idan 11px dakwa wedi kala */
+            .nav-links a { font-size: 11px; letter-spacing: 0.5px; } 
             
             .search-bar { padding: 10px 15px; font-size: 12px; border-radius: 8px; }
             .search-bar:focus { max-width: 98%; }
@@ -240,7 +240,7 @@
 
         .hero-banner {
             width: 95%;
-            margin: 5px auto 20px auto; /* Search bar ekata lan kala */
+            margin: 5px auto 20px auto;
             min-height: 200px;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
@@ -312,18 +312,23 @@
         }
 
         /* --- GAME CARDS PROFESSIONAL REDESIGN --- */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Laptop wala 2 per row */
+            gap: 20px;
+        }
+
         .game-card {
             display: flex;
-            flex-direction: column; /* Desktop wala details center karanna meka damme */
-            align-items: center;    /* Contents center align kala */
-            text-align: center;     /* Text center kala */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             gap: 15px;
             background: linear-gradient(145deg, #0a0a0a, #050505);
             padding: 20px;
-            border-radius: 25px;    /* Card eka honda rround kala */
+            border-radius: 25px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 25px;
             position: relative;
             overflow: hidden;
         }
@@ -346,11 +351,11 @@
         .game-card:hover::before { left: 100%; }
 
         .game-img {
-            width: 140px;
-            height: 140px;
-            border: none;           /* White border ayyin kala */
+            width: 100%;
+            height: 250px;
+            border: none;
             flex-shrink: 0;
-            border-radius: 20px;    /* Image eka honda round kala */
+            border-radius: 20px;
             overflow: hidden;
             transition: 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
@@ -362,7 +367,7 @@
         .game-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
         
         .game-details { display: flex; flex-direction: column; gap: 8px; justify-content: center; align-items: center; }
-        .game-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+        .game-title { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: 0.5px; min-height: 45px; }
         .game-info { font-size: 13px; color: #aaa; font-weight: 500; }
         .rating { font-size: 12px; color: #fff; background: rgba(255,255,255,0.05); width: fit-content; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
 
@@ -374,32 +379,32 @@
             color: #fff;
             text-decoration: none;
             text-align: center;
-            width: 160px; /* Fixed standard size per request */
+            width: 140px;
             font-size: 12px;
             font-weight: 900;
             letter-spacing: 1px;
             transition: 0.3s;
-            border-radius: 10px; /* Button rround kala */
+            border-radius: 10px;
             text-transform: uppercase;
         }
 
         .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px rgba(255,255,255,0.3); }
 
         @media (min-width: 1024px) {
-            .container { grid-template-columns: 2.5fr 1fr; }
-            .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } /* Desktop walath cards 2k penna haduwa */
-            .main-content h2 { grid-column: span 2; }
-            .more-games-btn { grid-column: span 2; }
+            .container { grid-template-columns: 2.5fr 1fr; } /* Laptop wala sidebar ekka 2.5 to 1 ratio */
+        }
+
+        @media (max-width: 768px) {
+            .main-content { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 480px) {
-            .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+            .main-content { grid-template-columns: 1fr 1fr; gap: 10px; }
             .game-card {
-                flex-direction: column; align-items: center; text-align: center;
-                width: 48%; padding: 12px; margin-bottom: 5px; gap: 8px;
-                border-radius: 20px; /* Mobile cards round kala */
+                padding: 12px; margin-bottom: 5px; gap: 8px;
+                border-radius: 20px;
             }
-            .game-img { width: 100%; height: 110px; border-radius: 15px; border: none; }
+            .game-img { height: 140px; border-radius: 15px; }
             .game-img img { border-radius: 15px; }
             .game-title { font-size: 12px; min-height: 35px; line-height: 1.2; }
             .game-info, .rating { font-size: 9px; }
@@ -413,11 +418,9 @@
             .desktop-only-ads {
                 display: block !important;
                 width: 100%; background: #0a0a0a; padding: 15px;
-                border-radius: 8px; border: 1px solid #1a1a1a;
+                border-radius: 8px; border: 1px solid #1a1a1a; position: sticky; top: 100px;
             }
         }
-
-        .mobile-only-btn { display: none; } /* Download App Button Ayyin kala */
 
         /* --- FIXED WHITE PREMIUM DONATE BUTTON --- */
         .premium-donate-btn {
@@ -502,68 +505,63 @@
         <input type="text" id="gameSearch" class="search-bar" placeholder="🔍 Search Games & Movies...">
     </nav>
 
-    <div class="mobile-only-btn">
-        <a href="app-release.apk" download="LanxGames.apk" 
-           style="background-color: #000000; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; border: 2px solid #fff;">
-           📥 DOWNLOAD OUR APP (APK)
-        </a>
-    </div>
-
     <div class="hero-banner">
         <h1>Welcome to Lanx Games.LK</h1>
         <div class="type-wrap">We Provide <span id="typed-text"></span></div>
     </div>
 
     <div class="container">
-        <div class="main-content">
+        <div class="main-content-wrapper" style="grid-column: span 1;">
             <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; font-size: 18px;">GAMES</h2>
+            
+            <div class="main-content">
+                <div class="game-card">
+                    <div class="game-img"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_616x353.jpg"></div>
+                    <div class="game-details">
+                        <div class="game-title">Red Dead Redemption 2</div>
+                        <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                        <div class="game-info">Size: 107.5 GB</div>
+                        <div class="rating">★ ★ ★ ★ ☆ 8.7</div>
+                        <a href="https://shrinkme.click/9vE4L8m" target="_blank" class="download-btn">DOWNLOAD</a>
+                    </div>
+                </div>
 
-            <div class="game-card">
-                <div class="game-img"><img src="download.png"></div>
-                <div class="game-details">
-                    <div class="game-title">Grand Theft Auto (SanAndreas)</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Paid]</p>
-                    <div class="game-info">Size: 3.6 GB</div>
-                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
+                <div class="game-card">
+                    <div class="game-img"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/capsule_616x353.jpg"></div>
+                    <div class="game-details">
+                        <div class="game-title">Grand Theft Auto V [GTA]</div>
+                        <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                        <div class="game-info">Size: 90.8 GB</div>
+                        <div class="rating">★ ★ ★ ★ ★ 9.2</div>
+                        <a href="https://shrinkme.click/GTA5LX" target="_blank" class="download-btn">DOWNLOAD</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-img"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1517290/capsule_616x353.jpg"></div>
+                    <div class="game-details">
+                        <div class="game-title">Battlefield 2042 (V1.1.2.0)</div>
+                        <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                        <div class="game-info">Size: 95.4 GB</div>
+                        <div class="rating">★ ★ ★ ☆ ☆ 6.2</div>
+                        <a href="https://shrinkme.click/BF6LX" target="_blank" class="download-btn">DOWNLOAD</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-img"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1202240/capsule_616x353.jpg"></div>
+                    <div class="game-details">
+                        <div class="game-title">Dispatch (All Episodes & DLC)</div>
+                        <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                        <div class="game-info">Size: 16.8 GB</div>
+                        <div class="rating">★ ★ ★ ★ ☆ 7.5</div>
+                        <a href="https://shrinkme.click/DSPLX" target="_blank" class="download-btn">DOWNLOAD</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="game-card">
-                <div class="game-img"><img src="downloadGRANNY.jpeg"></div>
-                <div class="game-details">
-                    <div class="game-title">Granny 4 The Rebellion</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
-                    <div class="game-info">Size: 200 MB</div>
-                    <div class="rating">★ ★ ★ ★ ★ 7.7</div>
-                    <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-img"><img src="5.jpeg"></div>
-                <div class="game-details">
-                    <div class="game-title">Granny 5 Time To Wake Up</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
-                    <div class="game-info">Size: 6.5 GB</div>
-                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
-                    <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <div class="game-img"><img src="47c33cac4a9431bc157a395095653102.jpg"></div>
-                <div class="game-details">
-                    <div class="game-title">StarRupture</div>
-                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
-                    <div class="game-info">Size: 27 GB</div>
-                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-
-            <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px;">See More Games ➔</a>
-        </div>    
+            <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px; margin-top: 30px;">See More Games ➔</a>
+        </div>
         
         <aside class="sidebar desktop-only-ads">
             <h3 style="font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">PROMOTED</h3>
@@ -616,16 +614,16 @@
         onAuthStateChanged(auth, (user) => {
             const userName = document.getElementById('userName');
             if (user) {
-                userName.style.display = 'none'; // LOGIN text eka hide karanawa
+                userName.style.display = 'none'; 
                 document.getElementById('userImg').src = user.photoURL;
-                document.getElementById('userImg').style.width = '35px'; // Photo eka tikak loku kala
+                document.getElementById('userImg').style.width = '35px'; 
                 document.getElementById('userImg').style.height = '35px';
                 
                 document.getElementById('cardImg').src = user.photoURL;
                 document.getElementById('cardName').innerText = user.displayName;
                 document.getElementById('cardEmail').innerText = user.email;
             } else {
-                userName.style.display = 'inline'; // ආයෙ LOGIN text එක පෙන්වනවා
+                userName.style.display = 'inline'; 
                 userName.innerText = "LOGIN";
                 document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 document.getElementById('userImg').style.width = '28px';
