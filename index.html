@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5ZGPZREXB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E5ZGPZREXB');
-    </script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E5ZGPZREXB');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛒 Lanx Games.lk</title>
@@ -36,15 +37,18 @@
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* Header Section */
+        /* Header Section - PREMIUM UPDATED */
         header {
             padding: 25px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            flex-wrap: nowrap; 
+            gap: 10px;
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(15px);
             position: sticky;
@@ -52,42 +56,80 @@
             z-index: 2000;
         }
 
-        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
+        /* --- SUPREME GAMING TECH LOGO (NO IMAGE) --- */
         .logo-box {
-            width: 60px; height: 60px; border: 2px solid #fff;
-            position: relative; display: flex; justify-content: center; align-items: center;
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
             clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
         }
 
+        .logo-box::before {
+            content: '';
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            border: 1px solid rgba(255,255,255,0.2);
+            clip-path: inherit;
+        }
+
         .logo-box::after {
-            content: 'LANX'; color: #fff; font-weight: 900; font-size: 13px; letter-spacing: 2px;
+            content: 'LANX';
+            color: #fff;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 2px;
             animation: techBlink 3s infinite ease-in-out;
         }
 
         @keyframes techBlink {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.95); }
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 2px #fff); }
+            50% { opacity: 0.6; transform: scale(0.95); filter: drop-shadow(0 0 10px #fff); }
         }
 
         .brand-name {
-            font-size: 26px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
             background: linear-gradient(to right, #fff 20%, #444 50%, #fff 80%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-size: 200% auto; animation: shine 4s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
         }
+
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* Login/Auth Styles */
+        /* --- LOGIN BAR PREMIUM UPDATED --- */
         .user-nav-area {
-            display: flex; align-items: center; gap: 12px; cursor: pointer;
-            padding: 8px 22px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.4s; position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            background: transparent;
+            padding: 8px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; 
+            flex-shrink: 0;
         }
         .user-nav-area:hover { border-color: #fff; background: #fff; }
         .user-nav-area:hover span { color: #000; }
-        .user-nav-area img { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #fff; }
-        .user-nav-area span { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; }
+        .user-nav-area img { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
+        .user-nav-area span { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; transition: 0.3s; }
 
         .profile-card {
             position: absolute; top: 60px; right: 0; width: 250px; background: #000; 
@@ -96,104 +138,316 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.9);
         }
         .profile-card img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #fff; margin-bottom: 15px; }
-        .logout-btn-card { background: #fff; color: #000; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 8px; margin-top: 10px; }
+        .profile-card h4 { font-size: 16px; margin-bottom: 5px; color: #fff; }
+        .profile-card p { font-size: 11px; color: #777; margin-bottom: 20px; }
+        .logout-btn-card { background: #fff; color: #000; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 8px; font-size: 12px; transition: 0.3s; }
+        .logout-btn-card:hover { transform: scale(0.95); opacity: 0.9; }
 
+        /* Login Modal Styles */
         .login-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); display: none; 
             justify-content: center; align-items: center; z-index: 9999; 
         }
-        .login-box-modal { background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; border-radius: 20px; width: 90%; max-width: 380px; text-align: center; }
+        .login-box-modal { 
+            background: #0a0a0a; padding: 40px 30px; border: 1px solid #333; 
+            border-radius: 20px; width: 90%; max-width: 380px; text-align: center; 
+        }
 
-        /* Navigation */
-        nav { padding: 20px 5%; display: flex; flex-direction: column; align-items: center; gap: 25px; }
-        .nav-links { display: flex; list-style: none; gap: 35px; flex-wrap: wrap; justify-content: center; }
-        .nav-links a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 14px; font-weight: 600; letter-spacing: 2px; transition: 0.4s; }
+        /* --- NAVIGATION BAR PREMIUM UPDATED --- */
+        nav {
+            background: #000;
+            padding: 20px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+            gap: 25px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1.5px;
+            background: #fff;
+            transition: 0.4s;
+        }
+
         .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
 
+        /* --- SEARCH BAR PREMIUM UPDATED --- */
         .search-bar {
-            background: rgba(255,255,255,0.03); border: 1px solid #222; padding: 15px 25px;
-            color: white; border-radius: 12px; width: 100%; max-width: 600px; text-align: center; outline: none; transition: 0.5s;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #222;
+            padding: 15px 25px;
+            color: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            font-size: 15px;
+            text-align: center;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
         }
-        .search-bar:focus { border-color: #fff; max-width: 800px; background: #000; }
 
-        /* Hero Banner */
-        .hero-banner {
-            width: 95%; max-width: 1200px; margin: 5px auto 40px auto; min-height: 200px;
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; background: #000; position: relative; overflow: hidden;
+        .search-bar:focus {
+            background: #000;
+            border-color: #fff;
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
-        .hero-banner h1 { font-size: clamp(20px, 4vw, 32px); letter-spacing: 4px; text-transform: uppercase; z-index: 2; font-weight: 800; }
-        #typed-text { color: #fff; font-weight: bold; border-right: 3px solid #fff; padding-right: 5px; animation: blink 0.7s infinite; }
+
+        /* --- MOBILE OPTIMIZATION UPDATED --- */
+        @media (max-width: 480px) {
+            header { padding: 12px 3%; }
+            .brand-name { font-size: 15px; letter-spacing: 1.5px; }
+            .logo-box { width: 40px; height: 40px; }
+            .logo-box::after { font-size: 8px; letter-spacing: 1px; }
+            .user-nav-area { padding: 4px 10px; gap: 6px; }
+            .user-nav-area span { font-size: 8px; letter-spacing: 0.5px; }
+            .user-nav-area img { width: 22px; height: 22px; }
+            
+            nav { padding: 10px 3%; gap: 15px; }
+            .nav-links { gap: 12px; } 
+            .nav-links a { font-size: 11px; letter-spacing: 0.5px; } 
+            
+            .search-bar { padding: 10px 15px; font-size: 12px; border-radius: 8px; }
+            .search-bar:focus { max-width: 98%; }
+        }
+
+        .hero-banner {
+            width: 95%;
+            margin: 5px auto 20px auto; 
+            min-height: 200px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255,255,255,0.03) inset;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: rotateBG 15s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateBG {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-banner h1 {
+            font-size: 28px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            z-index: 2;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .type-wrap {
+            z-index: 2;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #888;
+            font-weight: 300;
+        }
+
+        #typed-text {
+            color: #fff;
+            font-weight: bold;
+            border-right: 3px solid #fff;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
         @keyframes blink { 50% { border-color: transparent; } }
 
-        /* Main Content Grid - CENTERED */
-        .container { width: 95%; max-width: 1200px; margin: 0 auto; }
-        
-        .main-content { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            justify-items: center; /* Cards මැදට ගැනීමට */
+        @media (max-width: 600px) {
+            .hero-banner { min-height: 160px; }
+            .hero-banner h1 { font-size: 18px; letter-spacing: 2px; }
+            .type-wrap { font-size: 14px; }
         }
 
-        /* Game Cards */
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            display: block; /* Sidebar nathi nisa block kala Full width penna */
+        }
+
+        /* --- GAME CARDS PROFESSIONAL REDESIGN --- */
         .game-card {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
+            gap: 15px;
             background: linear-gradient(145deg, #0a0a0a, #050505);
-            padding: 20px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s; width: 100%; max-width: 320px; text-align: center; display: flex; flex-direction: column; align-items: center;
+            padding: 20px;
+            border-radius: 25px;    
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
         }
-        .game-card:hover { border-color: #fff; transform: translateY(-10px); }
-        
-        .game-img { width: 140px; height: 140px; border-radius: 20px; overflow: hidden; margin-bottom: 15px; }
-        .game-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        .game-title { font-size: 18px; font-weight: 800; color: #fff; min-height: 50px; }
-        .game-info { font-size: 13px; color: #aaa; margin: 5px 0; }
-        .rating { font-size: 12px; background: rgba(255,255,255,0.05); padding: 2px 10px; border-radius: 5px; margin-bottom: 15px; }
+        .game-card:hover {
+            border-color: #fff;
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.02);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            transition: 0.5s;
+        }
+
+        .game-card:hover::before { left: 100%; }
+
+        .game-img {
+            width: 140px;
+            height: 140px;
+            border: none;           
+            flex-shrink: 0;
+            border-radius: 20px;    
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+        }
+
+        .game-card:hover .game-img { transform: scale(1.05); }
+        .game-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+        
+        .game-details { display: flex; flex-direction: column; gap: 8px; justify-content: center; align-items: center; }
+        .game-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+        .game-info { font-size: 13px; color: #aaa; font-weight: 500; }
+        .rating { font-size: 12px; color: #fff; background: rgba(255,255,255,0.05); width: fit-content; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
 
         .download-btn {
-            display: inline-block; padding: 10px 25px; border: 1px solid #fff; color: #fff;
-            text-decoration: none; border-radius: 10px; font-size: 12px; font-weight: 900;
-            text-transform: uppercase; transition: 0.3s; width: 100%;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 25px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            width: 160px; 
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border-radius: 10px; 
+            text-transform: uppercase;
         }
-        .download-btn:hover { background: #fff; color: #000; }
 
-        /* --- New Centered Description Section --- */
-        .full-desc-section {
-            margin-top: 80px; padding: 80px 5%; border-top: 1px solid #111; text-align: center;
+        .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+
+        /* Full width for Laptop */
+        @media (min-width: 1024px) {
+            .main-content { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; } 
+            .main-content h2 { grid-column: span 4; }
+            .more-games-btn { grid-column: span 4; }
+            .full-description-section { grid-column: span 4; }
         }
-        .desc-inner { max-width: 1000px; margin: 0 auto; }
-        .desc-title { font-size: clamp(24px, 4vw, 38px); font-weight: 800; margin-bottom: 25px; letter-spacing: -1px; background: linear-gradient(to right, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .desc-main-text { color: #888; font-size: 16px; line-height: 1.8; margin-bottom: 50px; }
 
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .feature-item { background: #050505; border: 1px solid #111; padding: 35px; border-radius: 20px; transition: 0.3s; }
-        .feature-item:hover { border-color: #333; transform: translateY(-5px); }
-        .feature-item i { font-size: 30px; color: #fff; margin-bottom: 20px; }
-        .feature-item h3 { color: #fff; font-size: 18px; margin-bottom: 15px; }
-        .feature-item p { color: #666; font-size: 14px; line-height: 1.6; }
+        @media (max-width: 480px) {
+            .main-content { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+            .game-card {
+                flex-direction: column; align-items: center; text-align: center;
+                width: 48%; padding: 12px; margin-bottom: 5px; gap: 8px;
+                border-radius: 20px; 
+            }
+            .game-img { width: 100%; height: 110px; border-radius: 15px; border: none; }
+            .game-img img { border-radius: 15px; }
+            .game-title { font-size: 12px; min-height: 35px; line-height: 1.2; }
+            .game-info, .rating { font-size: 9px; }
+            .download-btn { margin-top: 5px; padding: 7px; font-size: 9px; width: 100%; border-radius: 8px; }
+        }
 
-        /* Footer */
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #111; margin-top: 50px; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-        .footer-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; }
+        footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
 
-        /* Donate Button */
+        /* --- FIXED WHITE PREMIUM DONATE BUTTON --- */
         .premium-donate-btn {
-            position: fixed; bottom: 25px; right: 25px; background: #fff; color: #000;
-            padding: 12px 20px; border-radius: 12px; font-weight: bold; text-decoration: none;
-            display: flex; align-items: center; gap: 10px; z-index: 9999; border: 2px solid #000;
+            position:fixed !important; 
+            bottom: 25px; 
+            right: 25px; 
+            background-color: #ffffff !important; 
+            color: #000000 !important; 
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+            z-index: 99999; 
+            border: 2px solid #000;
+            transition: 0.3s;
         }
 
-        /* Mobile */
+        .premium-donate-btn:hover {
+            transform: translateY(-5px);
+            background-color: #eeeeee !important;
+        }
+
+        .premium-donate-btn img {
+            height: 22px;
+            margin-right: 10px;
+            filter: brightness(0); 
+        }
+
         @media (max-width: 600px) {
-            .main-content { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .game-card { padding: 12px; border-radius: 20px; }
-            .game-img { width: 100%; height: 110px; }
-            .game-title { font-size: 12px; min-height: 35px; }
-            .download-btn { font-size: 9px; padding: 8px; }
+            .premium-donate-btn {
+                padding: 10px 15px;
+                font-size: 13px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .premium-donate-btn img {
+                height: 18px;
+            }
         }
     </style>
 </head>
@@ -216,124 +470,163 @@
 
     <div class="login-overlay" id="loginModal">
         <div class="login-box-modal">
-            <h2 style="margin-bottom: 20px;">WELCOME</h2>
+            <h2 style="margin-bottom: 20px; letter-spacing: 2px;">WELCOME</h2>
+            <p style="color: #777; margin-bottom: 30px; font-size: 14px;">Sign in to access more features.</p>
             <button onclick="signInWithGoogle()" style="background: #fff; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
                 <i class="fab fa-google"></i> SIGN IN WITH GOOGLE
             </button>
-            <p onclick="closeModal()" style="margin-top: 20px; color: #444; cursor: pointer;">CLOSE</p>
+            <p onclick="closeModal()" style="margin-top: 20px; color: #444; cursor: pointer; font-size: 12px;">CLOSE</p>
         </div>
     </div>
 
     <nav>
         <ul class="nav-links">
-            <li><a href="store.html">Games</a></li>
-            <li><a href="https://cinesubz.lk/">Movies</a></li>
-            <li><a href="https://cinesubz.lk/tvshows/">TV Series</a></li>
-        </ul>
+    <li><a href="store.html" target="_blank">Games </a></li>
+    <li><a href="https://cinesubz.lk/" target="_blank">Movies</a></li>
+    <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series </a></li>
+         </ul>
         <input type="text" id="gameSearch" class="search-bar" placeholder="🔍 Search Games & Movies...">
     </nav>
 
     <div class="hero-banner">
         <h1>Welcome to Lanx Games.LK</h1>
-        <div style="color: #888;">We Provide <span id="typed-text"></span></div>
+        <div class="type-wrap">We Provide <span id="typed-text"></span></div>
     </div>
 
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 40px; letter-spacing: 5px;">LATEST RELEASES</h2>
         <div class="main-content">
+            <h2 style="text-align: center; margin-bottom: 20px; letter-spacing: 5px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; font-size: 18px;">GAMES</h2>
+
             <div class="game-card">
                 <div class="game-img"><img src="download.png"></div>
-                <div class="game-title">GTA San Andreas</div>
-                <div class="game-info">Size: 3.6 GB | PC</div>
-                <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
+                <div class="game-details">
+                    <div class="game-title">Grand Theft Auto (SanAndreas)</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Paid]</p>
+                    <div class="game-info">Size: 3.6 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
+                    <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
             </div>
+
             <div class="game-card">
                 <div class="game-img"><img src="downloadGRANNY.jpeg"></div>
-                <div class="game-title">Granny 4 The Rebellion</div>
-                <div class="game-info">Size: 200 MB | PC</div>
-                <div class="rating">★ ★ ★ ★ ★ 7.7</div>
-                <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
+                <div class="game-details">
+                    <div class="game-title">Granny 4 The Rebellion</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 200 MB</div>
+                    <div class="rating">★ ★ ★ ★ ★ 7.7</div>
+                    <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
             </div>
+
             <div class="game-card">
                 <div class="game-img"><img src="5.jpeg"></div>
-                <div class="game-title">Granny 5 Time To Wake Up</div>
-                <div class="game-info">Size: 6.5 GB | PC</div>
-                <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
-                <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
+                <div class="game-details">
+                    <div class="game-title">Granny 5 Time To Wake Up</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 6.5 GB</div>
+                    <div class="rating">★ ★ ★ ☆ ☆ 9.3</div>
+                    <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
             </div>
+
             <div class="game-card">
                 <div class="game-img"><img src="47c33cac4a9431bc157a395095653102.jpg"></div>
-                <div class="game-title">StarRupture</div>
-                <div class="game-info">Size: 27 GB | PC</div>
-                <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
+                <div class="game-details">
+                    <div class="game-title">StarRupture</div>
+                    <p style="font-size: 12px; color: #888;">For PC [Free]</p>
+                    <div class="game-info">Size: 27 GB</div>
+                    <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
+                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
+                </div>
             </div>
-        </div>
-        
-        <a href="store.html" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px; margin-top: 30px;">See More Games ➔</a>
+
+            <div class="full-description-section" style="width: 100%;">
+                <section style="background: #000; padding: 80px 0; border-top: 1px solid #111; font-family: 'Poppins', sans-serif;">
+                    <div style="max-width: 1400px; margin: auto; padding: 0 5%;">
+                        <div style="text-align: center; margin-bottom: 60px;">
+                            <h2 style="font-size: clamp(28px, 4vw, 42px); font-weight: 800; background: linear-gradient(to right, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2;">
+                                The Ultimate Destination for PC Gaming
+                            </h2>
+                            <p style="color: #888; font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8; max-width: 900px; margin: auto; font-weight: 300; text-align: center;">
+                                Welcome to <strong>LANX GAMES.LK</strong>, the most trusted digital gaming directory in Sri Lanka. Since our inception in 2026, we have been committed to revolutionizing how gamers access their favorite PC titles.
+                            </p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+                            <div style="background: linear-gradient(145deg, #0a0a0a, #050505); border: 1px solid rgba(255,255,255,0.05); padding: 35px; border-radius: 25px; transition: 0.3s; height: 100%;" onmouseover="this.style.borderColor='#fff'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+                                <i class="fas fa-microchip" style="font-size: 28px; color: #fff; margin-bottom: 20px;"></i>
+                                <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px; letter-spacing: 1px;">Hardware Optimization</h3>
+                                <p style="color: #666; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                                    Every game on our store includes detailed **Minimum and Recommended System Requirements**. This allows our users to analyze their hardware compatibility.
+                                </p>
+                            </div>
+
+                            <div style="background: linear-gradient(145deg, #0a0a0a, #050505); border: 1px solid rgba(255,255,255,0.05); padding: 35px; border-radius: 25px; transition: 0.3s; height: 100%;" onmouseover="this.style.borderColor='#fff'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+                                <i class="fas fa-shield-virus" style="font-size: 28px; color: #fff; margin-bottom: 20px;"></i>
+                                <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px; letter-spacing: 1px;">Security First Protocol</h3>
+                                <p style="color: #666; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                                    At LANX GAMES, your digital safety is our priority. Our platform uses advanced redirection timers and multi-layer verification.
+                                </p>
+                            </div>
+
+                            <div style="background: linear-gradient(145deg, #0a0a0a, #050505); border: 1px solid rgba(255,255,255,0.05); padding: 35px; border-radius: 25px; transition: 0.3s; height: 100%;" onmouseover="this.style.borderColor='#fff'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+                                <i class="fas fa-cloud-download-alt" style="font-size: 28px; color: #fff; margin-bottom: 20px;"></i>
+                                <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px; letter-spacing: 1px;">High-Speed Delivery</h3>
+                                <p style="color: #666; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                                    Experience lightning-fast access to the latest AAA titles. By utilizing optimized server paths and Firebase technology.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 40px; border-top: 1px solid #111; padding-top: 50px;">
+                            <div style="flex: 1; min-width: 300px;">
+                                <h4 style="color: #fff; font-size: 18px; margin-bottom: 15px;">Why LANX GAMES is Sri Lanka's Leader?</h4>
+                                <p style="color: #555; font-size: 14px; line-height: 1.8; text-align: justify;">
+                                    Our platform stands as a pillar of integrity in the digital gaming space. We strictly adhere to **Google AdSense Program Policies** and international webmaster guidelines.
+                                </p>
+                            </div>
+                            <div style="flex: 1; min-width: 300px;">
+                                <h4 style="color: #fff; font-size: 18px; margin-bottom: 15px;">Community & Growth</h4>
+                                <p style="color: #555; font-size: 14px; line-height: 1.8; text-align: justify;">
+                                    Whether you are looking for action, adventure, or sports, our diverse categories are curated to suit every taste.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px; margin-top: 20px;">See More Games ➔</a>
+        </div>    
+    </div> 
+
+    <footer style="background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; text-align: center; margin-top: 50px;">
+    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="about.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">About Us</a>
+        <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
+        <a href="terms.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms & Conditions</a>
     </div>
 
-    <section class="full-desc-section">
-        <div class="desc-inner">
-            <h2 class="desc-title">The Ultimate Destination for PC Gaming</h2>
-            <p class="desc-main-text">
-                Welcome to <strong>LANX GAMES.LK</strong>, the most trusted digital gaming directory in Sri Lanka. Since our inception in 2026, we have been committed to revolutionizing how gamers access their favorite PC titles. Our platform is meticulously designed to provide a seamless browsing experience.
-            </p>
-
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Hardware Optimization</h3>
-                    <p>Every game includes detailed System Requirements. Analyze your hardware compatibility before downloading, ensuring optimal performance.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-shield-virus"></i>
-                    <h3>Security First Protocol</h3>
-                    <p>Your safety is our priority. We use multi-layer verification to protect you from malicious scripts. Browse with confidence.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-cloud-download-alt"></i>
-                    <h3>High-Speed Delivery</h3>
-                    <p>Experience lightning-fast access to the latest titles. Optimized server paths ensure your search is quick and efficient.</p>
-                </div>
-            </div>
-
-            <div style="border-top: 1px solid #111; padding-top: 40px; display: flex; flex-wrap: wrap; gap: 30px; text-align: left;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: #fff; margin-bottom: 15px;">Why LANX GAMES Leads?</h4>
-                    <p style="color: #555; font-size: 14px; line-height: 1.8;">We strictly adhere to international webmaster guidelines and focus on original content delivery with high user-value for the modern gamer.</p>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: #fff; margin-bottom: 15px;">Community Support</h4>
-                    <p style="color: #555; font-size: 14px; line-height: 1.8;">From hardware guides to community picks, we empower the growing gaming community in Sri Lanka with a transparent interface.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms & Conditions</a>
-        </div>
-        <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 25px;">
-            <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6;"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6;"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div style="color: #444; font-size: 10px; letter-spacing: 3px;">© 2026 LANX GAMES.LK | ALL RIGHTS RESERVED</div>
-    </footer>
+    <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 25px;">
+        <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@klvizz?si=6IxStkY9IqEiqwsh" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
+    </div>
+    
+    <div style="color: #444; font-size: 10px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase;">
+        © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
+    </div>
+    
+    <div style="width: 100%; overflow: hidden;">
+        <marquee style="color: #222; font-size: 9px; width: 50%; letter-spacing: 1px;">CREATED BY PAMOD YOSHITHA ABEYRATHNA</marquee>
+    </div>
+</footer>
 
     <a href="https://www.buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
-        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" height="20">
-        <span>Donate Now</span>
+        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
+        <span class="donate-text">Donate Now</span>
     </a>
-
-    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; z-index: 1000000; display: none; text-align: center;">
-        <p style="color: #ccc; font-size: 12px; margin-bottom: 15px;">We use cookies to enhance your experience. <a href="privacy.html" style="color: #fff;">Learn more</a></p>
-        <button onclick="acceptCookies()" style="background: #fff; color: #000; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">ACCEPT</button>
-    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -368,21 +661,25 @@
         onAuthStateChanged(auth, (user) => {
             const userName = document.getElementById('userName');
             if (user) {
-                userName.style.display = 'none';
+                userName.style.display = 'none'; 
                 document.getElementById('userImg').src = user.photoURL;
+                document.getElementById('userImg').style.width = '35px'; 
+                document.getElementById('userImg').style.height = '35px';
                 document.getElementById('cardImg').src = user.photoURL;
                 document.getElementById('cardName').innerText = user.displayName;
                 document.getElementById('cardEmail').innerText = user.email;
             } else {
-                userName.style.display = 'inline';
+                userName.style.display = 'inline'; 
+                userName.innerText = "LOGIN";
                 document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                document.getElementById('userImg').style.width = '28px';
+                document.getElementById('userImg').style.height = '28px';
                 document.getElementById('profileCard').style.display = 'none';
             }
         });
     </script>
 
     <script>
-        // Typewriter Effect
         const typedSpan = document.getElementById("typed-text");
         const toType = ["The Best PC Games", "Latest Movies", "TV Series", "For Free!"];
         let wordIdx = 0, charIdx = 0, isDeleting = false;
@@ -397,19 +694,32 @@
         }
         document.addEventListener("DOMContentLoaded", type);
 
-        // Search Filter
         document.getElementById('gameSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
-            let cards = document.querySelectorAll('.game-card');
-            cards.forEach(card => {
+            let gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
                 let title = card.querySelector('.game-title').innerText;
                 card.style.display = title.toUpperCase().indexOf(filter) > -1 ? "" : "none";
             });
         });
-
-        // Cookies
-        window.onload = () => { if (!localStorage.getItem('cookiesAccepted')) document.getElementById('cookie-banner').style.display = 'block'; }
-        window.acceptCookies = () => { localStorage.setItem('cookiesAccepted', 'true'); document.getElementById('cookie-banner').style.display = 'none'; }
     </script>
+<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 20px; border-radius: 15px; z-index: 1000000; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: center;">
+    <p style="color: #ccc; font-size: 12px; margin-bottom: 15px; line-height: 1.5;">
+        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" style="color: #fff; text-decoration: underline;">Learn more</a>
+    </p>
+    <button onclick="acceptCookies()" style="background: #fff; color: #000; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 12px; width: 100%;">ACCEPT</button>
+</div>
+
+<script>
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+    }
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+</script>
 </body>
 </html>
