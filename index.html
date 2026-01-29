@@ -672,9 +672,30 @@
             });
         });
     </script>
+<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 20px; border-radius: 15px; z-index: 1000000; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: center;">
+    <p style="color: #ccc; font-size: 12px; margin-bottom: 15px; line-height: 1.5;">
+        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" style="color: #fff; text-decoration: underline;">Learn more</a>
+    </p>
+    <button onclick="acceptCookies()" style="background: #fff; color: #000; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 12px; width: 100%;">ACCEPT</button>
+</div>
+
+<script>
+    // Cookie Banner Logic
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
+
 
 
 
