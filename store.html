@@ -21,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER PREMIUM UPDATED (EXACT AS PREVIOUS) --- */
+        /* --- HEADER PREMIUM UPDATED --- */
         header {
             padding: 25px 8%;
             display: flex;
@@ -83,7 +83,6 @@
 
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- LOGIN BAR PREMIUM UPDATED --- */
         .user-nav-area {
             display: flex;
             align-items: center;
@@ -152,7 +151,6 @@
         }
         .search-bar:focus { border-color: #fff; background: #000; }
 
-        /* --- MOBILE OPTIMIZATION UPDATED (AS PREVIOUS) --- */
         @media (max-width: 480px) {
             header { padding: 12px 3%; }
             .brand-name { font-size: 15px; letter-spacing: 1.5px; }
@@ -177,7 +175,6 @@
             justify-content: center;
         }
 
-        /* --- GAME CARD UPDATED FOR LAPTOP (5 PER ROW) --- */
         .game-item {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
@@ -187,14 +184,14 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            width: calc(20% - 12px); /* Laptop එකේදී පේළියකට 5ක් */
+            width: calc(20% - 12px); 
         }
 
         .game-item:hover { border-color: #fff; transform: translateY(-5px); }
 
         .game-item img {
             width: 100%;
-            height: 280px; /* Laptop එකේදී image එකේ size එක ගැලපෙන්න වැඩි කරා */
+            height: 280px; 
             object-fit: cover; 
             display: block;
         }
@@ -237,23 +234,26 @@
 
         .stars-gold { color: #fff; font-size: 12px; }
 
+        /* --- UPDATED BLACK & WHITE DOWNLOAD BUTTON --- */
         .mini-download-btn {
             margin-top: 10px;
             display: block;
-            padding: 8px;
+            padding: 10px;
+            background: #000;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
-            font-size: 10px;
-            font-weight: bold;
+            font-size: 11px;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 130px;
-            border-radius: 8px;
+            letter-spacing: 2px;
+            width: 140px;
+            border-radius: 4px;
             cursor: pointer;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .mini-download-btn:hover { background: #fff; color: #000; }
+        .mini-download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 
         .pagination-container {
             display: flex;
@@ -281,27 +281,98 @@
             border-color: #fff;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 1200px) { .game-item { width: calc(25% - 12px); } }
         @media (max-width: 1024px) { .game-item { width: calc(33.33% - 10px); } }
         @media (max-width: 768px) { .game-item { width: calc(50% - 10px); } }
         @media (max-width: 480px) { 
             .game-item { width: calc(50% - 8px); } 
-            .game-item img { height: 220px; } /* Phone එකේදී image එක පරණ size එකටම තිබ්බා */
+            .game-item img { height: 220px; } 
         }
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #888; text-decoration: none; font-size: 13px; }
+
+        /* --- PROFESSIONAL TIMER OVERLAY DESIGN --- */
+        #download-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            color: #fff;
+            text-align: center;
+        }
+
+        .timer-container {
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .timer-circle {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #333;
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { border-top-color: #fff; } 100% { transform: rotate(360deg); } }
+        
+        .static-number { position: absolute; animation: none !important; transform: none !important; }
+
+        .progress-bar-wrap {
+            width: 100%;
+            height: 4px;
+            background: #111;
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            transition: width 1s linear;
+            box-shadow: 0 0 15px #fff;
+        }
     </style>
 </head>
 <body>
 
-    <div id="download-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(15px); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 1000001; color: #fff; text-align: center;">
-        <h2 style="letter-spacing: 3px; font-size: 18px; margin-bottom: 20px;">PREPARING YOUR SECURE LINK...</h2>
-        <div style="width: 200px; height: 3px; background: #222; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-            <div id="progress-bar" style="width: 0%; height: 100%; background: #fff; transition: width 1s linear;"></div>
+    <div id="download-overlay">
+        <div class="timer-container">
+            <div style="position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <div class="timer-circle"></div>
+                <div class="static-number" id="seconds-count">10</div>
+            </div>
+            <h2 style="letter-spacing: 4px; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Security Check</h2>
+            <p style="font-size: 11px; color: #666; letter-spacing: 1px;">Verifying your download link...</p>
+            
+            <div class="progress-bar-wrap">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+            
+            <p style="font-size: 10px; color: #444; letter-spacing: 2px;">LANX GAMES.LK PREMIUM CONTENT</p>
         </div>
-        <p style="font-size: 14px; color: #ccc;">Please wait <span id="seconds-count" style="color: #fff; font-weight: bold; font-size: 18px;">10</span> seconds</p>
     </div>
 
     <header>
@@ -338,26 +409,22 @@
     </div>
 
     <footer style="background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; text-align: center; margin-top: 50px;">
-    
-    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 30px;">
-        <a href="about.html" style="color: #888; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">About Us</a>
-        <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">Privacy Policy</a>
-    </div>
-
-    <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 25px;">
-        <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://youtube.com/@klvizz?si=6IxStkY9IqEiqwsh" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
-    </div>
-    
-    <div style="color: #444; font-size: 10px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase;">
-        © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
-    </div>
-    
-    <div style="width: 100%; overflow: hidden;">
-        <marquee style="color: #222; font-size: 9px; width: 50%; letter-spacing: 1px;">CREATED BY PAMOD YOSHITHA ABEYRATHNA</marquee>
-    </div>
-</footer>
+        <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 30px;">
+            <a href="about.html" style="color: #888; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">About Us</a>
+            <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">Privacy Policy</a>
+        </div>
+        <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 25px;">
+            <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@klvizz?si=6IxStkY9IqEiqwsh" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div style="color: #444; font-size: 10px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase;">
+            © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
+        </div>
+        <div style="width: 100%; overflow: hidden;">
+            <marquee style="color: #222; font-size: 9px; width: 50%; letter-spacing: 1px;">CREATED BY PAMOD YOSHITHA ABEYRATHNA</marquee>
+        </div>
+    </footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -379,17 +446,29 @@
         const provider = new GoogleAuthProvider();
         const db = getDatabase(app);
 
-        // Timer Function
+        // Professional Timer Function
         window.startDownload = function(link) {
-            document.getElementById('download-overlay').style.display = 'flex';
+            const overlay = document.getElementById('download-overlay');
+            const progress = document.getElementById('progress-bar');
+            const counter = document.getElementById('seconds-count');
+            
+            overlay.style.display = 'flex';
             let timeLeft = 10;
+            
             let timer = setInterval(function() {
                 timeLeft--;
-                document.getElementById('seconds-count').innerText = timeLeft;
-                document.getElementById('progress-bar').style.width = ((10 - timeLeft) * 10) + '%';
+                counter.innerText = timeLeft;
+                progress.style.width = ((10 - timeLeft) * 10) + '%';
+                
                 if (timeLeft <= 0) {
                     clearInterval(timer);
                     window.location.href = link;
+                    // Reset overlay after redirect
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        progress.style.width = '0%';
+                        counter.innerText = '10';
+                    }, 500);
                 }
             }, 1000);
         };
