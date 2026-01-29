@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Games - LANX GAMES.LK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* CSS Design - Black & White Premium Theme */
         * {
@@ -123,7 +124,7 @@
             gap: 25px;
         }
 
-        .nav-links { display: flex; list-style: none; gap: 3Tpx; flex-wrap: wrap; justify-content: center; }
+        .nav-links { display: flex; list-style: none; gap: 30px; flex-wrap: wrap; justify-content: center; }
         .nav-links a {
             color: #888;
             text-decoration: none;
@@ -249,6 +250,7 @@
             letter-spacing: 1px;
             width: 130px;
             border-radius: 8px;
+            cursor: pointer;
         }
 
         .mini-download-btn:hover { background: #fff; color: #000; }
@@ -293,6 +295,14 @@
     </style>
 </head>
 <body>
+
+    <div id="download-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(15px); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 1000001; color: #fff; text-align: center;">
+        <h2 style="letter-spacing: 3px; font-size: 18px; margin-bottom: 20px;">PREPARING YOUR SECURE LINK...</h2>
+        <div style="width: 200px; height: 3px; background: #222; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
+            <div id="progress-bar" style="width: 0%; height: 100%; background: #fff; transition: width 1s linear;"></div>
+        </div>
+        <p style="font-size: 14px; color: #ccc;">Please wait <span id="seconds-count" style="color: #fff; font-weight: bold; font-size: 18px;">10</span> seconds</p>
+    </div>
 
     <header>
         <div class="logo-section">
@@ -369,6 +379,21 @@
         const provider = new GoogleAuthProvider();
         const db = getDatabase(app);
 
+        // Timer Function
+        window.startDownload = function(link) {
+            document.getElementById('download-overlay').style.display = 'flex';
+            let timeLeft = 10;
+            let timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById('seconds-count').innerText = timeLeft;
+                document.getElementById('progress-bar').style.width = ((10 - timeLeft) * 10) + '%';
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.location.href = link;
+                }
+            }, 1000);
+        };
+
         // Auth Functions
         window.userLogout = () => signOut(auth);
         window.toggleAuth = () => {
@@ -435,7 +460,7 @@
                                 <span class="stars-gold">${stars}</span>
                                 <span>${game.ratingNum || '5.0'}</span>
                             </div>
-                            <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                            <button onclick="startDownload('${game.downloadURL}')" class="mini-download-btn">DOWNLOAD</button>
                         </div>
                     </div>`;
                 gameGrid.insertAdjacentHTML('beforeend', html);
@@ -496,7 +521,7 @@
                                     <span class="stars-gold">${stars}</span>
                                     <span>${game.ratingNum || '5.0'}</span>
                                 </div>
-                                <a href="${game.downloadURL}" target="_blank" class="mini-download-btn">DOWNLOAD</a>
+                                <button onclick="startDownload('${game.downloadURL}')" class="mini-download-btn">DOWNLOAD</button>
                             </div>
                         </div>`;
                     gameGrid.insertAdjacentHTML('beforeend', html);
@@ -506,6 +531,3 @@
     </script>
 </body>
 </html>
-
-
-
