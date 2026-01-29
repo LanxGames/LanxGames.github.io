@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📰 News - Lanx Games.lk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* CSS Design - Same as Index.html */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #000; color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        header {
+            padding: 25px 8%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 2000;
+        }
+
+        .logo-box {
+            width: 60px; height: 60px; border: 2px solid #fff; display: flex; justify-content: center; align-items: center;
+            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+        .logo-box::after { content: 'LANX'; font-weight: 900; font-size: 13px; letter-spacing: 2px; }
+        .brand-name { font-size: 26px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; }
+
+        nav { background: #000; padding: 20px 5%; display: flex; justify-content: center; gap: 25px; border-bottom: 1px solid #111; }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 2px; transition: 0.4s; }
+        .nav-links a:hover { color: #fff; }
+
+        .container { width: 90%; max-width: 1200px; margin: 50px auto; }
+        
+        /* News Cards Grid */
+        #newsContainer { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .news-card {
+            background: #0a0a0a; border-radius: 20px; border: 1px solid #1a1a1a; overflow: hidden;
+            transition: 0.4s; position: relative;
+        }
+        .news-card:hover { border-color: #fff; transform: translateY(-5px); }
+        .news-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid #111; }
+        .news-content { padding: 25px; }
+        .news-title { font-size: 20px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .news-desc { font-size: 14px; color: #888; text-align: justify; }
+        
+        /* Admin Post Form (Hidden for normal users) */
+        #adminArea {
+            margin-top: 100px; padding: 40px; background: #050505; border-radius: 20px;
+            border: 1px dashed #333; display: none;
+        }
+        .admin-input {
+            width: 100%; padding: 15px; margin-bottom: 15px; background: #000;
+            border: 1px solid #222; color: #fff; border-radius: 10px; outline: none;
+        }
+        .post-btn {
+            background: #fff; color: #000; border: none; padding: 15px 40px;
+            font-weight: 900; border-radius: 10px; cursor: pointer; width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .brand-name { font-size: 16px; }
+            .logo-box { width: 45px; height: 45px; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="logo-box"></div>
+            <div class="brand-name">LANX NEWS</div>
+        </div>
+        <a href="index.html" style="color: #fff; text-decoration: none; font-size: 12px; font-weight: 900; border: 1px solid #333; padding: 10px 20px; border-radius: 50px;">STORE ➔</a>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="store.html">GAMES</a></li>
+            <li><a href="news.html" style="color: #fff;">NEWS</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px; letter-spacing: 5px; font-size: 24px;">LATEST UPDATES</h2>
+        
+        <div id="newsContainer">
+            <p style="text-align: center; color: #444;">Loading updates...</p>
+        </div>
+
+        <div id="adminArea">
+            <h3 style="margin-bottom: 20px; color: #fff;">ADD NEW UPDATE (ADMIN ONLY)</h3>
+            <input type="text" id="newsTitle" class="admin-input" placeholder="News Title">
+            <input type="text" id="newsImgUrl" class="admin-input" placeholder="Image URL (Direct link)">
+            <textarea id="newsFullDesc" class="admin-input" rows="5" placeholder="Full Description Text"></textarea>
+            <button class="post-btn" onclick="publishNews()">PUBLISH NEWS</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #444; font-size: 10px; border-top: 1px solid #111;">
+        © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Firebase Config (Same as index.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0ZqCnq28-bauG3YBb7WrVVNdQgYOGmqg",
+            authDomain: "black-store-login.firebaseapp.com",
+            projectId: "black-store-login",
+            databaseURL: "https://black-store-login-default-rtdb.firebaseio.com/", // පරණ DB URL එකක් තිබේ නම් මෙතනට දමන්න
+            storageBucket: "black-store-login.firebasestorage.app",
+            messagingSenderId: "980593701862",
+            appId: "1:980593701862:web:eabd842d94a728c2c9c27"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // Check if Admin is logged in (Using your email as Admin)
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email === "shiyamal50e@gmail.com") { // ඔබේ Email එක මෙතනට දාන්න
+                document.getElementById('adminArea').style.display = 'block';
+            }
+        });
+
+        // Publish News
+        window.publishNews = () => {
+            const title = document.getElementById('newsTitle').value;
+            const img = document.getElementById('newsImgUrl').value;
+            const desc = document.getElementById('newsFullDesc').value;
+
+            if(title && desc) {
+                push(ref(db, 'news'), {
+                    title: title,
+                    image: img || 'https://via.placeholder.com/800x400',
+                    description: desc,
+                    date: new Date().toLocaleDateString()
+                }).then(() => {
+                    alert("News Published!");
+                    location.reload();
+                });
+            }
+        };
+
+        // Fetch News
+        onValue(ref(db, 'news'), (snapshot) => {
+            const data = snapshot.val();
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = "";
+            
+            if(data) {
+                Object.values(data).reverse().forEach(item => {
+                    container.innerHTML += `
+                        <div class="news-card">
+                            <img src="${item.image}" class="news-img">
+                            <div class="news-content">
+                                <p style="font-size: 10px; color: #555; margin-bottom: 5px;">${item.date}</p>
+                                <h3 class="news-title">${item.title}</h3>
+                                <p class="news-desc">${item.description}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                container.innerHTML = "<p style='color:#333; text-align:center;'>No news updates yet.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
