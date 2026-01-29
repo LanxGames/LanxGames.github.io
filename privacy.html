@@ -3,58 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Lanx Games.lk</title>
+    <title>Privacy Policy | LANX GAMES.LK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #000; color: #fff; line-height: 1.8; overflow-x: hidden; }
+
+        /* FIXED HOME BUTTON */
+        .home-link {
+            position: fixed; top: 30px; left: 30px; z-index: 1000; text-decoration: none;
+            color: #000; background: #fff; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2); transition: 0.4s ease;
         }
-        .policy-container {
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+        .home-link:hover { transform: scale(1.1) rotate(-10deg); }
+
+        /* HERO SECTION */
+        .hero {
+            height: 50vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        h1 { border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px; }
-        h3 { color: #fff; margin-top: 25px; text-transform: uppercase; font-size: 16px; }
-        p { color: #888; line-height: 1.8; font-size: 14px; }
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            color: #000;
-            background: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 12px;
+        .hero h1 {
+            font-size: clamp(30px, 6vw, 60px); font-weight: 800; letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff, #444); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 10px;
+        }
+        .hero p { font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: #666; }
+
+        /* CONTENT AREA */
+        .wrapper { max-width: 1000px; margin: -60px auto 100px; padding: 0 20px; }
+        .glass-card {
+            background: rgba(10, 10, 10, 0.9); border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(25px); padding: 60px; border-radius: 30px;
+        }
+
+        .policy-section { margin-bottom: 40px; }
+        .policy-section h2 {
+            font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #fff;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .policy-section h2 i { font-size: 18px; color: #555; }
+        .policy-section p, .policy-section ul {
+            color: #aaa; font-size: 15px; font-weight: 300; margin-bottom: 15px; text-align: justify;
+        }
+        .policy-section ul { padding-left: 20px; }
+        .policy-section li { margin-bottom: 10px; }
+
+        .last-updated {
+            font-size: 12px; color: #444; text-transform: uppercase; letter-spacing: 2px;
+            text-align: center; margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 30px; border-radius: 20px; }
+            .hero h1 { font-size: 35px; }
         }
     </style>
 </head>
 <body>
-    <div class="policy-container">
+
+    <a href="index.html" class="home-link"><i class="fas fa-home"></i></a>
+
+    <section class="hero">
+        <p>Legal & Compliance</p>
         <h1>PRIVACY POLICY</h1>
-        <p>Last Updated: January 2026</p>
-        
-        <h3>1. Information We Collect</h3>
-        <p>We use Google Analytics to monitor traffic and user behavior on Lanx Games.lk. This includes data like your device type, browser, and pages visited.</p>
+    </section>
 
-        <h3>2. Cookies</h3>
-        <p>We use cookies to enhance your experience and remember your preferences. You can disable cookies in your browser settings if you wish.</p>
+    <div class="wrapper">
+        <div class="glass-card">
+            
+            <div class="policy-section">
+                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                <p>Welcome to LANX GAMES.LK. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+                <p>By using LANX GAMES.LK, you agree to the terms outlined in this policy. If you do not agree with any part of this document, please discontinue use of our services immediately.</p>
+            </div>
 
-        <h3>3. External Links</h3>
-        <p>Our website contains links to external download servers. We do not control the privacy policies of these third-party sites.</p>
+            <div class="policy-section">
+                <h2><i class="fas fa-database"></i> Data We Collect</h2>
+                <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
+                <ul>
+                    <li><strong>Identity Data:</strong> includes first name, last name, or username when you sign in via Google.</li>
+                    <li><strong>Contact Data:</strong> includes email address and social media profiles.</li>
+                    <li><strong>Technical Data:</strong> includes internet protocol (IP) address, browser type and version, time zone setting, and operating system.</li>
+                    <li><strong>Usage Data:</strong> includes information about how you use our website, games you click on, and search terms.</li>
+                </ul>
+            </div>
 
-        <h3>4. Data Security</h3>
-        <p>We prioritize the security of our users. No personal identification information is stored on our servers unless voluntarily provided via contact forms.</p>
+            <div class="policy-section">
+                <h2><i class="fas fa-ad"></i> Google AdSense & Cookies</h2>
+                <p>We use Google AdSense to serve advertisements on our site. Google, as a third-party vendor, uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</p>
+                <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" style="color:#fff;">Ads Settings</a>. We also use cookies to analyze traffic and provide a better user experience. By continuing to browse, you consent to our use of these tracking technologies.</p>
+            </div>
 
-        <a href="index.html" class="back-btn">← BACK TO HOME</a>
+            <div class="policy-section">
+                <h2><i class="fas fa-shield-alt"></i> Data Security</h2>
+                <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorized way. We limit access to your personal data to those employees and third parties who have a business need to know. Specifically, our Firebase-backed login system ensures that your credentials remain encrypted and secure.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i class="fas fa-external-link-alt"></i> External Links</h2>
+                <p>Our website contains links to third-party websites (e.g., download servers). Clicking on those links or enabling those connections may allow third parties to collect or share data about you. We do not control these third-party websites and are not responsible for their privacy statements. We encourage you to read the privacy policy of every website you visit after leaving LANX GAMES.LK.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2><i class="fas fa-user-check"></i> Your Rights</h2>
+                <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to request access, correction, or erasure of your personal data. If you wish to exercise any of these rights, please contact us via our official support channels.</p>
+            </div>
+
+            <div class="last-updated">
+                Last Updated: January 2026<br>
+                © LANX GAMES.LK - All Rights Reserved
+            </div>
+
+        </div>
     </div>
+
 </body>
 </html>
