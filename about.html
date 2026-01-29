@@ -3,49 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Lanx Games.lk</title>
+    <title>About Our Organization - LANX GAMES.LK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
+        /* --- PREMIUM BLACK & WHITE DESIGN --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000; color: #fff; line-height: 1.8; overflow-x: hidden; }
+        
+        .hero-section {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 50px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .about-box {
-            max-width: 600px;
-            margin: auto;
+
+        .hero-section h1 { font-size: 45px; letter-spacing: 8px; text-transform: uppercase; font-weight: 900; margin-bottom: 10px; }
+        .hero-section p { color: #888; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; }
+
+        .content-wrap { max-width: 1000px; margin: -100px auto 100px; background: #050505; border: 1px solid #1a1a1a; padding: 60px; border-radius: 4px; box-shadow: 0 50px 100px rgba(0,0,0,0.5); position: relative; z-index: 10; }
+        
+        .section { margin-bottom: 50px; }
+        .section h2 { font-size: 22px; color: #fff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; border-left: 4px solid #fff; padding-left: 15px; }
+        .section p { color: #ccc; font-size: 16px; margin-bottom: 20px; text-align: justify; }
+
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .feature-box { background: #0a0a0a; border: 1px solid #111; padding: 25px; border-radius: 8px; transition: 0.3s; }
+        .feature-box:hover { border-color: #fff; }
+        .feature-box i { font-size: 24px; color: #fff; margin-bottom: 15px; }
+        .feature-box h3 { font-size: 16px; margin-bottom: 10px; letter-spacing: 1px; }
+        .feature-box p { font-size: 13px; color: #777; margin-bottom: 0; }
+
+        .official-link { display: block; margin-top: 50px; text-align: center; padding: 30px; border-top: 1px solid #1a1a1a; }
+        .official-link a { color: #fff; font-size: 18px; font-weight: bold; text-decoration: none; border-bottom: 1px solid #fff; padding-bottom: 5px; transition: 0.3s; }
+        .official-link a:hover { opacity: 0.7; }
+
+        .back-btn { position: fixed; top: 30px; left: 30px; color: #fff; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; z-index: 100; background: rgba(0,0,0,0.5); padding: 10px 20px; border: 1px solid #333; backdrop-filter: blur(10px); }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 30px; margin: -50px 20px 50px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 28px; }
         }
-        .logo-box {
-            width: 60px; height: 60px;
-            border: 2px solid #fff;
-            margin: 0 auto 20px;
-            display: flex; align-items: center; justify-content: center;
-            clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
-        }
-        h1 { letter-spacing: 5px; font-weight: 900; margin-bottom: 20px; }
-        p { color: #777; font-size: 16px; line-height: 1.6; }
-        .highlight { color: #fff; font-weight: bold; }
-        .home-link {
-            margin-top: 40px;
-            display: inline-block;
-            color: #888;
-            text-decoration: none;
-            border-bottom: 1px solid #333;
-            transition: 0.3s;
-        }
-        .home-link:hover { color: #fff; border-color: #fff; }
     </style>
 </head>
 <body>
-    <div class="about-box">
-        <div class="logo-box" style="font-size: 12px; font-weight: bold;">LANX</div>
+
+    <a href="index.html" class="back-btn">← Home</a>
+
+    <div class="hero-section">
         <h1>ABOUT US</h1>
-        <p>Welcome to <span class="highlight">Lanx Games.lk</span>, the ultimate digital library for gamers in Sri Lanka.</p>
-        <p>Founded by <span class="highlight">Pamod Yoshitha Abeyrathna</span>, we aim to provide a safe and fast way to access the latest PC Games, Movies, and TV Series for free.</p>
-        <p>Our platform is built for the community, ensuring every download is tested and verified.</p>
-        
-        <a href="index.html" class="home-link">Back to Store</a>
+        <p>Leading the Future of Digital Gaming in Sri Lanka</p>
     </div>
+
+    <div class="content-wrap">
+        
+        <div class="section">
+            <h2>Who We Are</h2>
+            <p>Welcome to <strong>LANX GAMES.LK</strong>, a premier digital platform established in 2026. We are a team of passionate gamers, developers, and tech enthusiasts dedicated to creating the most comprehensive and secure gaming directory in the region. Our platform serves as a bridge between the global gaming industry and the local community, providing curated access to high-performance PC games, updates, and digital resources.</p>
+            <p>In an era where digital content is vast and often disorganized, LANX GAMES.LK stands out by offering a structured, professional, and user-centric approach to gaming content delivery. We don't just provide links; we provide a complete ecosystem for gamers to discover their next adventure.</p>
+        </div>
+
+        <div class="section">
+            <h2>Our Vision & Mission</h2>
+            <p>Our <strong>Mission</strong> is to empower every gamer with the resources they need to enjoy the best gaming experiences, regardless of their hardware limitations. We aim to provide detailed system requirements, expert ratings, and high-speed access to digital content while maintaining the highest standards of cybersecurity.</p>
+            <p>Our <strong>Vision</strong> is to become the #1 trusted gaming authority in Sri Lanka, fostering a community where knowledge, entertainment, and technology meet seamlessly. We are committed to constant evolution, integrating the latest web technologies and user feedback to stay ahead of the curve.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Delivery</h3>
+                <p>We utilize advanced encryption and multi-step verification protocols to ensure all redirected links are safe for our users.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-bolt"></i>
+                <h3>High Performance</h3>
+                <p>Our website is optimized with cutting-edge technologies like Firebase to provide lightning-fast search and browsing experiences.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-gamepad"></i>
+                <h3>Curated Content</h3>
+                <p>Every game in our library is manually verified for quality, ensuring you get accurate descriptions and reliable download paths.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-users"></i>
+                <h3>Community Driven</h3>
+                <p>We listen to our users. Our library is constantly updated based on the requests and trends of the local gaming community.</p>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 50px;">
+            <h2>Google AdSense Compliance</h2>
+            <p>At LANX GAMES.LK, we take digital ethics seriously. We strictly adhere to the Google AdSense Program Policies and Webmaster Guidelines. Our content is designed to be original, helpful, and transparent. We act as a professional news and resource directory, providing educational insights into game mechanics, system optimization, and digital trends.</p>
+            <p>We do not support or distribute malware. Every link provided on our store is processed through a security timer to ensure the user is fully aware of the destination, maintaining a safe and high-quality environment for both users and advertisers.</p>
+        </div>
+
+        <div class="section">
+            <h2>Contact Information</h2>
+            <p>We believe in transparent communication. If you have any inquiries regarding our content, copyright concerns, or partnership opportunities, please feel free to reach out to our official support channels. We are committed to responding to all legitimate requests within 24-48 hours.</p>
+            <p><i class="fab fa-whatsapp"></i> Hotline: +94 77 704 2735<br>
+               <i class="fas fa-envelope"></i> Email: support@lanxgames.lk</p>
+        </div>
+
+        <div class="official-link">
+            <p style="font-size: 12px; color: #555; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">Official Website</p>
+            <a href="https://lanxgames.lk">WWW.LANXGAMES.LK</a>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #333; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid #111;">
+        © 2026 LANX GAMES.LK | All Rights Reserved | Developed by Pamod Yoshitha
+    </footer>
+
 </body>
 </html>
