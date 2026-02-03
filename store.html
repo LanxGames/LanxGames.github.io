@@ -670,3 +670,177 @@
     </script>
 </body>
 </html>
+            <img id="userImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+            <span id="userName">LOGIN</span>
+            <div class="profile-card" id="profileCard">
+                <img id="cardImg" src="">
+                <h4 id="cardName">User</h4>
+                <p id="cardEmail" style="font-size: 11px; color: #777;"></p>
+                <button class="logout-btn-card" onclick="userLogout()">LOGOUT</button>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://cinesubz.lk/" target="_blank">Movies</a></li>
+            <li><a href="https://wa.me/94777042735" target="_blank">Contact</a></li>
+        </ul>
+        <div class="search-wrapper">
+            <input type="text" id="storeSearch" class="search-bar" placeholder="🔍 Search All Games..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" style="color: #888; text-decoration: none; font-size: 13px;">← Back to Home</a>
+        <h2 class="grid-title">ALL GAMES</h2>
+
+        <div id="skeleton-loader" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+            <script>
+                for(let i=0; i<20; i++) {
+                    document.write(`
+                        <div class="skeleton-card">
+                            <div class="skeleton sk-img"></div>
+                            <div class="skeleton sk-title"></div>
+                            <div class="skeleton sk-text"></div>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+
+        <div class="game-grid" id="gameGrid" style="display: none;"></div>
+        <div id="pagination" class="pagination-container"></div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid #111; font-size: 10px; color: #444; letter-spacing: 2px;">
+        © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0ZqCnq28-bauG3YBb7WrVVNdQgYOGmqg",
+            authDomain: "black-store-login.firebaseapp.com",
+            databaseURL: "https://black-store-login-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "black-store-login",
+            storageBucket: "black-store-login.firebasestorage.app",
+            messagingSenderId: "980593701862",
+            appId: "1:980593701862:web:eabd842d94a728c2c9c27"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+        const db = getDatabase(app);
+
+        let allGames = [];
+        let currentPage = 1;
+        const limit = 20;
+
+        const gameGrid = document.getElementById('gameGrid');
+        const paginationBox = document.getElementById('pagination');
+        const searchInput = document.getElementById('storeSearch');
+        const searchDropdown = document.getElementById('searchDropdown');
+
+        onValue(ref(db, 'games'), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                allGames = Object.keys(data).reverse().map(key => data[key]);
+                displayGames(1);
+            }
+        });
+
+        function displayGames(page) {
+            currentPage = page;
+            document.getElementById('skeleton-loader').style.display = 'none';
+            gameGrid.style.display = 'flex';
+            gameGrid.innerHTML = '';
+            
+            const start = (page - 1) * limit;
+            const currentItems = allGames.slice(start, start + limit);
+
+            currentItems.forEach(game => {
+                gameGrid.insertAdjacentHTML('beforeend', `
+                    <div class="game-item">
+                        <img src="${game.imageURL}">
+                        <div class="game-info">
+                            <h3>${game.title}</h3>
+                            <button onclick="startDownload('${game.downloadURL}')" class="mini-download-btn">DOWNLOAD</button>
+                        </div>
+                    </div>`);
+            });
+            setupPagination();
+        }
+
+        function setupPagination() {
+            paginationBox.innerHTML = '';
+            const totalPages = Math.ceil(allGames.length / limit);
+            for(let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = (i === currentPage) ? 'page-btn active' : 'page-btn';
+                btn.onclick = () => { displayGames(i); window.scrollTo(0,0); };
+                paginationBox.appendChild(btn);
+            }
+        }
+
+        // --- SEARCH LOGIC ---
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toUpperCase();
+            searchDropdown.innerHTML = '';
+            if (query.length < 1) { searchDropdown.style.display = 'none'; return; }
+
+            const filtered = allGames.filter(g => g.title.toUpperCase().includes(query)).slice(0, 6);
+            if (filtered.length > 0) {
+                searchDropdown.style.display = 'block';
+                filtered.forEach(game => {
+                    const item = document.createElement('div');
+                    item.className = 'search-item';
+                    item.innerHTML = `
+                        <img src="${game.imageURL}">
+                        <div class="search-item-info">
+                            <h4>${game.title}</h4>
+                            <p>${game.size || 'N/A'}</p>
+                        </div>`;
+                    item.onclick = () => startDownload(game.downloadURL);
+                    searchDropdown.appendChild(item);
+                });
+            } else { searchDropdown.style.display = 'none'; }
+        });
+
+        document.addEventListener('click', (e) => { if (!searchInput.contains(e.target)) searchDropdown.style.display = 'none'; });
+
+        // Timer & Auth
+        window.startDownload = (link) => {
+            document.getElementById('download-overlay').style.display = 'flex';
+            let time = 10;
+            const timer = setInterval(() => {
+                time--; document.getElementById('seconds-count').innerText = time;
+                if(time <= 0) { clearInterval(timer); window.location.href = link; }
+            }, 1000);
+        };
+
+        window.userLogout = () => signOut(auth);
+        window.toggleAuth = () => { if (auth.currentUser) { const pc = document.getElementById('profileCard'); pc.style.display = pc.style.display === 'flex' ? 'none' : 'flex'; } else { signInWithPopup(auth, provider); } };
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('userName').innerText = user.displayName.split(' ')[0].toUpperCase();
+                document.getElementById('userImg').src = user.photoURL;
+                document.getElementById('cardImg').src = user.photoURL;
+                document.getElementById('cardName').innerText = user.displayName;
+                document.getElementById('cardEmail').innerText = user.email;
+            } else {
+                document.getElementById('userName').innerText = "LOGIN";
+                document.getElementById('userImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                document.getElementById('profileCard').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
