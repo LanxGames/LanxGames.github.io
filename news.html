@@ -147,12 +147,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Grayscale ඉවත් කර කෙලින්ම පාට එනලෙස හැදුවා */
             filter: brightness(0.8);
             transition: 0.5s ease;
         }
 
-        /* පින්තූරය උඩින් එන Tag එක */
         .news-badge {
             position: absolute;
             top: 20px;
@@ -243,10 +241,31 @@
             text-transform: uppercase;
         }
 
+        /* --- MOBILE RESPONSIVE FIXES --- */
         @media (max-width: 768px) {
-            .news-img { height: 300px; }
-            .news-title { font-size: 24px; }
-            .news-container { width: 95%; }
+            header { padding: 15px 5%; }
+            .brand-name { font-size: 18px; letter-spacing: 2px; }
+            .logo-box { width: 45px; height: 45px; }
+            .logo-box::after { font-size: 10px; }
+            
+            nav { padding: 15px 3%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+
+            .news-container { width: 95%; margin: 20px auto; }
+            .news-img { height: 250px; }
+            .news-content { padding: 20px; }
+            .news-title { font-size: 22px; }
+            .news-text { font-size: 14px; }
+            
+            .news-article { margin-bottom: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name { font-size: 14px; letter-spacing: 1px; }
+            .logo-box { width: 38px; height: 38px; }
+            .logo-box::after { font-size: 8px; }
+            .news-title { font-size: 18px; }
         }
     </style>
 </head>
@@ -269,7 +288,7 @@
 
     <div class="news-container">
         
-        <h2 style="text-align: center; margin-bottom: 50px; letter-spacing: 8px; font-size: 24px; color: #fff; text-transform: uppercase;">
+        <h2 style="text-align: center; margin-bottom: 30px; letter-spacing: 5px; font-size: 20px; color: #fff; text-transform: uppercase;">
             <span style="border-bottom: 2px solid #fff; padding-bottom: 10px;">Latest Updates</span>
         </h2>
 
@@ -284,7 +303,7 @@
                 <p class="news-text">
                     Rockstar Games has finally broken the silence regarding the most anticipated game of all time. Insider reports suggest that the game will feature a highly dynamic weather system and an advanced AI system for NPCs.
                 </p>
-                <a href="#" style="color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid #fff; padding: 10px 20px; border-radius: 5px;">READ FULL STORY</a>
+                <a href="#" style="color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ FULL STORY</a>
             </div>
         </article>
 
@@ -299,7 +318,7 @@
                 <p class="news-text">
                     The next generation of gaming GPUs is almost here. Leaked benchmarks for the Nvidia RTX 5090 show a massive 60% increase in performance compared to the current 4090.
                 </p>
-                <a href="#" style="color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid #fff; padding: 10px 20px; border-radius: 5px;">READ FULL STORY</a>
+                <a href="#" style="color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ FULL STORY</a>
             </div>
         </article>
 
