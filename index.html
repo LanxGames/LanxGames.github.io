@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>(function(s){s.dataset.zone='10554114',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-   
-
-
-
-    
-    <meta name="monetag" content="56ff293cd33016c0b6a7002650986fae">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5ZGPZREXB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -37,16 +30,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-
-/* Mobile එකේදී ලස්සනට පේන්න */
-@media (max-width: 768px) {
-    .ticker-title {
-        font-size: 9px;
-        padding: 0 10px;
-    }
-    .ticker-content {
-        font-size: 11px;  }
-        
         /* CSS Design - Black & White Premium Theme */
         * {
             margin: 0;
@@ -69,7 +52,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid ,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             flex-wrap: nowrap; 
             gap: 10px;
             background: rgba(0,0,0,0.8);
@@ -186,7 +169,6 @@
             align-items: center;
             z-index: 1000;
             gap: 25px;
-            position: relative; /* Suggestion box eka position karanna */
         }
 
         .nav-links {
@@ -244,38 +226,6 @@
             box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
 
-        /* --- NEW LIVE SEARCH SUGGESTIONS STYLE --- */
-        #search-suggestions {
-            position: absolute;
-            top: 100%;
-            width: 100%;
-            max-width: 600px;
-            background: rgba(10, 10, 10, 0.98);
-            border: 1px solid #222;
-            border-top: none;
-            border-radius: 0 0 15px 15px;
-            z-index: 9999;
-            display: none;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
-            text-align: left;
-        }
-
-        .suggestion-item {
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .suggestion-item:hover { background: rgba(255,255,255,0.05); }
-        .suggestion-item img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; border: 1px solid #333; }
-        .suggestion-item .s-name { font-size: 14px; font-weight: 600; color: #fff; }
-        .suggestion-item .s-info { font-size: 11px; color: #666; }
-
         /* --- MOBILE OPTIMIZATION UPDATED --- */
         @media (max-width: 480px) {
             header { padding: 12px 3%; }
@@ -292,7 +242,6 @@
             
             .search-bar { padding: 10px 15px; font-size: 12px; border-radius: 8px; }
             .search-bar:focus { max-width: 98%; }
-            #search-suggestions { max-width: 95%; }
         }
 
         .hero-banner {
@@ -362,7 +311,7 @@
         .container {
             width: 95%;
             margin: 20px auto;
-            display: block; 
+            display: block; /* Sidebar nathi nisa block kala Full width penna */
         }
 
         /* --- GAME CARDS PROFESSIONAL REDESIGN --- */
@@ -439,6 +388,7 @@
 
         .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px rgba(255,255,255,0.3); }
 
+        /* Full width for Laptop */
         @media (min-width: 1024px) {
             .main-content { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; } 
             .main-content h2 { grid-column: span 4; }
@@ -462,6 +412,7 @@
 
         footer { text-align: center; padding: 20px; border-top: 1px solid #222; margin-top: 30px; color: #555; font-size: 12px; }
 
+        /* --- FIXED WHITE PREMIUM DONATE BUTTON --- */
         .premium-donate-btn {
             position:fixed !important; 
             bottom: 25px; 
@@ -482,21 +433,33 @@
             transition: 0.3s;
         }
 
-        .premium-donate-btn:hover { transform: translateY(-5px); background-color: #eeeeee !important; }
-        .premium-donate-btn img { height: 22px; margin-right: 10px; filter: brightness(0); }
+        .premium-donate-btn:hover {
+            transform: translateY(-5px);
+            background-color: #eeeeee !important;
+        }
+
+        .premium-donate-btn img {
+            height: 22px;
+            margin-right: 10px;
+            filter: brightness(0); 
+        }
 
         @media (max-width: 600px) {
-            .premium-donate-btn { padding: 10px 15px; font-size: 13px; bottom: 20px; right: 20px; }
-            .premium-donate-btn img { height: 18px; }
+            .premium-donate-btn {
+                padding: 10px 15px;
+                font-size: 13px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .premium-donate-btn img {
+                height: 18px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-
-
-        
         <div class="logo-section">
             <div class="logo-box"></div>
             <div class="brand-name">LANX GAMES.LK</div>
@@ -524,13 +487,13 @@
 
     <nav>
         <ul class="nav-links">
-            <li><a href="store.html" target="_blank">Games </a></li>
-            <li><a href="https://cinesubz.lk/" target="_blank">Movies</a></li>
-            <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series </a></li>
-            <li><a href="news.html" target="_blank">Gaming News</a></li> 
-        </ul>
-        <input type="text" id="gameSearch" class="search-bar" placeholder="🔍 Search Games & Movies..." autocomplete="off">
-        <div id="search-suggestions"></div> </nav>
+    <li><a href="store.html" target="_blank">Games </a></li>
+    <li><a href="https://cinesubz.lk/" target="_blank">Movies</a></li>
+    <li><a href="https://cinesubz.lk/tvshows/" target="_blank">TV Series </a></li>
+          <li>  <a href="news.html" target="_blank">Gaming News</a></li> 
+         </ul>
+        <input type="text" id="gameSearch" class="search-bar" placeholder="🔍 Search Games & Movies...">
+    </nav>
 
     <div class="hero-banner">
         <h1>Welcome to Lanx Games.LK</h1>
@@ -548,7 +511,7 @@
                     <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 90.6 GB</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://otieu.com/4/10554174" target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/Auxf8" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
@@ -559,7 +522,7 @@
                     <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 14.3 GB</div>
                     <div class="rating">★ ★ ★ ★ ★ 8.7</div>
-                    <a href="https://otieu.com/4/10554187" target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/MXxJQ" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
             
@@ -570,7 +533,7 @@
                     <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 60.5 GB</div>
                     <div class="rating">★ ★ ★ ☆ ☆ 3.3</div>
-                    <a href="https://otieu.com/4/10554190" target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/TOukmeF" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
@@ -581,7 +544,7 @@
                     <p style="font-size: 12px; color: #888;">For PC [Free]</p>
                     <div class="game-info">Size: 70 GB</div>
                     <div class="rating">★ ★ ★ ★ ☆ 8.2</div>
-                    <a href="https://otieu.com/4/10554194" target="_blank" class="download-btn">DOWNLOAD</a>
+                    <a href="https://shrinkme.click/hmibvUpV" target="_blank" class="download-btn">DOWNLOAD</a>
                 </div>
             </div>
 
@@ -645,28 +608,32 @@
         </div>    
     </div> 
 
+   
+    
     <footer style="background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; text-align: center; margin-top: 50px;">
-        <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="about.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">About Us</a>
-            <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
-            <a href="terms.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms & Conditions</a>
-        </div>
+    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="about.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">About Us</a>
+        <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
+        <a href="terms.html" style="color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms & Conditions</a>
+    </div>
 
-        <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 25px;">
-            <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://youtube.com/@klvizz?si=6IxStkY9IqEiqwsh" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
-        </div>
-        
-        <div style="color: #444; font-size: 10px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase;">
-            © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
-        </div>
-        
-        <div style="width: 100%; overflow: hidden;">
-            <marquee style="color: #222; font-size: 9px; width: 50%; letter-spacing: 1px;">CREATED BY PAMOD YOSHITHA ABEYRATHNA</marquee>
-        </div>
-    </footer>
+    <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 25px;">
+        <a href="https://wa.me/94777042735" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1MsHT81ggc/" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@klvizz?si=6IxStkY9IqEiqwsh" target="_blank" style="color: #fff; font-size: 20px; opacity: 0.6; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
+    </div>
+    
+    <div style="color: #444; font-size: 10px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase;">
+        © 2026 LANX GAMES.LK | ALL RIGHTS RESERVED
+    </div>
+    
+    <div style="width: 100%; overflow: hidden;">
+        <marquee style="color: #222; font-size: 9px; width: 50%; letter-spacing: 1px;">CREATED BY PAMOD YOSHITHA ABEYRATHNA</marquee>
+    </div>
+</footer>
 
+
+    
     <a href="https://www.buymeacoffee.com/shiyamal50e" target="_blank" class="premium-donate-btn">
         <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Donate">
         <span class="donate-text">Donate Now</span>
@@ -724,7 +691,6 @@
     </script>
 
     <script>
-        // Typing Animation
         const typedSpan = document.getElementById("typed-text");
         const toType = ["The Best PC Games", "Latest Movies", "TV Series", "For Free!"];
         let wordIdx = 0, charIdx = 0, isDeleting = false;
@@ -739,89 +705,32 @@
         }
         document.addEventListener("DOMContentLoaded", type);
 
-        // --- NEW PREMIUM SEARCH LOGIC ---
-        const searchInput = document.getElementById('gameSearch');
-        const suggestionBox = document.getElementById('search-suggestions');
-        const gameCards = document.querySelectorAll('.game-card');
-
-        searchInput.addEventListener('input', function() {
+        document.getElementById('gameSearch').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
-            suggestionBox.innerHTML = '';
-            
-            if (filter.length < 1) {
-                suggestionBox.style.display = 'none';
-                return;
-            }
-
-            let foundCount = 0;
+            let gameCards = document.querySelectorAll('.game-card');
             gameCards.forEach(card => {
                 let title = card.querySelector('.game-title').innerText;
-                let img = card.querySelector('.game-img img').src;
-                let size = card.querySelector('.game-info').innerText;
-
-                if (title.toUpperCase().indexOf(filter) > -1 && foundCount < 5) {
-                    let div = document.createElement('div');
-                    div.className = 'suggestion-item';
-                    div.innerHTML = `
-                        <img src="${img}">
-                        <div>
-                            <div class="s-name">${title}</div>
-                            <div class="s-info">${size}</div>
-                        </div>
-                    `;
-                    div.onclick = function() {
-                        window.location.href = `store.html?search=${encodeURIComponent(title)}`;
-                    };
-                    suggestionBox.appendChild(div);
-                    foundCount++;
-                }
+                card.style.display = title.toUpperCase().indexOf(filter) > -1 ? "" : "none";
             });
-
-            suggestionBox.style.display = foundCount > 0 ? 'block' : 'none';
-        });
-
-        // Redirect on Enter
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                let term = this.value;
-                if (term.trim() !== "") {
-                    window.location.href = `store.html?search=${encodeURIComponent(term)}`;
-                }
-            }
-        });
-
-        // Close suggestions on click outside
-        document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && !suggestionBox.contains(e.target)) {
-                suggestionBox.style.display = 'none';
-            }
         });
     </script>
+<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 20px; border-radius: 15px; z-index: 1000000; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: center;">
+    <p style="color: #ccc; font-size: 12px; margin-bottom: 15px; line-height: 1.5;">
+        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" style="color: #fff; text-decoration: underline;">Learn more</a>
+    </p>
+    <button onclick="acceptCookies()" style="background: #fff; color: #000; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 12px; width: 100%;">ACCEPT</button>
+</div>
 
-    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 20px; border-radius: 15px; z-index: 1000000; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: center;">
-        <p style="color: #ccc; font-size: 12px; margin-bottom: 15px; line-height: 1.5;">
-            We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" style="color: #fff; text-decoration: underline;">Learn more</a>
-        </p>
-        <button onclick="acceptCookies()" style="background: #fff; color: #000; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 12px; width: 100%;">ACCEPT</button>
-    </div>
-
-    <script>
-        window.onload = function() {
-            if (!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
+<script>
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'block';
         }
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-    </script>
+    }
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
