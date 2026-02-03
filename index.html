@@ -37,6 +37,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+/* Trending Ticker Style */
+.trending-ticker {
+    background: #111;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    height: 40px;
+    overflow: hidden;
+}
+
+.ticker-title {
+    background: #fff;
+    color: #000;
+    padding: 0 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.ticker-content {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+/* Mobile එකේදී ලස්සනට පේන්න */
+@media (max-width: 768px) {
+    .ticker-title {
+        font-size: 9px;
+        padding: 0 10px;
+    }
+    .ticker-content {
+        font-size: 11px;
+    }
+}
+
+
+        
         /* CSS Design - Black & White Premium Theme */
         * {
             margin: 0;
@@ -484,6 +530,20 @@
 <body>
 
     <header>
+<div class="trending-ticker">
+    <div class="ticker-title">TRENDING NOW</div>
+    <div class="ticker-content">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            🔥 GTA VI Trailer 2 Leaks revealed! &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
+            🚀 Nvidia RTX 5090 Benchmarks are out! &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
+            🎮 Cyberpunk 2077 Phantom Liberty 50% OFF on Steam! &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
+            ⭐ Marvel's Spider-Man 2 PC version confirmed?
+        </marquee>
+    </div>
+</div>
+
+
+        
         <div class="logo-section">
             <div class="logo-box"></div>
             <div class="brand-name">LANX GAMES.LK</div>
@@ -805,6 +865,7 @@
     </script>
 </body>
 </html>
+
 
 
 
