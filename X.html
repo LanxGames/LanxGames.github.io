@@ -6,6 +6,11 @@
     <title>Pramoda AI Engine</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
+
+        .message {
+    font-family: 'Inter', 'Abhaya Libre', sans-serif; /* සිංහල අකුරු ලස්සනට පෙනීමට */
+}
+
         :root { --bg: #0a0a0a; --panel: #161616; --accent: #00ff88; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; }
         header { padding: 15px; text-align: center; background: var(--panel); border-bottom: 1px solid #333; }
@@ -37,13 +42,13 @@
     <button onclick="generateResponse()">Send</button>
 </div>
 
-<script> 
+<script>
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('userInput');
     
     const API_KEY = "AIzaSyCt_2qS2ypfwLNLf4GR5eG-HQqUgo5IWQs"; 
-    // මෙන්න මෙතන මම "flash-latest" කියලා වෙනස් කළා
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+    // මෙන්න මේ URL එක හරියටම චෙක් කරගන්න
+    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
     async function generateResponse() {
         const text = userInput.value.trim();
@@ -52,7 +57,7 @@
         addMessage(text, 'user-msg');
         userInput.value = '';
         
-        const loadingDiv = addMessage("<i>Pramoda AI is typing...</i>", 'ai-msg');
+        const loadingDiv = addMessage("<i>Thinking...</i>", 'ai-msg');
 
         try {
             const response = await fetch(API_URL, {
@@ -69,11 +74,13 @@
                 throw new Error(data.error.message);
             }
 
+            // සමහර වෙලාවට data structure එක වෙනස් නිසා මේක ෂුවර් කරන්න
             const aiText = data.candidates[0].content.parts[0].text;
             loadingDiv.innerHTML = aiText.replace(/```(.*?)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>').replace(/\n/g, '<br>');
             
         } catch (err) {
-            loadingDiv.innerHTML = "<span style='color:red;'>Error: " + err.message + "</span>";
+            loadingDiv.innerHTML = "<span style='color:#ff4444;'>Error: " + err.message + "</span>";
+            console.error(err);
         }
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
@@ -89,6 +96,7 @@
 
     userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") generateResponse(); });
 </script>
+
 
 
 </body>
