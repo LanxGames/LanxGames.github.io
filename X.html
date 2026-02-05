@@ -46,9 +46,11 @@
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('userInput');
     
+    // ඔයාගේ API Key එක
     const API_KEY = "AIzaSyCt_2qS2ypfwLNLf4GR5eG-HQqUgo5IWQs"; 
-    // මෙන්න මේ URL එක හරියටම චෙක් කරගන්න
-    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+    
+    // 🔴 මේ URL එක අනිවාර්යයෙන්ම මේ විදිහටම තියෙන්න ඕනේ
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
     async function generateResponse() {
         const text = userInput.value.trim();
@@ -57,30 +59,40 @@
         addMessage(text, 'user-msg');
         userInput.value = '';
         
-        const loadingDiv = addMessage("<i>Thinking...</i>", 'ai-msg');
+        const loadingDiv = addMessage("<i>Pramoda AI is typing...</i>", 'ai-msg');
 
         try {
             const response = await fetch(API_URL, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: text }] }]
+                    contents: [{
+                        parts: [{ text: text }]
+                    }]
                 })
             });
 
             const data = await response.json();
 
+            // වැරැද්දක් ආවොත් ඒක හරියටම පෙන්වන්න
             if (data.error) {
-                throw new Error(data.error.message);
+                loadingDiv.innerHTML = `<span style="color:#ff4444;">Error: ${data.error.message}</span>`;
+                console.log("Full Error Data:", data); // Browser Console එකේ වැරැද්ද බලාගන්න
+                return;
             }
 
-            // සමහර වෙලාවට data structure එක වෙනස් නිසා මේක ෂුවර් කරන්න
-            const aiText = data.candidates[0].content.parts[0].text;
-            loadingDiv.innerHTML = aiText.replace(/```(.*?)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>').replace(/\n/g, '<br>');
+            if (data.candidates && data.candidates[0].content) {
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                // පිළිතුර පෙන්වන කොට සිංහල අකුරු වලට ගැළපෙන්න Line break හදමු
+                loadingDiv.innerHTML = aiResponse.replace(/```(.*?)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>').replace(/\n/g, '<br>');
+            } else {
+                loadingDiv.innerHTML = "No response. Check your API settings.";
+            }
             
         } catch (err) {
-            loadingDiv.innerHTML = "<span style='color:#ff4444;'>Error: " + err.message + "</span>";
-            console.error(err);
+            loadingDiv.innerHTML = `<span style="color:#ff4444;">Network Error: Please check your connection.</span>`;
         }
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
