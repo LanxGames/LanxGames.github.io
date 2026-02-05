@@ -37,62 +37,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-.hub-btn-container {
-    text-align: center;
-    margin: 50px 0;
+/* සරල සහ කුඩා බටන් එක සඳහා CSS */
+.mini-btn-container {
+    text-align: left; /* වමට වෙන්න තියන්න */
+    margin: 15px 0;   /* උඩින් සහ යටින් පොඩි ඉඩක් */
 }
 
-.bw-hub-btn {
-    position: relative;
+.mini-codes-btn {
     display: inline-flex;
     align-items: center;
-    padding: 20px 50px;
-    background: #000; /* Black Background */
-    color: #fff; /* White Text */
+    padding: 8px 20px;
+    background: #000;
+    color: #fff;
     font-family: 'Orbitron', sans-serif;
-    font-size: 13px;
+    font-size: 12px; /* අකුරු පොඩි කළා */
     font-weight: 700;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid #fff; /* White Border */
-    transition: all 0.4s cubic-bezier(0.6, 0.01, 0, 1);
-    cursor: pointer;
-    overflow: hidden;
+    border: 1px solid #fff;
+    border-radius: 4px; /* පොඩ්ඩක් වටකුරු කළා */
+    transition: 0.3s;
 }
 
-/* Hover කළාම වෙන දේ */
-.bw-hub-btn:hover {
-    background: #fff; /* පසුබිම සුදු වෙනවා */
-    color: #000; /* අකුරු කළු වෙනවා */
-    letter-spacing: 8px; /* අකුරු අතර පරතරය වැඩි වෙනවා */
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+.mini-codes-btn:hover {
+    background: #fff;
+    color: #000;
 }
 
-/* බටන් එක ඇතුළේ යන පොඩි ඇනිමේෂන් ලයින් එක */
-.bw-hub-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #000;
-    transition: 0.4s;
-}
-
-.bw-hub-btn:hover::after {
-    width: 100%;
-}
-
-.btn-icon {
-    margin-left: 15px;
-    font-size: 14px;
-    transition: 0.4s;
-}
-
-.bw-hub-btn:hover .btn-icon {
-    transform: translateX(10px); /* ඊතලය දකුණට මූව් වෙනවා */
+.mini-codes-btn i {
+    margin-left: 10px;
+    font-size: 10px;
 }
 
            
@@ -669,12 +644,12 @@
                     </div>
                 </section>
             </div>
-<div class="hub-btn-container">
-    <a href="hub.html" class="bw-hub-btn">
-        <span class="btn-text">ENTER ULTIMATE HUB</span>
-        <span class="btn-icon"><i class="fas fa-chevron-right"></i></span>
+<div class="mini-btn-container">
+    <a href="hub.html" class="mini-codes-btn">
+        Codes <i class="fas fa-chevron-right"></i>
     </a>
 </div>
+
 
             <a href="store.html" class="more-games-btn" style="width: 100%; border: 2px solid #fff; color: #fff; text-decoration: none; padding: 15px; display: block; text-align: center; font-weight: bold; border-radius: 12px; margin-top: 20px;">See More Games ➔</a>
         </div>    
@@ -806,6 +781,7 @@
 </script>
 </body>
 </html>
+
 
 
 
